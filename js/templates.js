@@ -30,6 +30,29 @@
   const chipGroups = (groups, detailType) =>
     join(Object.entries(groups), ([title, items]) => `<h3>${esc(title)}</h3>${chips(items, detailType)}`);
 
+  const more = (html) => html
+    ? `<details class="more"><summary class="btn btn-sm">` +
+        `<span class="more-closed">${esc(s.showMore)}</span>` +
+        `<span class="more-open">${esc(s.showLess)}</span>` +
+      `</summary><div class="more-body">${html}</div></details>`
+    : "";
+
+  const byFeatured = (items) => ({
+    shown: (items || []).filter((item) => item && item.featured),
+    extra: (items || []).filter((item) => !(item && item.featured))
+  });
+
+  const chipGroupsMore = (groups, detailType) => {
+    const shown = {};
+    const extra = {};
+    Object.entries(groups).forEach(([title, items]) => {
+      const parts = byFeatured(items);
+      if (parts.shown.length) shown[title] = parts.shown;
+      if (parts.extra.length) extra[title] = parts.extra;
+    });
+    return chipGroups(shown, detailType) + more(chipGroups(extra, detailType));
+  };
+
   const timelineItem = ({ title, meta }) =>
     `<div class="timeline-item"><h3>${esc(title)}</h3><p class="meta">${esc(meta)}</p></div>`;
 
@@ -47,6 +70,7 @@
     `<div class="job-row">` +
       `<button type="button" class="jb" ${detailAttrs("job", id)}>` +
         `<b>${esc(job.title)}</b><span class="meta">${esc(metaText(job.company, job.period))}</span>` +
+        (job.parallel ? `<span class="parallel">${esc(job.parallel)}</span>` : "") +
       `</button>` +
       list(job.highlights, "job-details") +
     `</div>`;
@@ -86,7 +110,7 @@
 
   const jobDetail = (job) => sheetLayout({
     title: job.title,
-    meta: metaText(job.company, job.period, job.place),
+    meta: metaText(job.company, job.period, job.place, job.parallel),
     body: list(job.highlights)
   });
 
@@ -104,8 +128,9 @@
   });
 
   CV.templates = Object.freeze({
-    chips, chipGroups, timelineItem, card, decades, jobDetail, certDetail,
+    chips, chipGroups, chipGroupsMore, more, byFeatured, timelineItem, card, decades, jobDetail, certDetail,
     cards: (items) => join(items, card),
-    timeline: (items) => join(items, timelineItem)
+    timeline: (items) => join(items, timelineItem),
+    jobList: (entries) => join(entries, jobButton)
   });
 })(window.CV = window.CV || {});

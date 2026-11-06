@@ -13,10 +13,9 @@
     return `${from} – ${to}`;
   };
 
-  const groupByDecade = (jobs) => {
+  const groupEntries = (entries) => {
     const groups = new Map();
-    jobs
-      .map((job, id) => ({ id, job }))
+    [...entries]
       .sort((a, b) => b.job.start - a.job.start)
       .forEach((entry) => {
         const key = decadeOf(entry.job.start);
@@ -24,12 +23,14 @@
         groups.get(key).push(entry);
       });
 
-    return Array.from(groups, ([year, entries]) => ({
+    return Array.from(groups, ([year, grouped]) => ({
       label: decadeLabel(year),
-      range: rangeOf(entries),
-      entries
+      range: rangeOf(grouped),
+      entries: grouped
     }));
   };
 
-  CV.experience = Object.freeze({ groupByDecade });
+  const groupByDecade = (jobs) => groupEntries(jobs.map((job, id) => ({ id, job })));
+
+  CV.experience = Object.freeze({ groupByDecade, groupEntries });
 })(window.CV = window.CV || {});

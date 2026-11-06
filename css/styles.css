@@ -404,6 +404,30 @@ section {
   font-size: .9rem;
 }
 
+.parallel {
+  display: inline-block;
+  margin-top: .35rem;
+  padding: .1rem .45rem;
+  border-radius: var(--radius-sm);
+  background: var(--chip);
+  color: var(--mute);
+  font-size: .8rem;
+}
+
+.more { margin-top: .75rem; }
+
+.more > summary { cursor: pointer; list-style: none; }
+
+.more > summary::-webkit-details-marker { display: none; }
+
+.more-open { display: none; }
+
+.more[open] .more-closed { display: none; }
+
+.more[open] .more-open { display: inline; }
+
+.more-body { margin-top: .8rem; }
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -656,7 +680,8 @@ section {
   .drawer-backdrop,
   .btn,
   .skip-link,
-  .sheet { display: none; }
+  .sheet,
+  .more > summary { display: none; }
   .job-details {
     display: block;
     margin: .3rem 0 .6rem;

@@ -18,12 +18,21 @@
     if (el) el.innerHTML = html;
   };
 
+  const withMore = (items, render) => {
+    const { shown, extra } = t.byFeatured(items);
+    return render(shown) + t.more(render(extra));
+  };
+
   const renderContent = () => {
+    const entries = data.jobs.map((job, id) => ({ id, job }));
+    const featuredJobs = entries.filter((entry) => entry.job.featured);
+    const olderJobs = entries.filter((entry) => !entry.job.featured);
+
     renderInto("skills", t.chipGroups(data.skills));
-    renderInto("jobs", t.decades(experience.groupByDecade(data.jobs)));
-    renderInto("projects", t.cards(data.projects));
-    renderInto("certs", t.chipGroups(data.certs, "cert"));
-    renderInto("education", t.timeline(data.education));
+    renderInto("jobs", t.jobList(featuredJobs) + t.more(t.decades(experience.groupEntries(olderJobs))));
+    renderInto("projects", withMore(data.projects, t.cards));
+    renderInto("certs", t.chipGroupsMore(data.certs, "cert"));
+    renderInto("education", withMore(data.education, t.timeline));
     renderInto("languages", t.chips(data.languages));
   };
 
@@ -36,7 +45,8 @@
     cert: (id) => certsById.has(id) && t.certDetail(certsById.get(id))
   });
 
-  const decadeDetails = () => $$(`${slot("jobs")} details`);
+  const decadeDetails = () => $$(`${slot("jobs")} details.dec`);
+  const foldDetails = () => $$("details.dec, details.more");
 
   const setDecadesOpen = (open) => decadeDetails().forEach((d) => { d.open = open; });
 
@@ -58,12 +68,12 @@
   const bindPrint = () => {
     let saved = [];
     window.addEventListener("beforeprint", () => {
-      const details = decadeDetails();
+      const details = foldDetails();
       saved = details.map((d) => d.open);
       details.forEach((d) => { d.open = true; });
     });
     window.addEventListener("afterprint", () => {
-      decadeDetails().forEach((d, i) => { d.open = saved[i] ?? d.open; });
+      foldDetails().forEach((d, i) => { d.open = saved[i] ?? d.open; });
     });
   };
 

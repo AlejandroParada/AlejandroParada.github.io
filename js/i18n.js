@@ -6,6 +6,8 @@
     es: {
       locale: "es-UY",
       close: "Cerrar",
+      showMore: "Ver más…",
+      showLess: "Ver menos",
       openInNewTab: "Ver en una pestaña nueva",
       learned: "Lo que aprendí",
       skills: "Habilidades",
@@ -23,6 +25,8 @@
     en: {
       locale: "en-US",
       close: "Close",
+      showMore: "See more…",
+      showLess: "See less",
       openInNewTab: "Open in a new tab",
       learned: "What I learned",
       skills: "Skills",

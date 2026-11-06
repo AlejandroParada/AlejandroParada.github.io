@@ -17,7 +17,7 @@
     jobs: [
       {
         title: "Software Developer", company: "Farmacias Pigalle",
-        period: "Apr 2026 – present", place: "Montevideo", start: 2026, end: null,
+        period: "Apr 2026 – present", place: "Montevideo", start: 2026, end: null, featured: true,
         highlights: [
           "Leading the migration of a legacy system to a modern .NET architecture.",
           "Brought synchronization incidents with the medical supplies database down to zero (root cause analysis and query optimization).",
@@ -27,12 +27,12 @@
       },
       {
         title: "Software Engineer", company: "Netvias Solutions",
-        period: "Feb 2022 – Dec 2023", place: "Montevideo", start: 2022, end: 2023,
+        period: "Feb 2022 – Dec 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
         highlights: ["Software factory for tourism and travel companies. Stack: Laravel and JavaScript."]
       },
       {
         title: "Developer", company: "Mutualista Hospital Evangélico",
-        period: "Jun 2019 – Mar 2020", place: "Montevideo", start: 2019, end: 2020,
+        period: "Jun 2019 – Mar 2020", place: "Montevideo", start: 2019, end: 2020, featured: true,
         highlights: [
           "Solved database synchronization issues for medical supplies.",
           "Identified the cause of network access failures on outdated clients.",
@@ -41,7 +41,7 @@
       },
       {
         title: "Software Developer", company: "1650Labs",
-        period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019,
+        period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019, featured: true,
         highlights: [
           "Fixed the front-end issues reported by the client, verified by QA.",
           "Found a root cause of database access bottlenecks."
@@ -50,6 +50,7 @@
       {
         title: "Programming, Support and IT Solutions Instructor", company: "INFA",
         period: "2017 – 2018", place: "part-time", start: 2017, end: 2018,
+        parallel: "Concurrent with the quality consulting practice",
         highlights: ["Implemented an online assessment system for several technical disciplines and organized an employee training program."]
       },
       {
@@ -71,6 +72,7 @@
       {
         title: "Independent Quality Management Consultant", company: "Small businesses",
         period: "Apr 2012 – Dec 2018", place: "", start: 2012, end: 2018,
+        parallel: "Concurrent with development roles",
         highlights: ["Process and cost analysis, method standardization, audits, reports and documentation (ISO 9000:2008)."]
       },
       {
@@ -84,11 +86,13 @@
       {
         title: "Senior .NET Developer", company: "Tata Consultancy Services",
         period: "Mar 2010 – Jul 2012", place: "Zonamérica, Montevideo", start: 2010, end: 2012,
+        parallel: "Concurrent with Estudio Palma in 2010",
         highlights: ["Located the bug causing data inconsistencies and eliminated calculation complaints in a third-party web scheduling system."]
       },
       {
         title: "Developer", company: "Estudio Palma (accounting firm)",
         period: "Mar 2007 – Nov 2010", place: "Montevideo", start: 2007, end: 2010,
+        parallel: "Concurrent with TCS in 2010",
         highlights: [
           "Automated the receipts module and a scheduled email notification system.",
           "UI improvements, change analysis and implementation, report design and integration. Scrum, .NET, Access."
@@ -107,6 +111,7 @@
       {
         title: "Instructor", company: "ITM Instituto Técnico del Mercosur",
         period: "2002 – 2005", place: "several locations nationwide", start: 2002, end: 2005,
+        parallel: "Concurrent with Lidertur",
         highlights: ["Basic computer use, MS Office, PC repair and graphic design."]
       },
       {
@@ -121,11 +126,11 @@
       { name: "KDSuy", description: "Kitchen display system (Django, Channels, Redis) for Uruguayan restaurants.", url: "" },
       {
         name: "Sistemas HE", company: "Mutualista Hospital Evangélico", period: "Jun 2019 – present",
-        description: "Systems for Mutualista Hospital Evangélico.", url: ""
+        description: "Systems for Mutualista Hospital Evangélico.", url: "", featured: true
       },
       {
         name: "Electrosistemas SSGO", company: "Electrosistemas SA", period: "Aug 2015 – Mar 2017",
-        description: "Petty cash, fuel, logistics scheduling, personnel records, mobile fence claims and cost modules.", url: ""
+        description: "Petty cash, fuel, logistics scheduling, personnel records, mobile fence claims and cost modules.", url: "", featured: true
       },
       {
         name: "Numina JTech", company: "Nómina S.A.", period: "Dec 2014 – Mar 2015",
@@ -137,15 +142,15 @@
       },
       {
         name: "McKesson – HzERM", company: "Tata Consultancy Services", period: "Aug 2010 – Jan 2011",
-        description: "Project for McKesson. Zonamérica, Montevideo.", url: ""
+        description: "Project for McKesson. Zonamérica, Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – AOS Hosteling", company: "Tata Consultancy Services", period: "2010",
-        description: "Project for PricewaterhouseCoopers. Montevideo.", url: ""
+        description: "Project for PricewaterhouseCoopers. Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – Tracker", company: "Tata Consultancy Services", period: "2010",
-        description: "Project for PricewaterhouseCoopers. Montevideo.", url: ""
+        description: "Project for PricewaterhouseCoopers. Montevideo.", url: "", featured: true
       },
       {
         name: "Estudio Palma – IRPF Manager System", company: "Estudio Palma", period: "2007 – 2009",
@@ -161,6 +166,7 @@
     certs: {
       "DevOps (IBM, 2026)": [
         cert("ibm-contenedores", {
+          featured: true,
           name: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
           learned: [
             "Use containers to quickly move applications across any environment.",
@@ -174,6 +180,7 @@
           ]
         }),
         cert("ibm-agile-scrum", {
+          featured: true,
           name: "Introduction to Agile Development and Scrum",
           learned: [
             "Adopt the 5 Agile practices, a subset of DevOps: small batches, minimum viable product, pair programming, and behavior- and test-driven development.",
@@ -188,6 +195,7 @@
           ]
         }),
         cert("ibm-devops", {
+          featured: true,
           name: "Introduction to DevOps",
           learned: [
             "The essential characteristics of DevOps: a culture of shared responsibility, transparency and embracing failure.",
@@ -311,17 +319,18 @@
         cert("sl-responsive", { name: "Responsive Web Design (2022)" }),
         "TDP .NET, Tata Consultancy Services (2011)",
         "Microsoft DCE2005 3 Stars (2012)",
-        "Risk Analysis and Management (UNIT-ISO/IEC 27005)",
-        "Quality Audits (UNIT-ISO)"
+        { name: "Risk Analysis and Management (UNIT-ISO/IEC 27005)", featured: true },
+        { name: "Quality Audits (UNIT-ISO)", featured: true }
       ]
     },
 
     education: [
       {
         title: "Brigham Young University – Idaho",
-        meta: "Bachelor's in Business Administration and Management, Entrepreneurship · online · Jan 2026 – present"
+        meta: "Bachelor's in Business Administration and Management, Entrepreneurship · online · Jan 2026 – present",
+        featured: true
       },
-      { title: "Instituto BIOS Uruguay", meta: "Information Security Technician · 2019" },
+      { title: "Instituto BIOS Uruguay", meta: "Information Security Technician · 2019", featured: true },
       { title: "Uruguayan Institute of Technical Standards (UNIT)", meta: "Introduction to Lean Management · 2017" },
       { title: "Professional Ontological Coaching Association of Uruguay (ACOP)", meta: "NLP applied to coaching, Ontological Coaching · 2017" },
       { title: "Uruguayan Institute of Technical Standards (UNIT)", meta: "Coaching tools, Ontological Coaching · 2017" },
@@ -333,7 +342,7 @@
       { title: "Anglo-Uruguay", meta: "Upper Intermediate, English · 2011" },
       { title: "Tata Consultancy Services", meta: "Business Intelligence · 2011" },
       { title: "Netgate", meta: "Telework E-business · 2008" },
-      { title: "Universidad ORT Uruguay", meta: "Programmer Analyst, IT Development · 2000 – 2004" },
+      { title: "Universidad ORT Uruguay", meta: "Programmer Analyst, IT Development · 2000 – 2004", featured: true },
       {
         title: "Volunteer: full-time missionary",
         meta: "The Church of Jesus Christ of Latter-day Saints · 1994–1996 · Concepción, Chile"
