@@ -148,15 +148,15 @@
       },
       {
         name: "McKesson – HzERM", company: "Tata Consultancy Services", period: "Aug 2010 – Jan 2011",
-        description: "Hybrid legacy system. Fixed defects and optimized queries. Zonamérica, Montevideo.", url: "", featured: true
+        description: "United States client. Hybrid legacy system. Fixed defects and optimized queries. Zonamérica, Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – AOS Hosteling", company: "Tata Consultancy Services", period: "2010",
-        description: "Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
+        description: "United States client. Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – Tracker", company: "Tata Consultancy Services", period: "2010",
-        description: "Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
+        description: "United States client. Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
       },
       {
         name: "Estudio Palma – IRPF Manager System", company: "Estudio Palma", period: "2007 – 2009",
