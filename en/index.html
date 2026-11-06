@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Alejandro Parada · Senior Fullstack .NET Developer</title>
+  <meta name="description" content="Senior Fullstack .NET Developer with 20+ years of experience. Legacy system modernization, SQL Server and applied AI.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1420" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" hreflang="es" href="../index.html">
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/theme.js"></script>
+  <script src="../js/i18n.js" defer></script>
+  <script src="../js/data.js" defer></script>
+  <script src="../js/content/en.js" defer></script>
+  <script src="../js/templates.js" defer></script>
+  <script src="../js/experience.js" defer></script>
+  <script src="../js/detail-sheet.js" defer></script>
+  <script src="../js/drawer.js" defer></script>
+  <script src="../js/tabs.js" defer></script>
+  <script src="../js/github.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <button type="button" class="topbar-btn menu-toggle" aria-controls="site-nav" aria-expanded="false">
+      <span class="menu-icon" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+    <div class="topbar-prefs">
+      <a class="topbar-btn" href="../index.html" hreflang="es" lang="es">Español</a>
+      <button type="button" class="topbar-btn theme-toggle" data-action="toggle-theme" aria-pressed="false" aria-label="Dark mode" title="Dark mode">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside>
+      <h1>Alejandro Parada</h1>
+      <p class="tag muted">Senior Fullstack .NET Developer · 20+ years · Legacy system modernization · SQL Server · Applied AI</p>
+      <p class="badge">Open to new opportunities</p>
+      <p class="tag muted">Barros Blancos, Canelones, Uruguay</p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
+        <a class="btn" id="gh" href="#" hidden>GitHub</a>
+        <button type="button" class="btn" data-action="print">Save as PDF</button>      </div>
+
+      <nav class="drawer" id="site-nav" aria-label="Sections">
+        <div class="drawer-head">
+          <span class="drawer-title">Sections</span>
+          <button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">×</button>
+        </div>
+        <a href="#summary">Summary</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education and languages</a>
+      </nav>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <section id="summary">
+        <h2>Summary</h2>
+        <p>Fullstack developer with more than 20 years building and maintaining business systems in C# and .NET with SQL Server. I specialize in modernizing legacy systems, diagnosing the root cause of data and performance issues, and delivering reliable modules for daily operations. Today I bring AI integration, containers and DevOps practices to that work.</p>
+        <p>I have worked with clients such as PricewaterhouseCoopers and McKesson, and I am leading the migration of a legacy system to a modern .NET architecture at Farmacias Pigalle.</p>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div data-render="skills"></div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="actions">
+          <button type="button" class="btn btn-sm" data-action="expand-all">Expand all</button>
+          <button type="button" class="btn btn-sm" data-action="collapse-all">Collapse all</button>
+        </div>
+        <div data-render="jobs"></div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid" data-render="projects"></div>
+        <div class="grid" data-render="repos"></div>
+      </section>
+
+      <section id="certifications">
+        <h2>Certifications and courses</h2>
+        <div data-render="certs"></div>
+      </section>
+
+      <section id="education">
+        <h2>Education and languages</h2>
+        <div data-render="education"></div>
+        <div data-render="languages"></div>
+      </section>
+
+      <noscript><p class="muted">Enable JavaScript to see the full CV details.</p></noscript>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" data-drawer-close></div>
+
+  <div class="sheet" id="detail-sheet" role="region" aria-labelledby="detail-sheet-title" aria-live="polite">
+    <div data-sheet-content></div>
+  </div>
+</body>
+</html>
