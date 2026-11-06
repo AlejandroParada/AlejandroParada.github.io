@@ -20,10 +20,8 @@
     }
   };
 
-  const pageHref = (lang) => {
-    const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
-    return link ? link.getAttribute("href") : "";
-  };
+  /* Rutas relativas: los hreflang del documento son absolutos para los buscadores. */
+  const pageHref = (lang) => (lang === "en" ? "en/" : "../");
 
   const show = () => root.classList.remove("lang-pending");
 
@@ -54,7 +52,7 @@
     return;
   }
 
-  if (/bot|crawl|spider|slurp|preview/i.test(navigator.userAgent || "")) {
+  if (/bot|crawl|spider|slurp|preview|inspectiontool|google|bing|baidu|yandex|duckduck/i.test(navigator.userAgent || "")) {
     show();
     return;
   }

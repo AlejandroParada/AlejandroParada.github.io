@@ -6,19 +6,36 @@
     try {
       var saved = localStorage.getItem("cv-lang");
       var lang = (document.documentElement.lang || "es").slice(0, 2);
-      if (!saved || saved !== lang) document.documentElement.classList.add("lang-pending");
+      var agent = navigator.userAgent || "";
+      var crawler = /bot|crawl|spider|slurp|preview|inspectiontool|google|bing|baidu|yandex|duckduck/i.test(agent);
+      if (!crawler && (!saved || saved !== lang)) document.documentElement.classList.add("lang-pending");
     } catch (e) {}
   </script>
   <style>html.lang-pending body{visibility:hidden}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Alejandro Parada · Desarrollador Fullstack .NET Senior</title>
   <meta name="description" content="Desarrollador Fullstack .NET Senior con más de 20 años de experiencia. Modernización de sistemas legados, SQL Server e IA aplicada.">
+  <meta name="author" content="Alejandro Parada">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://alejandroparada.github.io/">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Alejandro Parada">
+  <meta property="og:title" content="Alejandro Parada · Desarrollador Fullstack .NET Senior">
+  <meta property="og:description" content="Desarrollador Fullstack .NET Senior con más de 20 años de experiencia. Modernización de sistemas legados, SQL Server e IA aplicada.">
+  <meta property="og:url" content="https://alejandroparada.github.io/">
+  <meta property="og:locale" content="es_UY">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="profile:first_name" content="Alejandro">
+  <meta property="profile:last_name" content="Parada">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Alejandro Parada · Desarrollador Fullstack .NET Senior">
+  <meta name="twitter:description" content="Desarrollador Fullstack .NET Senior con más de 20 años de experiencia. Modernización de sistemas legados, SQL Server e IA aplicada.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1420" media="(prefers-color-scheme: dark)">
-  <link rel="alternate" hreflang="es" href="index.html">
-  <link rel="alternate" hreflang="en" href="en/index.html">
-  <link rel="alternate" hreflang="x-default" href="index.html">
+  <link rel="alternate" hreflang="es" href="https://alejandroparada.github.io/">
+  <link rel="alternate" hreflang="en" href="https://alejandroparada.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://alejandroparada.github.io/">
   <script src="js/locale.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/theme.js"></script>
@@ -32,6 +49,33 @@
   <script src="js/tabs.js" defer></script>
   <script src="js/github.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "inLanguage": "es",
+    "url": "https://alejandroparada.github.io/",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://alejandroparada.github.io/#alejandro-parada",
+      "name": "Alejandro Parada",
+      "jobTitle": "Desarrollador Fullstack .NET Senior",
+      "description": "Desarrollador Fullstack .NET Senior con más de 20 años de experiencia. Modernización de sistemas legados, SQL Server e IA aplicada.",
+      "url": "https://alejandroparada.github.io/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barros Blancos",
+        "addressRegion": "Canelones",
+        "addressCountry": "UY"
+      },
+      "knowsLanguage": ["es", "en"],
+      "sameAs": [
+        "https://www.linkedin.com/in/alejandro-parada-36637438/",
+        "https://github.com/AlejandroParada"
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -54,10 +98,10 @@
       <h1>Alejandro Parada</h1>
       <p class="tag muted">Desarrollador Fullstack .NET Senior · +20 años · Modernización de sistemas legados · SQL Server · IA aplicada</p>
       <p class="badge">Disponible para nuevas oportunidades</p>
-      <p class="tag muted">Barros Blancos, Canelones, Uruguay</p>
+      <address class="tag muted">Barros Blancos, Canelones, Uruguay</address>
 
       <div class="actions">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
+        <a class="btn btn-primary" rel="me" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
         <a class="btn" id="gh" href="#" hidden>GitHub</a>
         <button type="button" class="btn" data-action="print">Guardar como PDF</button>      </div>
 

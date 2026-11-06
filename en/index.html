@@ -6,19 +6,36 @@
     try {
       var saved = localStorage.getItem("cv-lang");
       var lang = (document.documentElement.lang || "es").slice(0, 2);
-      if (!saved || saved !== lang) document.documentElement.classList.add("lang-pending");
+      var agent = navigator.userAgent || "";
+      var crawler = /bot|crawl|spider|slurp|preview|inspectiontool|google|bing|baidu|yandex|duckduck/i.test(agent);
+      if (!crawler && (!saved || saved !== lang)) document.documentElement.classList.add("lang-pending");
     } catch (e) {}
   </script>
   <style>html.lang-pending body{visibility:hidden}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Alejandro Parada · Senior Fullstack .NET Developer</title>
   <meta name="description" content="Senior Fullstack .NET Developer with 20+ years of experience. Legacy system modernization, SQL Server and applied AI.">
+  <meta name="author" content="Alejandro Parada">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://alejandroparada.github.io/en/">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Alejandro Parada">
+  <meta property="og:title" content="Alejandro Parada · Senior Fullstack .NET Developer">
+  <meta property="og:description" content="Senior Fullstack .NET Developer with 20+ years of experience. Legacy system modernization, SQL Server and applied AI.">
+  <meta property="og:url" content="https://alejandroparada.github.io/en/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_UY">
+  <meta property="profile:first_name" content="Alejandro">
+  <meta property="profile:last_name" content="Parada">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Alejandro Parada · Senior Fullstack .NET Developer">
+  <meta name="twitter:description" content="Senior Fullstack .NET Developer with 20+ years of experience. Legacy system modernization, SQL Server and applied AI.">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1420" media="(prefers-color-scheme: dark)">
-  <link rel="alternate" hreflang="es" href="../index.html">
-  <link rel="alternate" hreflang="en" href="index.html">
-  <link rel="alternate" hreflang="x-default" href="../index.html">
+  <link rel="alternate" hreflang="es" href="https://alejandroparada.github.io/">
+  <link rel="alternate" hreflang="en" href="https://alejandroparada.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://alejandroparada.github.io/">
   <script src="../js/locale.js"></script>
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/theme.js"></script>
@@ -32,6 +49,33 @@
   <script src="../js/tabs.js" defer></script>
   <script src="../js/github.js" defer></script>
   <script src="../js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "inLanguage": "en",
+    "url": "https://alejandroparada.github.io/en/",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://alejandroparada.github.io/#alejandro-parada",
+      "name": "Alejandro Parada",
+      "jobTitle": "Senior Fullstack .NET Developer",
+      "description": "Senior Fullstack .NET Developer with 20+ years of experience. Legacy system modernization, SQL Server and applied AI.",
+      "url": "https://alejandroparada.github.io/en/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barros Blancos",
+        "addressRegion": "Canelones",
+        "addressCountry": "UY"
+      },
+      "knowsLanguage": ["es", "en"],
+      "sameAs": [
+        "https://www.linkedin.com/in/alejandro-parada-36637438/",
+        "https://github.com/AlejandroParada"
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -54,10 +98,10 @@
       <h1>Alejandro Parada</h1>
       <p class="tag muted">Senior Fullstack .NET Developer · 20+ years · Legacy system modernization · SQL Server · Applied AI</p>
       <p class="badge">Open to new opportunities</p>
-      <p class="tag muted">Barros Blancos, Canelones, Uruguay</p>
+      <address class="tag muted">Barros Blancos, Canelones, Uruguay</address>
 
       <div class="actions">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
+        <a class="btn btn-primary" rel="me" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
         <a class="btn" id="gh" href="#" hidden>GitHub</a>
         <button type="button" class="btn" data-action="print">Save as PDF</button>      </div>
 

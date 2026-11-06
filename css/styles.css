@@ -137,6 +137,8 @@ ul { margin: 0; padding-left: 1.1rem; }
 
 .tag { margin: 0 0 1rem; }
 
+address.tag { font-style: normal; }
+
 section {
   margin-bottom: 3rem;
   scroll-margin-top: 4.5rem;
