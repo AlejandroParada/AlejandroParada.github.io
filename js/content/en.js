@@ -16,19 +16,26 @@
     /* start/end: years used to group by decade. end: null = present. */
     jobs: [
       {
-        title: "Software Developer", company: "Farmacias Pigalle",
-        period: "Apr 2026 – present", place: "Montevideo", start: 2026, end: null, featured: true,
+        title: "Senior Software Developer", company: "Farmacias Pigalle",
+        period: "Apr 2023 – Apr 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
+        parallel: "Concurrent with Netvias Solutions in 2023",
         highlights: [
-          "Leading the migration of a legacy system to a modern .NET architecture.",
+          "Led the migration of a legacy system to a modern .NET architecture.",
           "Brought synchronization incidents with the medical supplies database down to zero (root cause analysis and query optimization).",
-          "Building high-availability fullstack modules for daily operations.",
+          "Built high-availability fullstack modules for daily operations.",
           "Stack: C#, .NET, SQL Server, REST APIs."
         ]
       },
       {
         title: "Software Engineer", company: "Netvias Solutions",
         period: "Feb 2022 – Dec 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
-        highlights: ["Software factory for tourism and travel companies. Stack: Laravel and JavaScript."]
+        parallel: "Concurrent with Farmacias Pigalle in 2023",
+        highlights: [
+          "At a software factory for tourism and travel companies, fixed defects in existing systems and followed each one through until it was resolved.",
+          "Refactored modules to tidy the code, separate responsibilities, and make each part clearer and easier to maintain.",
+          "Optimized queries involved in day-to-day operations, tracing the cause of the delay and adjusting how the data was accessed.",
+          "Stack: Laravel and JavaScript."
+        ]
       },
       {
         title: "Developer", company: "Mutualista Hospital Evangélico",

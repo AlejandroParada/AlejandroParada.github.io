@@ -16,19 +16,26 @@
     /* start/end: años usados para agrupar por década. end: null = actualidad. */
     jobs: [
       {
-        title: "Desarrollador de software", company: "Farmacias Pigalle",
-        period: "Abr. 2026 – actualidad", place: "Montevideo", start: 2026, end: null, featured: true,
+        title: "Desarrollador senior de software", company: "Farmacias Pigalle",
+        period: "Abr. 2023 – abr. 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
+        parallel: "En paralelo con Netvias Solutions en 2023",
         highlights: [
-          "Lidero la migración de un sistema legado a arquitectura .NET moderna.",
+          "Lideré la migración de un sistema legado a arquitectura .NET moderna.",
           "Reduje a cero los incidentes de sincronización con la base de datos de insumos médicos (causa raíz y optimización de consultas).",
-          "Desarrollo módulos fullstack de alta disponibilidad para la operación diaria.",
+          "Desarrollé módulos fullstack de alta disponibilidad para la operación diaria.",
           "Stack: C#, .NET, SQL Server, APIs REST."
         ]
       },
       {
         title: "Ingeniero de software", company: "Netvias Solutions",
         period: "Feb. 2022 – dic. 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
-        highlights: ["Software factory para empresas de turismo y viajes. Stack: Laravel y JavaScript."]
+        parallel: "En paralelo con Farmacias Pigalle en 2023",
+        highlights: [
+          "En una software factory para empresas de turismo y viajes, corregí defectos en los sistemas existentes y di seguimiento hasta dejarlos resueltos.",
+          "Refactoricé módulos para ordenar el código, separar responsabilidades y dejar cada parte más clara y fácil de mantener.",
+          "Optimicé consultas que intervenían en la operación diaria, revisando la causa de la demora y ajustando el acceso a los datos.",
+          "Stack: Laravel y JavaScript."
+        ]
       },
       {
         title: "Desarrollador", company: "Mutualista Hospital Evangélico",
