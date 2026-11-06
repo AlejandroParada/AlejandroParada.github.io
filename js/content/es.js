@@ -6,10 +6,10 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET", "ASP.NET MVC", "APIs REST", "Servicios web", "Laravel", "PHP", "Python", "Django"],
+      "Backend": ["C#", ".NET", "ASP.NET MVC", "APIs REST", "Servicios web", "Kubernetes", "Flujos agénticos", "Laravel", "PHP", "Python", "Django"],
       "Datos": ["SQL Server", "Optimización de consultas", "Sincronización de bases de datos", "MS Access"],
       "Frontend": ["JavaScript", "jQuery", "Angular", "Vue.js", "Bootstrap", "HTML y CSS responsivo"],
-      "DevOps e IA": ["Docker", "Kubernetes (introducción)", "DevOps", "Integración de IA", "Ingeniería de prompts", "Flujos agénticos"],
+      "DevOps e IA": ["Docker", "DevOps", "Integración de IA", "Ingeniería de prompts"],
       "Métodos": ["Scrum", "Modernización de sistemas legados", "ISO 9000", "Auditoría de calidad", "Nopcommerce"]
     },
 
@@ -20,10 +20,9 @@
         period: "Abr. 2023 – abr. 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
         parallel: "En paralelo con Netvias Solutions en 2023",
         highlights: [
-          "Lideré la migración de un sistema legado a arquitectura .NET moderna.",
-          "Reduje a cero los incidentes de sincronización con la base de datos de insumos médicos (causa raíz y optimización de consultas).",
-          "Desarrollé módulos fullstack de alta disponibilidad para la operación diaria.",
-          "Stack: C#, .NET, SQL Server, APIs REST."
+          "Desarrollé el sistema que usan las sucursales (frontend), conectado con la central (backend).",
+          "En el desarrollo y el mantenimiento del backend trabajé con Kubernetes y flujos agénticos.",
+          "Stack: C#, .NET, SQL Server, APIs REST, Kubernetes."
         ]
       },
       {

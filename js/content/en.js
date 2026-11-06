@@ -6,10 +6,10 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET", "ASP.NET MVC", "REST APIs", "Web services", "Laravel", "PHP", "Python", "Django"],
+      "Backend": ["C#", ".NET", "ASP.NET MVC", "REST APIs", "Web services", "Kubernetes", "Agentic workflows", "Laravel", "PHP", "Python", "Django"],
       "Data": ["SQL Server", "Query optimization", "Database synchronization", "MS Access"],
       "Frontend": ["JavaScript", "jQuery", "Angular", "Vue.js", "Bootstrap", "Responsive HTML & CSS"],
-      "DevOps & AI": ["Docker", "Kubernetes (introductory)", "DevOps", "AI integration", "Prompt engineering", "Agentic workflows"],
+      "DevOps & AI": ["Docker", "DevOps", "AI integration", "Prompt engineering"],
       "Methods": ["Scrum", "Legacy system modernization", "ISO 9000", "Quality auditing", "Nopcommerce"]
     },
 
@@ -20,10 +20,9 @@
         period: "Apr 2023 – Apr 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
         parallel: "Concurrent with Netvias Solutions in 2023",
         highlights: [
-          "Led the migration of a legacy system to a modern .NET architecture.",
-          "Brought synchronization incidents with the medical supplies database down to zero (root cause analysis and query optimization).",
-          "Built high-availability fullstack modules for daily operations.",
-          "Stack: C#, .NET, SQL Server, REST APIs."
+          "Developed the system used by the branches (frontend), connected to headquarters (backend).",
+          "Backend development and maintenance included Kubernetes and agentic workflows.",
+          "Stack: C#, .NET, SQL Server, REST APIs, Kubernetes."
         ]
       },
       {

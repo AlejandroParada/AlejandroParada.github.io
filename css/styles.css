@@ -138,6 +138,7 @@ ul { margin: 0; padding-left: 1.1rem; }
 .tag { margin: 0 0 1rem; }
 
 address.tag { font-style: normal; }
+.contact-print { display: none; }
 
 section {
   margin-bottom: 3rem;
@@ -682,6 +683,7 @@ section {
   .skip-link,
   .sheet,
   .more > summary { display: none; }
+  .contact-print { display: block; }
   .job-details {
     display: block;
     margin: .3rem 0 .6rem;
