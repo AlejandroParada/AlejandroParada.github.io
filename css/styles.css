@@ -69,6 +69,9 @@ a { color: var(--acc); }
 
 [hidden] { display: none !important; }
 
+/* Mientras se resuelve el país, no se muestra el idioma que luego se va a cambiar. */
+html.lang-pending body { visibility: hidden; }
+
 h1, h2, h3 { margin: 0; text-wrap: balance; }
 
 h1, h2, .dec-title, .sheet-title {

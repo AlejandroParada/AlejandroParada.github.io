@@ -2,6 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <script>
+    try {
+      var saved = localStorage.getItem("cv-lang");
+      var lang = (document.documentElement.lang || "es").slice(0, 2);
+      if (!saved || saved !== lang) document.documentElement.classList.add("lang-pending");
+    } catch (e) {}
+  </script>
+  <style>html.lang-pending body{visibility:hidden}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Alejandro Parada · Desarrollador Fullstack .NET Senior</title>
   <meta name="description" content="Desarrollador Fullstack .NET Senior con más de 20 años de experiencia. Modernización de sistemas legados, SQL Server e IA aplicada.">
@@ -11,6 +19,7 @@
   <link rel="alternate" hreflang="es" href="index.html">
   <link rel="alternate" hreflang="en" href="en/index.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
+  <script src="js/locale.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/theme.js"></script>
   <script src="js/i18n.js" defer></script>
