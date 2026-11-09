@@ -171,7 +171,38 @@
           "Solved database synchronization issues for medical supplies.",
           "Identified the cause of network access failures on outdated clients.",
           "Developed a monitoring script for web service failures."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Monitoring and bug replay",
+          hint: "C# screen captures, a Zabbix dashboard, and Bash audits.",
+          lead: "I added a C# module to replay failures from screen captures, plus Zabbix and Bash monitoring for outages, the database, and slow processes.",
+          metrics: [
+            { value: "C#", label: "capture module to replay failures" },
+            { value: "Zabbix", label: "outages, overload, and bottlenecks" },
+            { value: "Bash", label: "memory, CPU, and disk audit" }
+          ],
+          sections: [
+            {
+              title: "Replaying failures",
+              paragraphs: [
+                "I added a new module, written in C#, that recorded screen captures. It made it possible to replay defects and see the exact steps of the failure."
+              ]
+            },
+            {
+              title: "Monitoring dashboard",
+              paragraphs: [
+                "I built a dashboard integration with Zabbix to watch for system outages, database overload, and bottlenecks."
+              ]
+            },
+            {
+              title: "Process audits",
+              paragraphs: [
+                "Bash scripts identified processes that took too long to run and wrote audit logs of memory, processor, and disk use."
+              ]
+            }
+          ],
+          stack: ["C#", "Zabbix", "Bash"]
+        }
       },
       {
         title: "Software Developer", company: "1950Labs",

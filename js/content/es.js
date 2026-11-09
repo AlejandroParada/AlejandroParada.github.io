@@ -171,7 +171,38 @@
           "Resolví problemas de sincronización de base de datos para suministros médicos.",
           "Identifiqué la causa de fallas de acceso a la red de clientes desactualizados.",
           "Desarrollé un script de monitoreo de fallas de servicios web."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Monitoreo y reproducción de fallas",
+          hint: "Capturas en C#, tablero en Zabbix y auditoría en Bash.",
+          lead: "Añadí un módulo en C# para reproducir fallas con capturas de pantalla, y monitoreo con Zabbix y Bash sobre caídas, la base de datos y los procesos lentos.",
+          metrics: [
+            { value: "C#", label: "módulo de capturas para reproducir fallas" },
+            { value: "Zabbix", label: "caídas, sobrecarga y cuellos de botella" },
+            { value: "Bash", label: "auditoría de memoria, CPU y disco" }
+          ],
+          sections: [
+            {
+              title: "Reproducción de fallas",
+              paragraphs: [
+                "Implementé un módulo nuevo, hecho en C#, que grababa capturas de pantalla. Servía para reproducir los defectos y conocer los pasos exactos de la falla."
+              ]
+            },
+            {
+              title: "Tablero de monitoreo",
+              paragraphs: [
+                "Creé una integración de tablero con Zabbix para monitorear caídas del sistema, sobrecarga de la base de datos y cuellos de botella."
+              ]
+            },
+            {
+              title: "Auditoría de procesos",
+              paragraphs: [
+                "Los scripts en Bash identificaban procesos que tardaban demasiado en ejecutarse y dejaban logs de auditoría del consumo de memoria, procesador y disco."
+              ]
+            }
+          ],
+          stack: ["C#", "Zabbix", "Bash"]
+        }
       },
       {
         title: "Desarrollador de software", company: "1950Labs",
