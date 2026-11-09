@@ -232,10 +232,47 @@
         title: "Desarrollador Fullstack .NET", company: "Númina S.A.",
         icon: "/img/companies/numina.png",
         period: "Mar. 2013 – abr. 2015", place: "Montevideo", start: 2013, end: 2015,
+        clients: [
+          { name: "JTech", url: "https://jtech.com.uy/", icon: "/img/clients/jtech.png" },
+          { name: "Grupo Record", url: "https://gruporecord.com.uy/", icon: "/img/clients/gruporecord.png" }
+        ],
         highlights: [
           "Implementé un sistema de migración universal para la plataforma web Nopcommerce de todos los proyectos ERP.",
           "Capacité a los clientes en la nueva plataforma."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Migración de Clarion a Nopcommerce",
+          hint: "Datos en SQL Server y funciones nuevas sobre el paquete abierto.",
+          lead: "Pasé el sistema de Clarion a SQL Server para que Nopcommerce, en ASP.NET, pudiera leerlo, y personalicé esa plataforma con funciones que el paquete abierto no traía.",
+          metrics: [
+            { value: "Clarion", label: "origen de los datos" },
+            { value: "SQL Server", label: "tipo y formato de destino" },
+            { value: "ASP.NET", label: "Nopcommerce de código abierto" },
+            { value: "Nuevas", label: "funciones fuera del paquete" }
+          ],
+          sections: [
+            {
+              title: "Clientes",
+              showClients: true,
+              paragraphs: [
+                "JTech y Grupo Record quedaron sobre esa plataforma."
+              ]
+            },
+            {
+              title: "Migración de datos",
+              paragraphs: [
+                "Hice un sistema de migración de Clarion a SQL Server. Copiaba su sistema, lo adaptaba y lo pasaba al otro tipo y formato de datos, para que después lo leyera Nopcommerce."
+              ]
+            },
+            {
+              title: "Personalización de Nopcommerce",
+              paragraphs: [
+                "Nopcommerce es un paquete de código abierto en ASP.NET. Tuve que adaptar y personalizar sus detalles, e implementé funciones nuevas que no venían en ese paquete."
+              ]
+            }
+          ],
+          stack: ["Clarion", "SQL Server", "Nopcommerce", "ASP.NET"]
+        }
       },
       {
         title: "Consultor independiente de gestión de calidad", company: "Pequeñas empresas",

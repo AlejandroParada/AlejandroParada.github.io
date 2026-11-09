@@ -232,10 +232,47 @@
         title: "Fullstack .NET Developer", company: "Númina S.A.",
         icon: "/img/companies/numina.png",
         period: "Mar 2013 – Apr 2015", place: "Montevideo", start: 2013, end: 2015,
+        clients: [
+          { name: "JTech", url: "https://jtech.com.uy/", icon: "/img/clients/jtech.png" },
+          { name: "Grupo Record", url: "https://gruporecord.com.uy/", icon: "/img/clients/gruporecord.png" }
+        ],
         highlights: [
           "Implemented a universal migration system to the Nopcommerce web platform for all ERP projects.",
           "Trained clients on the new platform."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Migration from Clarion to Nopcommerce",
+          hint: "SQL Server data and features added on top of the open-source package.",
+          lead: "I moved the Clarion system to SQL Server so Nopcommerce, on ASP.NET, could read it, and I customized that platform with features the open-source package did not include.",
+          metrics: [
+            { value: "Clarion", label: "source of the data" },
+            { value: "SQL Server", label: "target type and format" },
+            { value: "ASP.NET", label: "open-source Nopcommerce" },
+            { value: "New", label: "features beyond the package" }
+          ],
+          sections: [
+            {
+              title: "Clients",
+              showClients: true,
+              paragraphs: [
+                "JTech and Grupo Record ran on that platform."
+              ]
+            },
+            {
+              title: "Data migration",
+              paragraphs: [
+                "I built a migration system from Clarion to SQL Server. It copied their system, adapted it, and converted it to the other data type and format, so Nopcommerce could read it afterwards."
+              ]
+            },
+            {
+              title: "Nopcommerce customization",
+              paragraphs: [
+                "Nopcommerce is an open-source package on ASP.NET. I had to adapt and customize its details, and I implemented new features that did not come with that package."
+              ]
+            }
+          ],
+          stack: ["Clarion", "SQL Server", "Nopcommerce", "ASP.NET"]
+        }
       },
       {
         title: "Independent Quality Management Consultant", company: "Small businesses",
