@@ -42,7 +42,11 @@
 
   const DETAIL_RENDERERS = Object.freeze({
     job: (id) => data.jobs[id] && t.jobDetail(data.jobs[id], id),
-    cert: (id) => certsById.has(id) && t.certDetail(certsById.get(id))
+    cert: (id) => certsById.has(id) && t.certDetail(certsById.get(id)),
+    project: (id) => {
+      const project = data.projects.find((item) => item.id === id);
+      return project && project.detail ? t.projectDetail(project) : "";
+    }
   });
 
   const decadeDetails = () => $$(`${slot("jobs")} details.dec`);

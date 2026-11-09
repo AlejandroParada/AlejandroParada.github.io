@@ -231,7 +231,7 @@
       {
         title: "Desarrollador Fullstack .NET", company: "Númina S.A.",
         icon: "/img/companies/numina.png",
-        period: "Mar. 2013 – abr. 2015", place: "Montevideo", start: 2013, end: 2015,
+        period: "Mar. 2013 – abr. 2015", place: "Montevideo", start: 2013, end: 2015, featured: true,
         clients: [
           { name: "JTech", url: "https://jtech.com.uy/", icon: "/img/clients/jtech.png" },
           { name: "Grupo Record", url: "https://gruporecord.com.uy/", icon: "/img/clients/gruporecord.png" }
@@ -329,8 +329,97 @@
     ],
 
     projects: [
-      { name: "ChecklistEmergencia", description: "PWA de preparación para emergencias para una congregación.", url: "" },
-      { name: "KDSuy", description: "Sistema de pantalla de cocina (Django, Channels, Redis) para gastronomía uruguaya.", url: "" },
+      {
+        id: "kds",
+        name: "KDSuy",
+        description: "Sitio del sistema de cocina y procesos para pizzerías, publicado en GitHub Pages.",
+        url: "https://github.com/AlejandroParada/kds-web",
+        demo: "https://alejandroparada.github.io/kds-web/",
+        featured: true,
+        detail: {
+          kicker: "Repositorio kds-web",
+          lead: "El repositorio público es la web del producto: un sistema de cocina y de procesos pensado para pizzerías.",
+          items: [
+            "Está armado con TypeScript, Tailwind CSS y esbuild, y se publica en GitHub Pages.",
+            "Incluye un service worker, pruebas con Jest y un build que corre en GitHub Actions.",
+            "El sitio presenta planes del producto y se puede abrir en el celular."
+          ],
+          stack: ["TypeScript", "Tailwind CSS", "esbuild", "Jest", "Service worker", "GitHub Pages"]
+        }
+      },
+      {
+        id: "animoreader",
+        name: "AnimoReader",
+        description: "PWA para armar el estado mental en una oración e imaginar el del otro.",
+        url: "https://github.com/AlejandroParada/AnimoReader",
+        demo: "https://alejandroparada.github.io/AnimoReader/",
+        featured: true,
+        detail: {
+          kicker: "Repositorio AnimoReader",
+          lead: "Aplicación instalable para escribir el propio estado mental en una oración y tratar de imaginar el de otra persona.",
+          items: [
+            "Es una PWA en HTML, CSS y JavaScript, con manifiesto y service worker.",
+            "Guarda en el dispositivo el tema claro u oscuro y el tamaño de letra.",
+            "Se puede instalar desde el navegador del celular."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "PWA", "Service worker"]
+        }
+      },
+      {
+        id: "survey-pilot",
+        name: "Survey Pilot",
+        description: "Aplicación Django para gestionar encuestas, con roles y pagos a vendedores.",
+        url: "https://github.com/AlejandroParada/survey_pilot",
+        featured: true,
+        detail: {
+          kicker: "Repositorio survey_pilot",
+          lead: "Aplicación web para crear encuestas y seguir resultados, con permisos distintos para administración, empresa y vendedor.",
+          items: [
+            "El backend es Django y la base es PostgreSQL.",
+            "La interfaz usa Tailwind CSS y Flowbite.",
+            "Se levanta con Docker Compose.",
+            "Cada encuesta se configura en JSON, sin reescribir el formulario."
+          ],
+          stack: ["Django", "PostgreSQL", "Tailwind CSS", "Flowbite", "Docker"]
+        }
+      },
+      {
+        id: "tesoros",
+        name: "Tesoros de Mi Alma",
+        description: "Libro digital en español, inglés y portugués, con modo oscuro y tamaño de letra.",
+        url: "https://github.com/AlejandroParada/TesorosDeMiAlma",
+        demo: "https://alejandroparada.github.io/TesorosDeMiAlma/",
+        demoLabel: "Ver libro",
+        featured: true,
+        detail: {
+          kicker: "Repositorio TesorosDeMiAlma",
+          lead: "Un libro digital para leer en el celular o en el escritorio, sin frameworks.",
+          items: [
+            "El mismo contenido está en español, inglés y portugués.",
+            "Incluye modo oscuro, ajuste del tamaño de letra y navegación por teclado.",
+            "Los capítulos se cargan desde Markdown y el libro se puede leer en el sitio publicado."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "Markdown"]
+        }
+      },
+      {
+        id: "checklist",
+        name: "ChecklistEmergencia",
+        description: "PWA de preparación para emergencias del Barrio Los Ceibos.",
+        url: "https://github.com/AlejandroParada/Checklistemergencia",
+        demo: "https://alejandroparada.github.io/Checklistemergencia/",
+        demoLabel: "Ver la guía",
+        featured: true,
+        detail: {
+          kicker: "Repositorio Checklistemergencia",
+          lead: "Guía interactiva para preparar a una familia: etapas, botiquín, contactos, abastecimiento y qué hacer en cada caso.",
+          items: [
+            "Es una PWA en HTML, CSS y JavaScript, con manifiesto y service worker.",
+            "El contenido está armado para el Barrio Los Ceibos."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "PWA"]
+        }
+      },
       {
         name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun. 2019 – actualidad",
         description: "Sistemas para la Mutualista Hospital Evangélico.", url: "", featured: true

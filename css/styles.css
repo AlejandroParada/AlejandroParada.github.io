@@ -653,7 +653,35 @@ section {
   border-radius: var(--radius);
 }
 
+button.card {
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+button.card.is-selected { border-color: var(--acc); }
+
 .card .meta { margin-top: .3rem; }
+
+.card-name {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.gh-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+}
+
+.sheet .gh-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+}
 
 .card-text {
   margin: .5rem 0 0;

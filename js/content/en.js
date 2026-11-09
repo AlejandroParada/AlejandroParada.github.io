@@ -231,7 +231,7 @@
       {
         title: "Fullstack .NET Developer", company: "Númina S.A.",
         icon: "/img/companies/numina.png",
-        period: "Mar 2013 – Apr 2015", place: "Montevideo", start: 2013, end: 2015,
+        period: "Mar 2013 – Apr 2015", place: "Montevideo", start: 2013, end: 2015, featured: true,
         clients: [
           { name: "JTech", url: "https://jtech.com.uy/", icon: "/img/clients/jtech.png" },
           { name: "Grupo Record", url: "https://gruporecord.com.uy/", icon: "/img/clients/gruporecord.png" }
@@ -329,8 +329,97 @@
     ],
 
     projects: [
-      { name: "ChecklistEmergencia", description: "Emergency preparedness PWA for a congregation.", url: "" },
-      { name: "KDSuy", description: "Kitchen display system (Django, Channels, Redis) for Uruguayan restaurants.", url: "" },
+      {
+        id: "kds",
+        name: "KDSuy",
+        description: "Site for a kitchen and process system for pizzerias, published on GitHub Pages.",
+        url: "https://github.com/AlejandroParada/kds-web",
+        demo: "https://alejandroparada.github.io/kds-web/",
+        featured: true,
+        detail: {
+          kicker: "Repository kds-web",
+          lead: "The public repository is the product website: a kitchen and process system aimed at pizzerias.",
+          items: [
+            "It is built with TypeScript, Tailwind CSS and esbuild, and it is published on GitHub Pages.",
+            "It includes a service worker, Jest tests and a build that runs on GitHub Actions.",
+            "The site presents the product plans and can be opened on a phone."
+          ],
+          stack: ["TypeScript", "Tailwind CSS", "esbuild", "Jest", "Service worker", "GitHub Pages"]
+        }
+      },
+      {
+        id: "animoreader",
+        name: "AnimoReader",
+        description: "PWA for putting a state of mind into one sentence and imagining someone else's.",
+        url: "https://github.com/AlejandroParada/AnimoReader",
+        demo: "https://alejandroparada.github.io/AnimoReader/",
+        featured: true,
+        detail: {
+          kicker: "Repository AnimoReader",
+          lead: "An installable app for writing your own state of mind in one sentence and trying to imagine another person's.",
+          items: [
+            "It is a PWA in HTML, CSS and JavaScript, with a manifest and a service worker.",
+            "It stores the light or dark theme and the text size on the device.",
+            "It can be installed from the phone browser."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "PWA", "Service worker"]
+        }
+      },
+      {
+        id: "survey-pilot",
+        name: "Survey Pilot",
+        description: "Django app for managing surveys, with roles and payments to field agents.",
+        url: "https://github.com/AlejandroParada/survey_pilot",
+        featured: true,
+        detail: {
+          kicker: "Repository survey_pilot",
+          lead: "A web app for creating surveys and following results, with separate permissions for administration, a company and a field agent.",
+          items: [
+            "The backend is Django and the database is PostgreSQL.",
+            "The interface uses Tailwind CSS and Flowbite.",
+            "It starts with Docker Compose.",
+            "Each survey is configured in JSON, without rewriting the form."
+          ],
+          stack: ["Django", "PostgreSQL", "Tailwind CSS", "Flowbite", "Docker"]
+        }
+      },
+      {
+        id: "tesoros",
+        name: "Tesoros de Mi Alma",
+        description: "Digital book in Spanish, English and Portuguese, with dark mode and text size.",
+        url: "https://github.com/AlejandroParada/TesorosDeMiAlma",
+        demo: "https://alejandroparada.github.io/TesorosDeMiAlma/",
+        demoLabel: "Read the book",
+        featured: true,
+        detail: {
+          kicker: "Repository TesorosDeMiAlma",
+          lead: "A digital book for reading on a phone or a desktop, without frameworks.",
+          items: [
+            "The same content is available in Spanish, English and Portuguese.",
+            "It includes dark mode, text-size control and keyboard navigation.",
+            "Chapters load from Markdown and the book can be read on the published site."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "Markdown"]
+        }
+      },
+      {
+        id: "checklist",
+        name: "ChecklistEmergencia",
+        description: "Emergency-preparedness PWA for Barrio Los Ceibos.",
+        url: "https://github.com/AlejandroParada/Checklistemergencia",
+        demo: "https://alejandroparada.github.io/Checklistemergencia/",
+        demoLabel: "Open the guide",
+        featured: true,
+        detail: {
+          kicker: "Repository Checklistemergencia",
+          lead: "An interactive guide for preparing a household: stages, a first-aid kit, contacts, supplies and what to do in each case.",
+          items: [
+            "It is a PWA in HTML, CSS and JavaScript, with a manifest and a service worker.",
+            "The content is written for Barrio Los Ceibos."
+          ],
+          stack: ["HTML", "CSS", "JavaScript", "PWA"]
+        }
+      },
       {
         name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun 2019 – present",
         description: "Systems for Mutualista Hospital Evangélico.", url: "", featured: true
