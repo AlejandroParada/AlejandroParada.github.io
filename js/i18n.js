@@ -6,6 +6,9 @@
     es: {
       locale: "es-UY",
       close: "Cerrar",
+      moreDetails: "Ver más detalles",
+      caseHint: "Arquitectura, operación en sucursal y continuidad.",
+      solutionStack: "Stack de esta solución",
       showMore: "Ver más…",
       showLess: "Ver menos",
       openInNewTab: "Ver en una pestaña nueva",
@@ -25,6 +28,9 @@
     en: {
       locale: "en-US",
       close: "Close",
+      moreDetails: "See more details",
+      caseHint: "Architecture, branch operations and continuity.",
+      solutionStack: "Stack on this system",
       showMore: "See more…",
       showLess: "See less",
       openInNewTab: "Open in a new tab",

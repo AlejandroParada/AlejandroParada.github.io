@@ -41,7 +41,7 @@
   );
 
   const DETAIL_RENDERERS = Object.freeze({
-    job: (id) => data.jobs[id] && t.jobDetail(data.jobs[id]),
+    job: (id) => data.jobs[id] && t.jobDetail(data.jobs[id], id),
     cert: (id) => certsById.has(id) && t.certDetail(certsById.get(id))
   });
 
@@ -100,7 +100,19 @@
     backdrop: $(".drawer-backdrop"),
     desktopQuery: DESKTOP_QUERY
   }).init();
-  const detailSheet = new DetailSheet({ sheet: $("#detail-sheet"), renderers: DETAIL_RENDERERS }).init();
+  const caseSheet = new CV.CaseSheet({
+    sheet: $("#case-sheet"),
+    backdrop: $(".case-backdrop"),
+    render: (id) => {
+      const job = data.jobs[id];
+      return job && job.caseStudy ? t.caseStudy(job) : "";
+    }
+  }).init();
+  const detailSheet = new DetailSheet({
+    sheet: $("#detail-sheet"),
+    renderers: DETAIL_RENDERERS,
+    onClose: () => caseSheet.close()
+  }).init();
   new Tabs({
     nav: $("#site-nav"),
     panels: $$("#main > section[id]"),

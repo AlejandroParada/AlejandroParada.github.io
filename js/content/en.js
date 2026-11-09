@@ -8,7 +8,7 @@
     skills: {
       "Backend": ["C#", ".NET", "ASP.NET MVC", "REST APIs", "Web services", "Kubernetes", "Agentic workflows", "Laravel", "PHP", "Python", "Django"],
       "Data": ["SQL Server", "Query optimization", "Database synchronization", "MS Access"],
-      "Frontend": ["JavaScript", "jQuery", "Angular", "Vue.js", "Bootstrap", "Responsive HTML & CSS"],
+      "Frontend": ["JavaScript", "jQuery", "AngularJS", "Vue.js", "Bootstrap", "Responsive HTML & CSS"],
       "DevOps & AI": ["Docker", "DevOps", "AI integration", "Prompt engineering"],
       "Methods": ["Scrum", "Legacy system modernization", "ISO 9000", "Quality auditing", "Nopcommerce"]
     },
@@ -17,27 +17,155 @@
     jobs: [
       {
         title: "Senior Software Developer", company: "Farmacias Pigalle",
+        icon: "/img/companies/pigalle.png",
         period: "Apr 2023 – Apr 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
-        parallel: "Concurrent with Netvias Solutions in 2023",
         highlights: [
-          "Developed the system used by the branches (frontend), connected to headquarters (backend).",
-          "Backend development and maintenance included Kubernetes and agentic workflows.",
-          "Stack: C#, .NET, SQL Server, REST APIs, Kubernetes."
-        ]
+          "Replaced the unsupported VB6 desktop counter and its obsolete libraries with a web application used in more than 20 branches.",
+          "Each branch records 300 to 500 transactions a day. If the network drops, the sale continues locally and syncs with headquarters when the connection returns.",
+          "I proposed keeping the business logic in C# on .NET Framework 4.7.2 so it stayed compatible with third-party DLLs, with a Django frontend and Linux terminals."
+        ],
+        caseStudy: {
+          kicker: "Branch system modernization",
+          hint: "Architecture, branch operations and continuity.",
+          lead: "I moved the VB6 counter to a web application that keeps the business logic and the way pharmacy staff already work.",
+          metrics: [
+            { value: "+20", label: "branches in operation" },
+            { value: "300–500", label: "daily transactions per branch" },
+            { value: "3–4", label: "people per shift, two shifts" },
+            { value: "Offline", label: "the sale continues, then syncs" }
+          ],
+          sections: [
+            {
+              title: "Scope",
+              paragraphs: [
+                "The branch system handles inventory and sales of medication, cosmetics, cleaning products and orthopedic items, coordinated with headquarters. Three or four people work the counter each shift, across two shifts.",
+                "Each branch previously ran a VB6 desktop application, with unsupported libraries and a local database that synced with headquarters."
+              ]
+            },
+            {
+              title: "Architecture decisions",
+              items: [
+                "I proposed splitting frontend and backend while keeping the business logic, migrated to C# on .NET Framework 4.7.2: that was the version still compatible with the third-party DLLs.",
+                "I tried later .NET versions and set them aside. The DLL authors no longer updated them, and those builds stopped working.",
+                "I built a local DLL catalog, in the spirit of a package manager, to pin versions. Always taking the newest DLL broke the older dependencies.",
+                "The Django frontend calls a REST API that proxies to that logic. The UI uses Metro UI so it looks like the Windows screens staff already knew, and branch adoption met little resistance.",
+                "I chose Linux on every terminal: the browser opens the system and avoids a Windows license per seat, across all branches."
+              ]
+            },
+            {
+              title: "What changed in daily operations",
+              items: [
+                "If the connection drops, the transaction stays at the branch and syncs when the link returns. A nightly stock sync with headquarters was already in place.",
+                "An in-system incident report shortened how long it took to detect and fix errors.",
+                "Load times came down. Branch setup moved to a remote, automated process."
+              ]
+            },
+            {
+              title: "Platform and delivery",
+              items: [
+                "The services run in containers on the company server. I wrote the manifests and owned the builds, the releases, the monitoring and the incidents.",
+                "I built an availability dashboard: whether the database responds and whether the endpoints are reachable."
+              ]
+            },
+            {
+              title: "AI in the migration",
+              paragraphs: [
+                "I used AI in development, not as a feature of the production system. With Cursor, mostly Claude and other models, I checked that code migrated from VB6 still behaved the same way."
+              ],
+              items: [
+                "I rewrote methods shaped for VB6, cut duplication and left the code in a shape that can take unit tests.",
+                "Execution time improved.",
+                "I left editor templates and rules so the coding style stayed consistent."
+              ]
+            },
+            {
+              title: "Working with the business",
+              paragraphs: [
+                "I was part of the development team. In reviews I showed progress, the technical approach, the strategy and the blockers.",
+                "I worked directly with the business and with pharmacy operations, alongside the person who had built the VB6 system over about 15 years and knew the rules and the database. Other areas that use the same system pointed me to adjustments based on their daily work."
+              ]
+            },
+            {
+              title: "Keeping the code available",
+              paragraphs: [
+                "The company was hit by ransomware that encrypted documentation and code on the machines and demanded payment. My machine was not encrypted: I work on Linux, with several layers of control over the files, and I had a working copy of the repository. Access to the code was recovered from that machine, locally and remotely."
+              ]
+            }
+          ],
+          stack: ["C#", ".NET Framework 4.7.2", "REST API", "Django", "Python", "Metro UI", "Linux", "Containers", "SQL Server"]
+        }
       },
       {
-        title: "Software Engineer", company: "Netvias Solutions",
-        period: "Feb 2022 – Dec 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
-        parallel: "Concurrent with Farmacias Pigalle in 2023",
+        title: "Software Engineer", company: "Netviax Solutions",
+        icon: "/img/companies/netviax.png",
+        period: "Feb 2022 – Feb 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
+        clients: [
+          { name: "TocToc Viajes", url: "https://toctocviajes.com", icon: "/img/clients/toctoc.png" },
+          { name: "Buemes", url: "https://buemes.com.uy", icon: "/img/clients/buemes.png" },
+          { name: "Hiperviajes", url: "https://hiperviajes.com.uy", icon: "/img/clients/hiperviajes.png" },
+          { name: "Jetmar", url: "https://jetmar.com.uy", icon: "/img/clients/jetmar.png" },
+          { name: "Despegar", url: "https://www.despegar.com.uy", icon: "/img/clients/despegar.png" },
+          { name: "Tienda Viajes", url: "https://tiendaviajes.com.uy", icon: "/img/clients/tiendaviajes.png" },
+          { name: "Metraje OCA", url: "https://viajes.metraje.oca.com.uy/paquetes", icon: "/img/clients/metraje.png" }
+        ],
         highlights: [
-          "At a software factory for tourism and travel companies, fixed defects in existing systems and followed each one through until it was resolved.",
-          "Refactored modules to tidy the code, separate responsibilities, and make each part clearer and easier to maintain.",
-          "Optimized queries involved in day-to-day operations, tracing the cause of the delay and adjusting how the data was accessed.",
-          "Stack: Laravel and JavaScript."
-        ]
+          "Maintained the flight-booking system of these agencies on one frontend, customized for each of them.",
+          "Resolved 3 to 4 defects a week and added a baggage module, adapting a view to the baggage types on the booking.",
+          "Improved the response time of the flights stored procedure. The AngularJS frontend ran on a microservice, with Redis, and the container went to production after local testing."
+        ],
+        caseStudy: {
+          kicker: "Flight booking for travel agencies",
+          hint: "Seven agencies, a payment gateway and Docker delivery.",
+          lead: "I worked on the flight-booking system shared by seven agencies, each with its own brand on the same frontend.",
+          metrics: [
+            { value: "7", label: "agencies on the same frontend" },
+            { value: "3–4", label: "defects resolved per week" },
+            { value: "Baggage", label: "new module on the booking" },
+            { value: "Docker", label: "local test, then production" }
+          ],
+          sections: [
+            {
+              title: "Clients",
+              showClients: true,
+              paragraphs: [
+                "They shared the frontend and each one customized it.",
+                "The clients themselves maintained the travel packages."
+              ]
+            },
+            {
+              title: "What the system did",
+              paragraphs: [
+                "It was a flight-booking system, with a payment gateway integrated. Development was on that shared product, not on a separate system per agency."
+              ]
+            },
+            {
+              title: "Defects and the baggage module",
+              items: [
+                "I resolved 3 or 4 defects a week and followed each one until it was closed.",
+                "The refactor came with a new module: I adapted a view for the baggage types on the booking."
+              ]
+            },
+            {
+              title: "Queries and cache",
+              items: [
+                "I optimized the flights stored procedure and its response time improved.",
+                "Redis cached queries so the system did not repeat the lookup when the data was already available."
+              ]
+            },
+            {
+              title: "Frontend and release",
+              items: [
+                "The frontend was AngularJS and ran on a microservice.",
+                "The service ran in a Docker container. It was tested locally and, when it met the requirements, the container went to production."
+              ]
+            }
+          ],
+          stack: ["AngularJS", "JavaScript", "Redis", "Docker", "Microservice", "Payment gateway"]
+        }
       },
       {
         title: "Developer", company: "Mutualista Hospital Evangélico",
+        icon: "/img/companies/evangelico.png",
         period: "Jun 2019 – Mar 2020", place: "Montevideo", start: 2019, end: 2020, featured: true,
         highlights: [
           "Solved database synchronization issues for medical supplies.",
@@ -46,7 +174,8 @@
         ]
       },
       {
-        title: "Software Developer", company: "1650Labs",
+        title: "Software Developer", company: "1950Labs",
+        icon: "/img/companies/labs.png",
         period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019, featured: true,
         highlights: [
           "Fixed the front-end issues reported by the client, verified by QA.",
@@ -61,6 +190,7 @@
       },
       {
         title: "Software Programmer", company: "Electrosistemas SA",
+        icon: "/img/companies/electrosistemas.png",
         period: "May 2015 – Mar 2017", place: "Montevideo", start: 2015, end: 2017,
         highlights: [
           "Introduced the petty cash system, cutting calculation time by more than half.",
@@ -68,7 +198,8 @@
         ]
       },
       {
-        title: "Fullstack .NET Developer", company: "Nómina S.A.",
+        title: "Fullstack .NET Developer", company: "Númina S.A.",
+        icon: "/img/companies/numina.png",
         period: "Mar 2013 – Apr 2015", place: "Montevideo", start: 2013, end: 2015,
         highlights: [
           "Implemented a universal migration system to the Nopcommerce web platform for all ERP projects.",
@@ -83,6 +214,7 @@
       },
       {
         title: "Developer", company: "Assist",
+        icon: "/img/companies/assist.png",
         period: "2012 – 2013", place: "Montevideo", start: 2012, end: 2013,
         highlights: [
           "Designed custom queries for supply chain clients, eliminating complaints about missing data.",
@@ -91,6 +223,7 @@
       },
       {
         title: "Senior .NET Developer", company: "Tata Consultancy Services",
+        icon: "/img/companies/tcs.png",
         period: "Mar 2010 – Jul 2012", place: "Zonamérica, Montevideo", start: 2010, end: 2012,
         parallel: "Concurrent with Estudio Palma in 2010",
         highlights: ["Located the bug causing data inconsistencies and eliminated calculation complaints in a third-party web scheduling system."]
@@ -131,31 +264,31 @@
       { name: "ChecklistEmergencia", description: "Emergency preparedness PWA for a congregation.", url: "" },
       { name: "KDSuy", description: "Kitchen display system (Django, Channels, Redis) for Uruguayan restaurants.", url: "" },
       {
-        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", period: "Jun 2019 – present",
+        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun 2019 – present",
         description: "Systems for Mutualista Hospital Evangélico.", url: "", featured: true
       },
       {
-        name: "Electrosistemas SSGO", company: "Electrosistemas SA", period: "Aug 2015 – Mar 2017",
+        name: "Electrosistemas SSGO", company: "Electrosistemas SA", icon: "/img/companies/electrosistemas.png", period: "Aug 2015 – Mar 2017",
         description: "Petty cash, fuel, logistics scheduling, personnel records, mobile fence claims and cost modules.", url: "", featured: true
       },
       {
-        name: "Numina JTech", company: "Nómina S.A.", period: "Dec 2014 – Mar 2015",
+        name: "Numina JTech", company: "Númina S.A.", icon: "/img/companies/numina.png", period: "Dec 2014 – Mar 2015",
         description: "E-commerce website.", url: ""
       },
       {
-        name: "Grupo Record", company: "Nómina S.A.", period: "Apr 2014 – Jan 2015",
+        name: "Grupo Record", company: "Númina S.A.", icon: "/img/companies/numina.png", period: "Apr 2014 – Jan 2015",
         description: "Wholesale sales website for hardware stores.", url: ""
       },
       {
-        name: "McKesson – HzERM", company: "Tata Consultancy Services", period: "Aug 2010 – Jan 2011",
+        name: "McKesson – HzERM", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "Aug 2010 – Jan 2011",
         description: "United States client. Hybrid legacy system. Fixed defects and optimized queries. Zonamérica, Montevideo.", url: "", featured: true
       },
       {
-        name: "PricewaterhouseCoopers – AOS Hosteling", company: "Tata Consultancy Services", period: "2010",
+        name: "PricewaterhouseCoopers – AOS Hosteling", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "2010",
         description: "United States client. Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
       },
       {
-        name: "PricewaterhouseCoopers – Tracker", company: "Tata Consultancy Services", period: "2010",
+        name: "PricewaterhouseCoopers – Tracker", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "2010",
         description: "United States client. Migration of a legacy dBase and WinForms system to WPF, toward a more web-based distributed system. Montevideo.", url: "", featured: true
       },
       {

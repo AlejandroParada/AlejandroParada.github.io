@@ -4,10 +4,11 @@
   "use strict";
 
   class DetailSheet {
-    constructor({ sheet, renderers }) {
+    constructor({ sheet, renderers, onClose }) {
       this.sheet = sheet;
       this.content = sheet.querySelector("[data-sheet-content]");
       this.renderers = renderers;
+      this.onClose = onClose || (() => {});
       this.current = null;
     }
 
@@ -55,6 +56,7 @@
       this.sheet.classList.remove("is-open");
       this.setSelected(previous, false);
       this.current = null;
+      this.onClose();
       if (restoreFocus) previous.focus();
     }
 

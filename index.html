@@ -39,12 +39,14 @@
   <script src="js/locale.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/theme.js"></script>
+  <script src="js/font-size.js"></script>
   <script src="js/i18n.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/content/es.js" defer></script>
   <script src="js/templates.js" defer></script>
   <script src="js/experience.js" defer></script>
   <script src="js/detail-sheet.js" defer></script>
+  <script src="js/case-sheet.js" defer></script>
   <script src="js/drawer.js" defer></script>
   <script src="js/tabs.js" defer></script>
   <script src="js/github.js" defer></script>
@@ -87,6 +89,10 @@
       <span>Menú</span>
     </button>
     <div class="topbar-prefs">
+      <div class="font-size" role="group" aria-label="Tamaño de letra">
+        <button type="button" class="topbar-btn" data-font-step="-1" aria-label="Reducir el tamaño de letra">A−</button>
+        <button type="button" class="topbar-btn" data-font-step="1" aria-label="Ampliar el tamaño de letra">A+</button>
+      </div>
       <a class="topbar-btn" href="en/index.html" hreflang="en" lang="en">English</a>
       <button type="button" class="topbar-btn theme-toggle" data-action="toggle-theme" aria-pressed="false" aria-label="Modo oscuro" title="Modo oscuro">
         <span class="theme-icon" aria-hidden="true"></span>
@@ -126,7 +132,7 @@
       <section id="resumen">
         <h2>Resumen</h2>
         <p>Desarrollador fullstack con más de 20 años construyendo y manteniendo sistemas de negocio en C# y .NET con SQL Server. Me especializo en modernizar sistemas legados, diagnosticar la causa raíz de problemas de datos y rendimiento, y entregar módulos confiables para la operación diaria. Hoy sumo integración de IA, contenedores y prácticas DevOps a ese trabajo.</p>
-        <p>He trabajado con clientes de Estados Unidos, como PricewaterhouseCoopers y McKesson. En Farmacias Pigalle desarrollé el sistema de las sucursales, con el frontend conectado al backend de la central, y mantuve ese backend con Kubernetes y flujos agénticos.</p>
+        <p>He trabajado con clientes de Estados Unidos, como PricewaterhouseCoopers y McKesson. En Farmacias Pigalle reemplacé el mostrador en VB6 por una aplicación web en más de 20 sucursales: la venta sigue en local si se corta la red y se sincroniza con la central.</p>
       </section>
 
       <section id="habilidades">
@@ -166,10 +172,32 @@
     </main>
   </div>
 
+  <nav class="pager" aria-label="Páginas">
+    <a class="pager-btn pager-prev" data-pager="prev" hidden>
+      <span class="pager-dir">Anterior</span>
+      <span class="pager-label">
+        <span class="pager-chevron" aria-hidden="true"></span>
+        <span class="pager-name"></span>
+      </span>
+    </a>
+    <a class="pager-btn pager-next" data-pager="next" hidden>
+      <span class="pager-dir">Siguiente</span>
+      <span class="pager-label">
+        <span class="pager-chevron" aria-hidden="true"></span>
+        <span class="pager-name"></span>
+      </span>
+    </a>
+  </nav>
+
   <div class="drawer-backdrop" data-drawer-close></div>
 
   <div class="sheet" id="detail-sheet" role="region" aria-labelledby="detail-sheet-title" aria-live="polite">
     <div data-sheet-content></div>
+  </div>
+
+  <div class="case-backdrop" data-case-close></div>
+  <div class="case-sheet" id="case-sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="case-sheet-title">
+    <div data-case-content></div>
   </div>
 </body>
 </html>

@@ -1,0 +1,6 @@
+# Generado por tools/build-servidor.ps1
+servidor.exe
+
+__pycache__/
+*.pyc
+.venv/

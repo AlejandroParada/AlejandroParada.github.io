@@ -39,12 +39,14 @@
   <script src="../js/locale.js"></script>
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/theme.js"></script>
+  <script src="../js/font-size.js"></script>
   <script src="../js/i18n.js" defer></script>
   <script src="../js/data.js" defer></script>
   <script src="../js/content/en.js" defer></script>
   <script src="../js/templates.js" defer></script>
   <script src="../js/experience.js" defer></script>
   <script src="../js/detail-sheet.js" defer></script>
+  <script src="../js/case-sheet.js" defer></script>
   <script src="../js/drawer.js" defer></script>
   <script src="../js/tabs.js" defer></script>
   <script src="../js/github.js" defer></script>
@@ -87,6 +89,10 @@
       <span>Menu</span>
     </button>
     <div class="topbar-prefs">
+      <div class="font-size" role="group" aria-label="Text size">
+        <button type="button" class="topbar-btn" data-font-step="-1" aria-label="Decrease text size">A−</button>
+        <button type="button" class="topbar-btn" data-font-step="1" aria-label="Increase text size">A+</button>
+      </div>
       <a class="topbar-btn" href="../index.html" hreflang="es" lang="es">Español</a>
       <button type="button" class="topbar-btn theme-toggle" data-action="toggle-theme" aria-pressed="false" aria-label="Dark mode" title="Dark mode">
         <span class="theme-icon" aria-hidden="true"></span>
@@ -126,7 +132,7 @@
       <section id="summary">
         <h2>Summary</h2>
         <p>Fullstack developer with more than 20 years building and maintaining business systems in C# and .NET with SQL Server. I specialize in modernizing legacy systems, diagnosing the root cause of data and performance issues, and delivering reliable modules for daily operations. Today I bring AI integration, containers and DevOps practices to that work.</p>
-        <p>I have worked with United States clients such as PricewaterhouseCoopers and McKesson. At Farmacias Pigalle I developed the branch system, with the frontend connected to the headquarters backend, and maintained that backend with Kubernetes and agentic workflows.</p>
+        <p>I have worked with United States clients such as PricewaterhouseCoopers and McKesson. At Farmacias Pigalle I replaced the VB6 counter with a web application used in more than 20 branches: a sale continues locally if the network drops and syncs with headquarters when the connection returns.</p>
       </section>
 
       <section id="skills">
@@ -166,10 +172,32 @@
     </main>
   </div>
 
+  <nav class="pager" aria-label="Pages">
+    <a class="pager-btn pager-prev" data-pager="prev" hidden>
+      <span class="pager-dir">Previous</span>
+      <span class="pager-label">
+        <span class="pager-chevron" aria-hidden="true"></span>
+        <span class="pager-name"></span>
+      </span>
+    </a>
+    <a class="pager-btn pager-next" data-pager="next" hidden>
+      <span class="pager-dir">Next</span>
+      <span class="pager-label">
+        <span class="pager-chevron" aria-hidden="true"></span>
+        <span class="pager-name"></span>
+      </span>
+    </a>
+  </nav>
+
   <div class="drawer-backdrop" data-drawer-close></div>
 
   <div class="sheet" id="detail-sheet" role="region" aria-labelledby="detail-sheet-title" aria-live="polite">
     <div data-sheet-content></div>
+  </div>
+
+  <div class="case-backdrop" data-case-close></div>
+  <div class="case-sheet" id="case-sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="case-sheet-title">
+    <div data-case-content></div>
   </div>
 </body>
 </html>

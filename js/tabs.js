@@ -30,6 +30,18 @@
         if (id) this.show(id, { focus: true });
       });
 
+      this.pager = document.querySelector(".pager");
+      if (this.pager) {
+        this.pager.addEventListener("click", (e) => {
+          const link = e.target.closest('a[href^="#"]');
+          const id = link && this.resolve(link.hash);
+          if (!id) return;
+          e.preventDefault();
+          if (id !== this.current) history.pushState(null, "", `#${id}`);
+          this.show(id, { focus: true });
+        });
+      }
+
       this.show(this.resolve(location.hash) || this.defaultId);
       return this;
     }
@@ -60,6 +72,29 @@
 
       if (focus) this.reveal(this.panels.get(id));
       if (previous !== id) this.onChange(id, previous);
+      this.syncPager();
+    }
+
+    /* La barra inferior ofrece la sección vecina, con el mismo orden del menú. */
+    syncPager() {
+      if (!this.pager) return;
+      const index = this.links.findIndex((link) => this.idOf(link.hash) === this.current);
+      this.fillPager(this.pager.querySelector('[data-pager="prev"]'), this.links[index - 1]);
+      this.fillPager(this.pager.querySelector('[data-pager="next"]'), this.links[index + 1]);
+    }
+
+    fillPager(anchor, link) {
+      if (!anchor) return;
+      const name = anchor.querySelector(".pager-name");
+      if (!link) {
+        anchor.hidden = true;
+        anchor.removeAttribute("href");
+        if (name) name.textContent = "";
+        return;
+      }
+      anchor.hidden = false;
+      anchor.href = link.getAttribute("href");
+      if (name) name.textContent = link.textContent.trim();
     }
 
     reveal(panel) {
