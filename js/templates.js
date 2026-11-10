@@ -110,7 +110,7 @@
     return sheetLayout({
       title: project.name,
       mark: isGithubUrl(project.url) ? githubIcon : "",
-      meta: detail.kicker ? esc(detail.kicker) : "",
+      meta: [detail.kicker, project.period].filter(Boolean).map(esc).join(" · "),
       body:
         (detail.lead ? `<p>${esc(detail.lead)}</p>` : "") +
         (detail.items && detail.items.length ? list(detail.items) : "") +

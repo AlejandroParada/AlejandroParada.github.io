@@ -335,6 +335,7 @@
         description: "Site for a kitchen and process system for pizzerias, published on GitHub Pages.",
         url: "https://github.com/AlejandroParada/kds-web",
         demo: "https://alejandroparada.github.io/kds-web/",
+        period: "Aug 2026",
         featured: true,
         detail: {
           kicker: "Repository kds-web",
@@ -353,6 +354,7 @@
         description: "PWA for putting a state of mind into one sentence and imagining someone else's.",
         url: "https://github.com/AlejandroParada/AnimoReader",
         demo: "https://alejandroparada.github.io/AnimoReader/",
+        period: "Oct 2026",
         featured: true,
         detail: {
           kicker: "Repository AnimoReader",
@@ -370,6 +372,7 @@
         name: "Survey Pilot",
         description: "Django app for managing surveys, with roles and payments to field agents.",
         url: "https://github.com/AlejandroParada/survey_pilot",
+        period: "Jan 2026",
         featured: true,
         detail: {
           kicker: "Repository survey_pilot",
@@ -390,6 +393,7 @@
         url: "https://github.com/AlejandroParada/TesorosDeMiAlma",
         demo: "https://alejandroparada.github.io/TesorosDeMiAlma/",
         demoLabel: "Read the book",
+        period: "Sep 2026",
         featured: true,
         detail: {
           kicker: "Repository TesorosDeMiAlma",
@@ -409,6 +413,7 @@
         url: "https://github.com/AlejandroParada/Checklistemergencia",
         demo: "https://alejandroparada.github.io/Checklistemergencia/",
         demoLabel: "Open the guide",
+        period: "Jul 2026",
         featured: true,
         detail: {
           kicker: "Repository Checklistemergencia",

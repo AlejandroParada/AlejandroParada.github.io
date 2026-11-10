@@ -693,7 +693,7 @@ button.card.is-selected { border-color: var(--acc); }
   position: fixed;
   inset: 0 0 0 auto;
   z-index: 32;
-  width: 66%;
+  width: 83.333%;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 0 var(--safe-right) calc(var(--pager-space) + .4rem) 1.1rem;
@@ -724,7 +724,14 @@ button.card.is-selected { border-color: var(--acc); }
 
 .sheet-head .btn { flex: none; }
 
-.sheet-title { font-size: clamp(1.1rem, 1rem + .6vw, 1.3rem); }
+.sheet-title {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(1.1rem, 1rem + .6vw, 1.3rem);
+  overflow-wrap: anywhere;
+}
+
+.sheet-title .card-name { flex-wrap: wrap; }
 
 .sheet-head + .meta { margin: 0 0 .6rem; }
 
@@ -739,10 +746,6 @@ button.card.is-selected { border-color: var(--acc); }
   height: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-}
-
-@media (min-width: 52em) {
-  .sheet { width: clamp(360px, 40vw, 520px); }
 }
 
 .sheet-more {
