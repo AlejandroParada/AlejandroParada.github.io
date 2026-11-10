@@ -6,10 +6,10 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET", "ASP.NET MVC", "APIs REST", "Servicios web", "Kubernetes", "Flujos agénticos", "Laravel", "PHP", "Python", "Django"],
+      "Backend": ["C#", ".NET", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django"],
       "Datos": ["SQL Server", "Optimización de consultas", "Sincronización de bases de datos", "MS Access"],
-      "Frontend": ["JavaScript", "jQuery", "AngularJS", "Vue.js", "Bootstrap", "HTML y CSS responsivo"],
-      "DevOps e IA": ["Docker", "DevOps", "Integración de IA", "Ingeniería de prompts"],
+      "Frontend": ["JavaScript", "AngularJS", "HTML y CSS responsivo"],
+      "DevOps": ["Docker", "DevOps"],
       "Métodos": ["Scrum", "Modernización de sistemas legados", "ISO 9000", "Auditoría de calidad", "Nopcommerce"]
     },
 
@@ -426,7 +426,7 @@
         }
       },
       {
-        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun. 2019 – actualidad",
+        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun. 2019 – mar. 2020",
         description: "Sistemas para la Mutualista Hospital Evangélico.", url: "", featured: true
       },
       {
@@ -522,9 +522,9 @@
         cert("sl-ia-marketing", { name: "Marketing en redes sociales con IA" }),
         cert("sl-ia-escribir", { name: "Escribir con IA" }),
         cert("sl-ia-pruebas-ab", { name: "Pruebas A/B impulsadas por IA" }),
-        cert("sl-ia-prompts", { name: "Ingeniería de prompts" }),
-        cert("sl-ia-aprendizaje-automatico", { name: "Fundamentos del aprendizaje automático" }),
-        cert("sl-ia-llms", { name: "Introducción a los LLMs" }),
+        cert("sl-ia-prompts", { name: "Ingeniería de prompts", featured: true }),
+        cert("sl-ia-aprendizaje-automatico", { name: "Fundamentos del aprendizaje automático", featured: true }),
+        cert("sl-ia-llms", { name: "Introducción a los LLMs", featured: true }),
         cert("sl-ia-etica", { name: "Fundamentos de IA ética" }),
         cert("sl-ia-investigacion", { name: "Investigación con IA" }),
         cert("sl-ia-visualizacion", { name: "Visualiza tus datos" }),
@@ -532,10 +532,11 @@
         cert("sl-ia-analisis-datos", { name: "Análisis de datos con IA" }),
         cert("sl-ia-creatividad", { name: "Piensa creativamente con IA" }),
         cert("sl-ia-lluvia-ideas", { name: "Lluvia de ideas con IA" }),
-        cert("sl-ia-generativa", { name: "IA generativa en la práctica" })
+        cert("sl-ia-generativa", { name: "IA generativa en la práctica", featured: true })
       ],
       "Negocios (HP LIFE, 2026)": [
         cert("hp-tecnologia-negocios", {
+          featured: true,
           name: "Tecnología de la información para el éxito en los negocios",
           summary: "Elegir la mejor tecnología para la empresa e integrar con éxito soluciones tecnológicas al emprendimiento."
         }),
@@ -544,6 +545,7 @@
           summary: "Usar la planificación estratégica para tomar mejores decisiones de negocio en un mundo impulsado por la IA; conocer los componentes clave de un plan estratégico; evaluar marcos de planificación práctica y usar herramientas de IA para el pensamiento estratégico."
         }),
         cert("hp-sitios-web", {
+          featured: true,
           name: "Efectivos sitios web de negocios",
           summary: "Aplicar las mejores técnicas de desarrollo para diseñar un sitio web empresarial, entender el comportamiento de los clientes y usar las métricas del sitio de manera efectiva."
         }),
@@ -596,6 +598,7 @@
           summary: "Definir el producto mínimo viable, diferenciar el desarrollo iterativo del incremental, analizar beneficios y limitaciones de herramientas Agile como Scrum y Kanban y aplicar prácticas ágiles en la gestión de proyectos."
         }),
         cert("hp-ia-negocios", {
+          featured: true,
           name: "IA para profesionales de negocios",
           summary: "La función de la IA en las empresas, la diferencia entre herramientas de IA independientes y funciones integradas, cómo crear instrucciones eficaces, el uso ético de la IA y cómo usarla para el crecimiento profesional."
         }),

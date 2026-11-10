@@ -6,10 +6,10 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET", "ASP.NET MVC", "REST APIs", "Web services", "Kubernetes", "Agentic workflows", "Laravel", "PHP", "Python", "Django"],
+      "Backend": ["C#", ".NET", "ASP.NET MVC", "REST APIs", "Web services", "Python", "Django"],
       "Data": ["SQL Server", "Query optimization", "Database synchronization", "MS Access"],
-      "Frontend": ["JavaScript", "jQuery", "AngularJS", "Vue.js", "Bootstrap", "Responsive HTML & CSS"],
-      "DevOps & AI": ["Docker", "DevOps", "AI integration", "Prompt engineering"],
+      "Frontend": ["JavaScript", "AngularJS", "Responsive HTML & CSS"],
+      "DevOps": ["Docker", "DevOps"],
       "Methods": ["Scrum", "Legacy system modernization", "ISO 9000", "Quality auditing", "Nopcommerce"]
     },
 
@@ -426,7 +426,7 @@
         }
       },
       {
-        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun 2019 – present",
+        name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun 2019 – Mar 2020",
         description: "Systems for Mutualista Hospital Evangélico.", url: "", featured: true
       },
       {
@@ -522,9 +522,9 @@
         cert("sl-ia-marketing", { name: "Social Media Marketing with AI" }),
         cert("sl-ia-escribir", { name: "Writing with AI" }),
         cert("sl-ia-pruebas-ab", { name: "AI-Powered A/B Testing" }),
-        cert("sl-ia-prompts", { name: "Prompt Engineering" }),
-        cert("sl-ia-aprendizaje-automatico", { name: "Machine Learning Fundamentals" }),
-        cert("sl-ia-llms", { name: "Introduction to LLMs" }),
+        cert("sl-ia-prompts", { name: "Prompt Engineering", featured: true }),
+        cert("sl-ia-aprendizaje-automatico", { name: "Machine Learning Fundamentals", featured: true }),
+        cert("sl-ia-llms", { name: "Introduction to LLMs", featured: true }),
         cert("sl-ia-etica", { name: "Ethical AI Fundamentals" }),
         cert("sl-ia-investigacion", { name: "Research with AI" }),
         cert("sl-ia-visualizacion", { name: "Visualize Your Data" }),
@@ -532,10 +532,11 @@
         cert("sl-ia-analisis-datos", { name: "Data Analysis with AI" }),
         cert("sl-ia-creatividad", { name: "Think Creatively with AI" }),
         cert("sl-ia-lluvia-ideas", { name: "Brainstorming with AI" }),
-        cert("sl-ia-generativa", { name: "Generative AI in Practice" })
+        cert("sl-ia-generativa", { name: "Generative AI in Practice", featured: true })
       ],
       "Business (HP LIFE, 2026)": [
         cert("hp-tecnologia-negocios", {
+          featured: true,
           name: "IT for Business Success",
           summary: "Choose the best technology for the company and successfully integrate technology solutions into the business."
         }),
@@ -544,6 +545,7 @@
           summary: "Use strategic planning to make better business decisions in an AI-driven world; learn the key components of a strategic plan; evaluate practical planning frameworks and use AI tools for strategic thinking."
         }),
         cert("hp-sitios-web", {
+          featured: true,
           name: "Effective Business Websites",
           summary: "Apply the best development techniques to design a business website, understand customer behavior and use website metrics effectively."
         }),
@@ -596,6 +598,7 @@
           summary: "Define the minimum viable product, distinguish iterative from incremental development, analyze the benefits and limitations of Agile tools such as Scrum and Kanban, and apply agile practices in project management."
         }),
         cert("hp-ia-negocios", {
+          featured: true,
           name: "AI for Business Professionals",
           summary: "The role of AI in business, the difference between standalone AI tools and built-in features, how to write effective prompts, the ethical use of AI and how to use it for career growth."
         }),
