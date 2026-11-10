@@ -162,6 +162,59 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
+.identity-toggle {
+  display: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: .2rem var(--safe-right) .55rem var(--safe-left);
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.identity-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 27;
+  background: rgba(0, 0, 0, .45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur), visibility var(--dur);
+}
+
+.identity-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.identity-drawer {
+  position: fixed;
+  z-index: 28;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: calc(var(--mast-h, 4.5rem) + .85rem) var(--safe-right) 1rem var(--safe-left);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 12px 28px var(--shadow);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform var(--dur), visibility var(--dur);
+}
+
+.identity-drawer.is-open {
+  transform: none;
+  visibility: visible;
+  transition: transform var(--dur), visibility 0s;
+}
+
+.identity-drawer .actions { margin-bottom: 0; }
+
+.identity-drawer [data-action="print"] { display: none; }
+
 .topbar-prefs {
   display: flex;
   align-items: center;
@@ -421,6 +474,206 @@ section {
   font-size: .9rem;
 }
 
+.order-toggle {
+  display: flex;
+  width: 100%;
+  min-height: var(--tap);
+  margin: 0 0 1rem;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--acc);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--acc);
+  font: inherit;
+  cursor: pointer;
+}
+
+.order-option {
+  display: flex;
+  flex: 1 1 50%;
+  align-items: center;
+  justify-content: center;
+  padding: .4rem .75rem;
+  transition: background var(--dur), color var(--dur);
+}
+
+.order-toggle[aria-pressed="false"] .order-option:first-child,
+.order-toggle[aria-pressed="true"] .order-option:last-child {
+  background: var(--acc);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+/* La ubicación y los iconos de contacto solo cambian de medida en la vista angosta.
+   En desktop .contact-row se disuelve y WhatsApp queda fuera, así los botones no se mueven. */
+.location { display: none; }
+
+.contact-row { display: contents; }
+
+[data-contact="whatsapp"] { display: none; }
+
+.contact-icon {
+  display: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: currentColor;
+  -webkit-mask: var(--contact-icon) center / contain no-repeat;
+  mask: var(--contact-icon) center / contain no-repeat;
+}
+
+[data-contact="whatsapp"] {
+  --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2zm5.76 13.92c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.81-.11-.41-.14-.95-.31-1.63-.61-2.87-1.24-4.74-4.13-4.88-4.32-.14-.19-1.16-1.54-1.16-2.94s.73-2.08 1-2.37c.24-.27.64-.4.86-.4h.62c.2 0 .46-.07.72.55.27.64.9 2.2.98 2.36.08.16.13.35.03.56-.1.21-.15.34-.3.52-.14.18-.3.4-.43.54-.14.14-.29.3-.12.58.16.27.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.27.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.27.37-.23.62-.14.26.1 1.62.76 1.9.9.27.14.46.21.52.32.07.12.07.68-.17 1.36z'/%3E%3C/svg%3E");
+}
+
+[data-contact="linkedin"] {
+  --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.84v2.12h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.75c0-1.85-.03-4.22-2.57-4.22-2.58 0-2.97 2.01-2.97 4.09V24h-4V8.5z'/%3E%3C/svg%3E");
+}
+
+[data-contact="github"] {
+  --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E");
+}
+
+.map-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  background: rgba(0, 0, 0, .45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur), visibility var(--dur);
+}
+
+.map-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.map-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  width: min(85vw, 360px);
+  padding: max(1rem, env(safe-area-inset-top, 0px)) var(--safe-right) max(1rem, env(safe-area-inset-bottom, 0px)) 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--panel);
+  border-left: 3px solid var(--acc);
+  box-shadow: -10px 0 30px var(--shadow);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--dur), visibility var(--dur);
+}
+
+.map-drawer.is-open {
+  transform: none;
+  visibility: visible;
+  transition: transform var(--dur), visibility 0s;
+}
+
+.map-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.uy-map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.uy-land {
+  fill: color-mix(in srgb, var(--acc) 22%, var(--panel));
+  stroke: var(--acc);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.uy-pin { fill: var(--acc); }
+
+.uy-pin-core { fill: var(--panel); }
+
+@media (max-width: 51.999em) {
+  .mast {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg);
+  }
+
+  .topbar { position: static; }
+
+  html.show-identity .topbar { border-bottom: 0; }
+
+  html.show-identity .mast { border-bottom: 1px solid var(--line); }
+
+  html.show-identity .identity-toggle { display: block; }
+
+  html.show-identity .profile { display: none; }
+
+  .location-text { display: none; }
+
+  .location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 1rem;
+    padding: .5rem .9rem;
+    border: 1px solid var(--acc);
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--acc);
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  [data-contact="whatsapp"] { display: inline-flex; }
+
+  .contact-icon { display: block; }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .5rem;
+    width: 100%;
+  }
+
+  .contact-row .btn {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--tap);
+  }
+
+  .contact-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .actions > .btn-primary,
+  .actions > [data-action="print"] {
+    flex: 1 0 100%;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .badge {
   display: inline-block;
   margin: 0 0 1rem;
@@ -624,7 +877,45 @@ section {
   cursor: pointer;
 }
 
-.jb b { display: block; }
+.job-id {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .12rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.job-company {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 700;
+}
+
+.jb .job-company { font-size: 1.05rem; }
+
+.job-role { font-weight: 500; }
+
+.job-when {
+  color: var(--mute);
+  font-size: .9rem;
+  font-weight: 400;
+}
+
+.sheet-title .job-company,
+.case-head .job-company {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1rem + .6vw, 1.3rem);
+  line-height: 1.2;
+}
+
+.sheet-title .job-role,
+.case-head .job-role {
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 .jb.is-selected {
   background: var(--chip);
@@ -1064,8 +1355,15 @@ body.is-case-open { overflow: hidden; }
   .wrap { display: block; }
   #main > section[hidden] { display: block !important; }
   .topbar,
+  .identity-toggle,
+  .order-toggle,
+  .identity-drawer,
+  .identity-backdrop,
   .drawer,
   .drawer-backdrop,
+  .location,
+  .map-drawer,
+  .map-backdrop,
   .pager,
   .btn,
   .skip-link,
@@ -1081,6 +1379,8 @@ body.is-case-open { overflow: hidden; }
   .case-section,
   .case-metric { break-inside: avoid; }
   .contact-print { display: block; }
+  html.show-identity .profile { display: block; }
+  .location-text { display: block; }
   .job-details {
     display: block;
     margin: .3rem 0 .6rem;

@@ -13,10 +13,15 @@
     return `${from} – ${to}`;
   };
 
+  const endOf = (job) => (job.end == null ? Infinity : job.end);
+
+  /* Más reciente primero: por año de inicio y, a igual inicio, por año de fin. */
+  const byDate = (entries) =>
+    [...entries].sort((a, b) => (b.job.start - a.job.start) || (endOf(b.job) - endOf(a.job)));
+
   const groupEntries = (entries) => {
     const groups = new Map();
-    [...entries]
-      .sort((a, b) => b.job.start - a.job.start)
+    byDate(entries)
       .forEach((entry) => {
         const key = decadeOf(entry.job.start);
         if (!groups.has(key)) groups.set(key, []);
@@ -32,5 +37,5 @@
 
   const groupByDecade = (jobs) => groupEntries(jobs.map((job, id) => ({ id, job })));
 
-  CV.experience = Object.freeze({ groupByDecade, groupEntries });
+  CV.experience = Object.freeze({ byDate, groupByDecade, groupEntries });
 })(window.CV = window.CV || {});

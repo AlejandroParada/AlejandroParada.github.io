@@ -16,6 +16,7 @@
   const coursera = ({ code, share, hours, issued }) => (text) => ({
     ...text,
     issuer: "IBM · Coursera",
+    issued,
     date: CV.formatDate(issued),
     duration: s.hours(hours),
     credential: s.courseraCredential,
@@ -26,6 +27,7 @@
   const hpLife = ({ serial, issued }) => (text) => ({
     ...text,
     issuer: "HP LIFE · HP Foundation",
+    issued,
     date: CV.formatDate(issued),
     credential: s.hpLifeCredential,
     url: `https://www.life-global.org/certificate/${serial}`,
@@ -39,6 +41,7 @@
     summary: s.sololearnSummary(text.name, practical),
     ...text,
     issuer: "Sololearn",
+    issued,
     date: CV.formatDate(issued),
     credential: s.sololearnCredential(credentialId),
     url,

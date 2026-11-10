@@ -22,6 +22,16 @@
       .filter(Boolean)
       .join(" · ");
 
+  /* Identidad de un puesto: empresa, cargo y período. Un solo lugar para la lista, el panel y el caso. */
+  const jobIdentity = (job, { place = false } = {}) => {
+    const when = [job.period, place ? job.place : ""].filter(Boolean).map(esc).join(" · ");
+    return `<span class="job-id">` +
+      `<span class="job-company">${orgName(job.company, job.icon)}</span>` +
+      `<span class="job-role">${esc(job.title)}</span>` +
+      (when ? `<span class="job-when">${when}</span>` : "") +
+    `</span>`;
+  };
+
   const detailAttrs = (type, id) =>
     `data-detail="${esc(type)}" data-id="${esc(id)}" aria-expanded="false" aria-controls="detail-sheet"`;
 
@@ -60,6 +70,37 @@
       if (parts.extra.length) extra[title] = parts.extra;
     });
     return chipGroups(shown, detailType) + more(chipGroups(extra, detailType));
+  };
+
+  const certLabel = (item) => (typeof item === "string" ? item : (item && item.name) || "");
+
+  /* Año ISO si existe; si no, el primer año que aparezca en el nombre. */
+  const certYear = (item) => {
+    if (item && item.issued) return item.issued.slice(0, 4);
+    const match = certLabel(item).match(/\b((?:19|20)\d{2})\b/);
+    return match ? match[1] : "";
+  };
+
+  const certIssuedKey = (item) =>
+    (item && item.issued) || (certYear(item) ? `${certYear(item)}-12-31` : "0000-00-00");
+
+  const byIssued = (items) =>
+    [...items].sort((a, b) =>
+      certIssuedKey(b).localeCompare(certIssuedKey(a)) ||
+      certLabel(b).localeCompare(certLabel(a), s.locale)
+    );
+
+  /* Lista plana por fecha, agrupada por año (más reciente primero). */
+  const chipGroupsChrono = (groups, detailType) => {
+    const byYear = new Map();
+    byIssued(Object.values(groups).flat()).forEach((item) => {
+      const year = certYear(item);
+      if (!byYear.has(year)) byYear.set(year, []);
+      byYear.get(year).push(item);
+    });
+    return join([...byYear], ([year, items]) =>
+      (year ? `<h3>${esc(year)}</h3>` : "") + chips(items, detailType)
+    );
   };
 
   const timelineItem = ({ title, meta }) =>
@@ -164,7 +205,7 @@
   const jobButton = ({ id, job }) =>
     `<div class="job-row">` +
       `<button type="button" class="jb" ${detailAttrs("job", id)}>` +
-        `<b>${esc(job.title)}</b><span class="meta">${orgMeta(job.company, job.icon, job.period)}</span>` +
+        jobIdentity(job) +
         (job.parallel ? `<span class="parallel">${esc(job.parallel)}</span>` : "") +
       `</button>` +
       list(job.highlights, "job-details") +
@@ -181,13 +222,16 @@
   const decades = (groups) => join(groups, (group, i) => decade(group, i === 0));
 
   /* Estructura común del panel de detalle: título, botón Cerrar, meta y cuerpo. */
-  const sheetLayout = ({ title, meta, body, mark = "" }) =>
-    `<div class="sheet-head">` +
-      `<h3 class="sheet-title" id="detail-sheet-title">${mark ? `<span class="card-name">${mark}<span>${esc(title)}</span></span>` : esc(title)}</h3>` +
+  const sheetLayout = ({ title, titleHtml, meta, body, mark = "" }) => {
+    const heading = titleHtml
+      || (mark ? `<span class="card-name">${mark}<span>${esc(title)}</span></span>` : esc(title));
+    return `<div class="sheet-head">` +
+      `<h3 class="sheet-title" id="detail-sheet-title">${heading}</h3>` +
       `<button type="button" class="btn btn-sm" data-action="close-sheet">${esc(s.close)}</button>` +
     `</div>` +
     (meta ? `<p class="meta">${meta}</p>` : "") +
     body;
+  };
 
   const sheetSection = (title, html) =>
     html ? `<h4 class="sheet-subtitle">${esc(title)}</h4>${html}` : "";
@@ -205,8 +249,7 @@
   };
 
   const jobDetail = (job, id) => sheetLayout({
-    title: job.title,
-    meta: orgMeta(job.company, job.icon, job.period, job.place),
+    titleHtml: jobIdentity(job, { place: true }),
     body:
       (job.parallel ? `<p class="parallel">${esc(job.parallel)}</p>` : "") +
       caseEntry(job, id) +
@@ -222,8 +265,7 @@
         `<div class="case-head-inner">` +
           `<div class="case-head-text">` +
             `<p class="case-kicker">${esc(study.kicker)}</p>` +
-            `<h3 class="sheet-title" id="case-sheet-title">${esc(job.title)}</h3>` +
-            `<p class="meta">${orgMeta(job.company, job.icon, job.period)}</p>` +
+            `<h3 class="sheet-title" id="case-sheet-title">${jobIdentity(job)}</h3>` +
           `</div>` +
           `<button type="button" class="btn btn-sm" data-case-close>${esc(s.close)}</button>` +
         `</div>` +
@@ -246,7 +288,7 @@
   });
 
   CV.templates = Object.freeze({
-    chips, chipGroups, chipGroupsMore, more, byFeatured, timelineItem, card, decades, jobDetail, certDetail, projectDetail, caseStudy,
+    chips, chipGroups, chipGroupsMore, chipGroupsChrono, more, byFeatured, timelineItem, card, decades, jobDetail, certDetail, projectDetail, caseStudy,
     cards: (items) => join(items, card),
     timeline: (items) => join(items, timelineItem),
     jobList: (entries) => join(entries, jobButton)

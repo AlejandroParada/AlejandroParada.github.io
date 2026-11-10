@@ -2,7 +2,7 @@
 (function (CV) {
   "use strict";
 
-  const { config, data, templates: t, experience, github, theme, DetailSheet, Drawer, Tabs } = CV;
+  const { config, data, templates: t, experience, github, theme, DetailSheet, Drawer, LocationMap, IdentityDrawer, Tabs } = CV;
 
   /* Debe coincidir con el breakpoint desktop de css/styles.css. */
   const DESKTOP_QUERY = "(min-width: 52em)";
@@ -23,15 +23,77 @@
     return render(shown) + t.more(render(extra));
   };
 
-  const renderContent = () => {
-    const entries = data.jobs.map((job, id) => ({ id, job }));
-    const featuredJobs = entries.filter((entry) => entry.job.featured);
-    const olderJobs = entries.filter((entry) => !entry.job.featured);
+  const jobEntries = data.jobs.map((job, id) => ({ id, job }));
 
+  /* "tech" agrupa lo destacado arriba y el resto por década; "chrono" lista todo por fecha. */
+  const JOB_ORDERS = Object.freeze({
+    tech: () => {
+      const featured = jobEntries.filter((entry) => entry.job.featured);
+      const older = jobEntries.filter((entry) => !entry.job.featured);
+      return t.jobList(featured) + t.more(t.decades(experience.groupEntries(older)));
+    },
+    chrono: () => t.jobList(experience.byDate(jobEntries))
+  });
+
+  let jobOrder = "tech";
+
+  const renderJobs = () => {
+    renderInto("jobs", JOB_ORDERS[jobOrder]());
+    const chrono = jobOrder === "chrono";
+    $$("[data-action='toggle-job-order']").forEach((button) => button.setAttribute("aria-pressed", String(chrono)));
+    $$("[data-decade-actions]").forEach((el) => { el.hidden = chrono; });
+  };
+
+  const toggleJobOrder = () => {
+    jobOrder = jobOrder === "tech" ? "chrono" : "tech";
+    renderJobs();
+  };
+
+  /* "relevance" agrupa por tema con lo destacado arriba; "chrono" lista por fecha de emisión. */
+  const CERT_ORDERS = Object.freeze({
+    relevance: () => t.chipGroupsMore(data.certs, "cert"),
+    chrono: () => t.chipGroupsChrono(data.certs, "cert")
+  });
+
+  let certOrder = "relevance";
+
+  const renderCerts = () => {
+    renderInto("certs", CERT_ORDERS[certOrder]());
+    const chrono = certOrder === "chrono";
+    $$("[data-action='toggle-cert-order']").forEach((button) => button.setAttribute("aria-pressed", String(chrono)));
+  };
+
+  const toggleCertOrder = () => {
+    certOrder = certOrder === "relevance" ? "chrono" : "relevance";
+    renderCerts();
+  };
+
+  const isGithubProject = (project) => /^https?:\/\/(www\.)?github\.com\//i.test(project.url || "");
+
+  /* "all" muestra la lista completa; "github" solo los repositorios públicos. */
+  const PROJECT_FILTERS = Object.freeze({
+    all: () => withMore(data.projects, t.cards),
+    github: () => withMore(data.projects.filter(isGithubProject), t.cards)
+  });
+
+  let projectFilter = "all";
+
+  const renderProjects = () => {
+    renderInto("projects", PROJECT_FILTERS[projectFilter]());
+    const github = projectFilter === "github";
+    $$("[data-action='toggle-project-filter']").forEach((button) => button.setAttribute("aria-pressed", String(github)));
+  };
+
+  const toggleProjectFilter = () => {
+    projectFilter = projectFilter === "all" ? "github" : "all";
+    renderProjects();
+  };
+
+  const renderContent = () => {
     renderInto("skills", t.chipGroups(data.skills));
-    renderInto("jobs", t.jobList(featuredJobs) + t.more(t.decades(experience.groupEntries(olderJobs))));
-    renderInto("projects", withMore(data.projects, t.cards));
-    renderInto("certs", t.chipGroupsMore(data.certs, "cert"));
+    renderJobs();
+    renderProjects();
+    renderCerts();
     renderInto("education", withMore(data.education, t.timeline));
     renderInto("languages", t.chips(data.languages));
   };
@@ -58,7 +120,10 @@
     print: () => window.print(),
     "toggle-theme": () => theme.toggle(),
     "expand-all": () => setDecadesOpen(true),
-    "collapse-all": () => setDecadesOpen(false)
+    "collapse-all": () => setDecadesOpen(false),
+    "toggle-job-order": () => toggleJobOrder(),
+    "toggle-cert-order": () => toggleCertOrder(),
+    "toggle-project-filter": () => toggleProjectFilter()
   });
 
   const bindActions = () => {
@@ -104,6 +169,13 @@
     backdrop: $(".drawer-backdrop"),
     desktopQuery: DESKTOP_QUERY
   }).init();
+  new LocationMap({
+    toggle: $(".location"),
+    panel: $("#map-drawer"),
+    backdrop: $(".map-backdrop"),
+    slot: $("[data-render='location-map']"),
+    desktopQuery: DESKTOP_QUERY
+  }).init();
   const caseSheet = new CV.CaseSheet({
     sheet: $("#case-sheet"),
     backdrop: $(".case-backdrop"),
@@ -117,10 +189,24 @@
     renderers: DETAIL_RENDERERS,
     onClose: () => caseSheet.close()
   }).init();
+  const home = $("#main > section[data-home]");
+  const identity = new IdentityDrawer({
+    toggle: $(".identity-toggle"),
+    panel: $("#identity-drawer"),
+    backdrop: $(".identity-backdrop"),
+    actions: $(".profile .actions"),
+    home: $(".profile"),
+    desktopQuery: DESKTOP_QUERY
+  }).init();
   new Tabs({
     nav: $("#site-nav"),
     panels: $$("#main > section[id]"),
-    onChange: () => detailSheet.close()
+    onChange: (id) => {
+      detailSheet.close();
+      identity.close();
+      document.documentElement.classList.toggle("show-identity", !home || id !== home.id);
+      identity.syncOffset();
+    }
   }).init();
   loadGithub();
 })(window.CV);

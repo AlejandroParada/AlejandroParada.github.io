@@ -208,10 +208,61 @@
         title: "Software Developer", company: "1950Labs",
         icon: "/img/companies/labs.png",
         period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019, featured: true,
+        clients: [
+          { name: "EY", url: "https://www.ey.com/", icon: "/img/clients/ey.png" }
+        ],
         highlights: [
-          "Fixed the front-end issues reported by the client, verified by QA.",
+          "Provided support and development for the EY website. I fixed JavaScript and HTML in custom modules shared by the regional pages.",
+          "Repaired the CMS document section that failed to render, a complaint raised by several countries.",
           "Found a root cause of database access bottlenecks."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Support and development for EY",
+          hint: "Custom JavaScript and HTML modules, and the CMS document section.",
+          lead: "At 1950Labs I worked on EY's public website. The support was on custom modules shared by each country's pages.",
+          metrics: [
+            { value: "EY.com", label: "regional pages on the same site" },
+            { value: "JS and HTML", label: "fixes in custom modules" },
+            { value: "CMS", label: "document management inside the site" },
+            { value: "Several countries", label: "reported the section that did not render" }
+          ],
+          sections: [
+            {
+              title: "Client",
+              showClients: true,
+              paragraphs: [
+                "The work was support and development for EY, on the site each country publishes."
+              ]
+            },
+            {
+              title: "Custom modules",
+              paragraphs: [
+                "The pages run on Adobe Experience Manager. On top of that sits EY Unified Platform, a custom layer of interface modules written for this site.",
+                "Each module has its own HTML and JavaScript. A defect in that code showed up on the regional pages, because they all load the same library."
+              ]
+            },
+            {
+              title: "Documents that failed to render",
+              paragraphs: [
+                "The CMS stores the site's documents, and one section displays them on the page with the PDF viewer.",
+                "That section did not render correctly. The complaint came from several countries. The fix was in the HTML and JavaScript of that module."
+              ]
+            },
+            {
+              title: "Data access",
+              paragraphs: [
+                "Alongside the front-end work, I found a root cause of database access bottlenecks."
+              ]
+            },
+            {
+              title: "Delivery",
+              paragraphs: [
+                "The client reported the front-end defects and QA verified them."
+              ]
+            }
+          ],
+          stack: ["JavaScript", "HTML", "Adobe Experience Manager", "EY Unified Platform"]
+        }
       },
       {
         title: "Programming, Support and IT Solutions Instructor", company: "INFA",

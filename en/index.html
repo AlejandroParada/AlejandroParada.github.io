@@ -9,6 +9,8 @@
       var agent = navigator.userAgent || "";
       var crawler = /bot|crawl|spider|slurp|preview|inspectiontool|google|bing|baidu|yandex|duckduck/i.test(agent);
       if (!crawler && (!saved || saved !== lang)) document.documentElement.classList.add("lang-pending");
+      var page = (location.hash || "").replace(/^#/, "");
+      if (page && page !== "resumen" && page !== "summary") document.documentElement.classList.add("show-identity");
     } catch (e) {}
   </script>
   <style>html.lang-pending body{visibility:hidden}</style>
@@ -37,20 +39,22 @@
   <link rel="alternate" hreflang="en" href="https://alejandroparada.github.io/en/">
   <link rel="alternate" hreflang="x-default" href="https://alejandroparada.github.io/">
   <script src="../js/locale.js?v=20261109h"></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20261109i">
+  <link rel="stylesheet" href="../css/styles.css?v=20261110i">
   <script src="../js/theme.js?v=20261109h"></script>
   <script src="../js/font-size.js?v=20261109h"></script>
   <script src="../js/i18n.js?v=20261109h" defer></script>
-  <script src="../js/data.js?v=20261109h" defer></script>
-  <script src="../js/content/en.js?v=20261109k" defer></script>
-  <script src="../js/templates.js?v=20261109j" defer></script>
-  <script src="../js/experience.js?v=20261109h" defer></script>
+  <script src="../js/data.js?v=20261110h" defer></script>
+  <script src="../js/content/en.js?v=20261110a" defer></script>
+  <script src="../js/templates.js?v=20261110h" defer></script>
+  <script src="../js/experience.js?v=20261110g" defer></script>
   <script src="../js/detail-sheet.js?v=20261109h" defer></script>
   <script src="../js/case-sheet.js?v=20261109h" defer></script>
   <script src="../js/drawer.js?v=20261109h" defer></script>
+  <script src="../js/location.js?v=20261110d" defer></script>
+  <script src="../js/identity.js?v=20261110f" defer></script>
   <script src="../js/tabs.js?v=20261109h" defer></script>
   <script src="../js/github.js?v=20261109h" defer></script>
-  <script src="../js/main.js?v=20261109h" defer></script>
+  <script src="../js/main.js?v=20261110i" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -83,10 +87,10 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <button type="button" class="topbar-btn menu-toggle" aria-controls="site-nav" aria-expanded="false">
+  <header class="mast">
+    <div class="topbar">
+    <button type="button" class="topbar-btn menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
       <span class="menu-icon" aria-hidden="true"></span>
-      <span>Menu</span>
     </button>
     <div class="topbar-prefs">
       <div class="font-size" role="group" aria-label="Text size">
@@ -98,21 +102,41 @@
         <span class="theme-icon" aria-hidden="true"></span>
       </button>
     </div>
+    </div>
+    <button type="button" class="identity-toggle" aria-controls="identity-drawer" aria-expanded="false">Alejandro Parada</button>
   </header>
+  <div class="identity-backdrop" data-identity-close></div>
+  <div class="identity-drawer" id="identity-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Contact"></div>
 
   <div class="wrap">
     <aside>
+      <div class="profile">
       <h1>Alejandro Parada</h1>
       <p class="tag muted">Senior Fullstack .NET Developer · 20+ years · Legacy system modernization · SQL Server · Applied AI</p>
       <p class="badge">Open to new opportunities</p>
-      <address class="tag muted">Barros Blancos, Canelones, Uruguay</address>
+      <address class="tag muted location-text">Barros Blancos, Canelones, Uruguay</address>
+      <button type="button" class="location" data-map-open aria-controls="map-drawer" aria-expanded="false">Barros Blancos, Canelones, Uruguay</button>
       <p class="tag contact-print">alejandroptaib@gmail.com · github.com/AlejandroParada</p>
 
       <div class="actions">
         <a class="btn btn-primary" href="mailto:alejandroptaib@gmail.com">alejandroptaib@gmail.com</a>
-        <a class="btn" rel="me" href="https://www.linkedin.com/in/alejandro-parada-36637438/">LinkedIn</a>
-        <a class="btn" id="gh" rel="me" href="https://github.com/AlejandroParada">GitHub</a>
-        <button type="button" class="btn" data-action="print">Save as PDF</button>      </div>
+        <div class="contact-row">
+          <a class="btn contact-link" data-contact="whatsapp" href="https://wa.me/59894736724" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon" aria-hidden="true"></span>
+            <span class="contact-label">WhatsApp</span>
+          </a>
+          <a class="btn contact-link" data-contact="linkedin" rel="me" href="https://www.linkedin.com/in/alejandro-parada-36637438/">
+            <span class="contact-icon" aria-hidden="true"></span>
+            <span class="contact-label">LinkedIn</span>
+          </a>
+          <a class="btn contact-link" data-contact="github" id="gh" rel="me" href="https://github.com/AlejandroParada">
+            <span class="contact-icon" aria-hidden="true"></span>
+            <span class="contact-label">GitHub</span>
+          </a>
+        </div>
+        <button type="button" class="btn" data-action="print">Save as PDF</button>
+      </div>
+      </div>
 
       <nav class="drawer" id="site-nav" aria-label="Sections">
         <div class="drawer-head">
@@ -129,10 +153,10 @@
     </aside>
 
     <main id="main" tabindex="-1">
-      <section id="summary">
+      <section id="summary" data-home>
         <h2>Summary</h2>
         <p>Fullstack developer with more than 20 years building and maintaining business systems in C# and .NET with SQL Server. I specialize in modernizing legacy systems, diagnosing the root cause of data and performance issues, and delivering reliable modules for daily operations. In that work I used AI to check code migrated from VB6, and the services ran in containers on the company server.</p>
-        <p>I have worked with United States clients such as PricewaterhouseCoopers and McKesson. At Farmacias Pigalle I replaced the VB6 counter with a web application used in more than 20 branches: a sale continues locally if the network drops and syncs with headquarters when the connection returns.</p>
+        <p>I have worked with United States clients such as PricewaterhouseCoopers, McKesson and Ernst & Young (EY). At Farmacias Pigalle I replaced the VB6 counter with a web application used in more than 20 branches: a sale continues locally if the network drops and syncs with headquarters when the connection returns.</p>
         <p>Since May 2026, after Farmacias Pigalle, I have continued the degree at Brigham Young University–Idaho (since January 2026) and courses from IBM and HP Life. On GitHub I published ChecklistEmergencia in July, KDSuy in August, Tesoros de Mi Alma in September and AnimoReader in October 2026. The Pigalle, Netviax and Númina code stays unpublished because it is confidential.</p>
       </section>
 
@@ -144,7 +168,11 @@
       <section id="experience">
         <h2>Experience</h2>
         <p class="tag muted">Tap each position to see more information.</p>
-        <div class="actions">
+        <button type="button" class="order-toggle" data-action="toggle-job-order" aria-pressed="false" aria-label="Chronological order">
+          <span class="order-option" data-order="tech" aria-hidden="true">Technologies</span>
+          <span class="order-option" data-order="chrono" aria-hidden="true">Chronological</span>
+        </button>
+        <div class="actions" data-decade-actions>
           <button type="button" class="btn btn-sm" data-action="expand-all">Expand all</button>
           <button type="button" class="btn btn-sm" data-action="collapse-all">Collapse all</button>
         </div>
@@ -153,6 +181,11 @@
 
       <section id="projects">
         <h2>Projects</h2>
+        <p class="tag muted">Tap each project to see more information.</p>
+        <button type="button" class="order-toggle" data-action="toggle-project-filter" aria-pressed="false" aria-label="GitHub projects only">
+          <span class="order-option" aria-hidden="true">All</span>
+          <span class="order-option" aria-hidden="true">GitHub</span>
+        </button>
         <div class="grid" data-render="projects"></div>
         <div class="grid" data-render="repos"></div>
       </section>
@@ -160,6 +193,10 @@
       <section id="certifications">
         <h2>Certifications and courses</h2>
         <p class="tag muted">Tap each certification to see the details of each one.</p>
+        <button type="button" class="order-toggle" data-action="toggle-cert-order" aria-pressed="false" aria-label="Chronological order">
+          <span class="order-option" aria-hidden="true">Relevance</span>
+          <span class="order-option" aria-hidden="true">Chronological</span>
+        </button>
         <div data-render="certs"></div>
       </section>
 
@@ -191,6 +228,16 @@
   </nav>
 
   <div class="drawer-backdrop" data-drawer-close></div>
+
+  <div class="map-backdrop" data-map-close></div>
+  <aside class="map-drawer" id="map-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="map-drawer-title">
+    <div class="map-drawer-head">
+      <span class="drawer-title" id="map-drawer-title">Barros Blancos</span>
+      <button type="button" class="drawer-close" data-map-close aria-label="Close">×</button>
+    </div>
+    <p class="tag muted">Canelones, Uruguay</p>
+    <div data-render="location-map"></div>
+  </aside>
 
   <div class="sheet" id="detail-sheet" role="region" aria-labelledby="detail-sheet-title" aria-live="polite">
     <div data-sheet-content></div>

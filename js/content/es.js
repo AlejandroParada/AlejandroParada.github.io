@@ -208,10 +208,61 @@
         title: "Desarrollador de software", company: "1950Labs",
         icon: "/img/companies/labs.png",
         period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019, featured: true,
+        clients: [
+          { name: "EY", url: "https://www.ey.com/", icon: "/img/clients/ey.png" }
+        ],
         highlights: [
-          "Resolví los problemas de front-end reportados por el cliente, verificados por QA.",
+          "Di soporte y desarrollo al sitio de EY. Corregí JavaScript y HTML de módulos propios que usan las páginas regionales.",
+          "Reparé la sección de documentos del CMS que no se renderizaba, un reclamo de varios países.",
           "Encontré una causa principal de cuellos de botella en el acceso a bases de datos."
-        ]
+        ],
+        caseStudy: {
+          kicker: "Soporte y desarrollo para EY",
+          hint: "Módulos propios en JavaScript y HTML, y la sección de documentos del CMS.",
+          lead: "Desde 1950Labs trabajé el sitio público de EY. El soporte era sobre módulos hechos a medida, compartidos por las páginas de cada país.",
+          metrics: [
+            { value: "EY.com", label: "páginas regionales sobre el mismo sitio" },
+            { value: "JS y HTML", label: "correcciones en módulos propios" },
+            { value: "CMS", label: "gestión de documentos dentro del sitio" },
+            { value: "Varios países", label: "reclamaban la sección que no se veía" }
+          ],
+          sections: [
+            {
+              title: "Cliente",
+              showClients: true,
+              paragraphs: [
+                "El trabajo era soporte y desarrollo para EY, en el sitio que publica cada país."
+              ]
+            },
+            {
+              title: "Módulos propios",
+              paragraphs: [
+                "Las páginas corren sobre Adobe Experience Manager. Encima hay una capa propia, EY Unified Platform, con módulos de interfaz escritos para ese sitio.",
+                "Cada módulo tiene su HTML y su JavaScript. Un defecto en ese código se repetía en las páginas regionales, porque todas cargan la misma librería."
+              ]
+            },
+            {
+              title: "Documentos que no se renderizaban",
+              paragraphs: [
+                "El CMS guarda los documentos del sitio y una sección los muestra en la página, con el visor PDF.",
+                "Esa sección no se dibujaba bien. El reclamo llegaba de varios países. La corrección fue en el HTML y en el JavaScript de ese módulo."
+              ]
+            },
+            {
+              title: "Acceso a datos",
+              paragraphs: [
+                "Además del front-end, encontré una causa principal de cuellos de botella en el acceso a bases de datos."
+              ]
+            },
+            {
+              title: "Entrega",
+              paragraphs: [
+                "Los defectos de front-end los reportaba el cliente y los verificaba QA."
+              ]
+            }
+          ],
+          stack: ["JavaScript", "HTML", "Adobe Experience Manager", "EY Unified Platform"]
+        }
       },
       {
         title: "Docente de Programación, Soporte y Soluciones TI", company: "INFA",
