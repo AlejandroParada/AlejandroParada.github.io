@@ -381,6 +381,25 @@
 
     projects: [
       {
+        id: "offlinesync-pos",
+        name: "OfflineSync POS",
+        description: "Offline-first sales sync API in .NET 10, with idempotent endpoints and CI.",
+        url: "https://github.com/AlejandroParada/offlinesync-pos",
+        period: "Nov 2026",
+        featured: true,
+        detail: {
+          kicker: "Repository offlinesync-pos",
+          lead: "Public prototype of a branch that keeps selling without a network and syncs to head office without duplicating the sale.",
+          items: [
+            "Each sale carries an idempotency key created at the branch and stored in a SQLite outbox.",
+            "The ASP.NET Core API accepts the batch. Sending it again does not move stock a second time.",
+            "If on-hand stock is not enough, the sale is still accepted and a negative-stock discrepancy is recorded.",
+            "PostgreSQL with EF Core, xUnit and Testcontainers tests, and GitHub Actions CI with a Docker image."
+          ],
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "SQLite", "xUnit", "Testcontainers", "Docker", "GitHub Actions"]
+        }
+      },
+      {
         id: "kds",
         name: "KDSuy",
         description: "Site for a kitchen and process system for pizzerias, published on GitHub Pages.",

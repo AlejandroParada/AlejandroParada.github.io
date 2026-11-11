@@ -381,6 +381,25 @@
 
     projects: [
       {
+        id: "offlinesync-pos",
+        name: "OfflineSync POS",
+        description: "API de sincronización offline-first de ventas en .NET 10, con endpoints idempotentes y CI.",
+        url: "https://github.com/AlejandroParada/offlinesync-pos",
+        period: "Nov. 2026",
+        featured: true,
+        detail: {
+          kicker: "Repositorio offlinesync-pos",
+          lead: "Prototipo público de una sucursal que vende sin red y sincroniza con la central sin duplicar la venta.",
+          items: [
+            "Cada venta lleva una clave de idempotencia generada en la sucursal y guardada en un outbox SQLite.",
+            "La API en ASP.NET Core recibe el lote. Reenviarlo no vuelve a descontar stock.",
+            "Si el saldo no alcanza, la venta se acepta y queda registrada una discrepancia de stock negativo.",
+            "PostgreSQL con EF Core, tests con xUnit y Testcontainers, y CI en GitHub Actions con imagen Docker."
+          ],
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "SQLite", "xUnit", "Testcontainers", "Docker", "GitHub Actions"]
+        }
+      },
+      {
         id: "kds",
         name: "KDSuy",
         description: "Sitio del sistema de cocina y procesos para pizzerías, publicado en GitHub Pages.",
