@@ -6,11 +6,11 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django"],
-      "Datos": ["SQL Server", "Optimización de consultas", "Sincronización de bases de datos", "MS Access"],
-      "Frontend": ["JavaScript", "AngularJS", "HTML y CSS responsivo"],
-      "DevOps": ["Docker", "DevOps"],
-      "Métodos": ["Scrum", "Modernización de sistemas legados", "ISO 9000", "Auditoría de calidad", "Nopcommerce"]
+      "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", ".NET Framework", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django"],
+      "Datos": ["PostgreSQL", "SQL Server", "SQLite", "Sincronización de bases de datos", "Optimización de consultas", "MS Access"],
+      "Frontend": ["JavaScript", "HTML y CSS responsivo", "AngularJS"],
+      "DevOps": ["Docker", "GitHub Actions", "Linux"],
+      "Métodos": ["Modernización de sistemas legados", "Scrum", "Nopcommerce", "ISO 9000", "Auditoría de calidad"]
     },
 
     /* start/end: años usados para agrupar por década. end: null = actualidad. */
