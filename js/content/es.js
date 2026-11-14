@@ -244,6 +244,7 @@
           { name: "EY", url: "https://www.ey.com/", icon: "/img/clients/ey.png" }
         ],
         highlights: [
+          "Trabajé en outsourcing en QUANAM, para Banco Itaú. Desarrollé un módulo nuevo para los clientes del banco, en una aplicación de escritorio y móvil hecha en Angular.",
           "Di soporte y desarrollo al sitio de EY. Corregí JavaScript y HTML de módulos propios que usan las páginas regionales.",
           "Reparé la sección de documentos del CMS que no se renderizaba, un reclamo de varios países.",
           "Encontré una causa principal de cuellos de botella en el acceso a bases de datos."
@@ -264,6 +265,13 @@
               showClients: true,
               paragraphs: [
                 "El trabajo era soporte y desarrollo para EY, en el sitio que publica cada país."
+              ]
+            },
+            {
+              title: "Outsourcing para Banco Itaú",
+              paragraphs: [
+                "También trabajé en outsourcing en QUANAM, para Banco Itaú.",
+                "La aplicación era de escritorio y móvil, hecha en Angular. Desarrollé un módulo nuevo para los clientes del banco."
               ]
             },
             {
@@ -567,6 +575,10 @@
       {
         name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun. 2019 – mar. 2020",
         description: "Sistemas para la Mutualista Hospital Evangélico.", url: "", featured: true
+      },
+      {
+        name: "Banco Itaú – MovilApp", company: "1950Labs · QUANAM", icon: "/img/companies/labs.png", period: "2018 – 2019",
+        description: "Aplicación de escritorio y móvil en Angular. Desarrollé un módulo nuevo para los clientes del banco.", url: "", featured: true
       },
       {
         name: "Electrosistemas SSGO", company: "Electrosistemas SA", icon: "/img/companies/electrosistemas.png", period: "Ago. 2015 – mar. 2017",

@@ -244,6 +244,7 @@
           { name: "EY", url: "https://www.ey.com/", icon: "/img/clients/ey.png" }
         ],
         highlights: [
+          "I worked on an outsourcing assignment at QUANAM, for Banco Itaú. I built a new module for the bank's customers, in a desktop and mobile application written in Angular.",
           "Provided support and development for the EY website. I fixed JavaScript and HTML in custom modules shared by the regional pages.",
           "Repaired the CMS document section that failed to render, a complaint raised by several countries.",
           "Found a root cause of database access bottlenecks."
@@ -264,6 +265,13 @@
               showClients: true,
               paragraphs: [
                 "The work was support and development for EY, on the site each country publishes."
+              ]
+            },
+            {
+              title: "Outsourcing for Banco Itaú",
+              paragraphs: [
+                "I also worked on an outsourcing assignment at QUANAM, for Banco Itaú.",
+                "The application was desktop and mobile, written in Angular. I built a new module for the bank's customers."
               ]
             },
             {
@@ -567,6 +575,10 @@
       {
         name: "Sistemas HE", company: "Mutualista Hospital Evangélico", icon: "/img/companies/evangelico.png", period: "Jun 2019 – Mar 2020",
         description: "Systems for Mutualista Hospital Evangélico.", url: "", featured: true
+      },
+      {
+        name: "Banco Itaú – MovilApp", company: "1950Labs · QUANAM", icon: "/img/companies/labs.png", period: "2018 – 2019",
+        description: "Desktop and mobile application written in Angular. I built a new module for the bank's customers.", url: "", featured: true
       },
       {
         name: "Electrosistemas SSGO", company: "Electrosistemas SA", icon: "/img/companies/electrosistemas.png", period: "Aug 2015 – Mar 2017",
