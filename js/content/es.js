@@ -9,7 +9,7 @@
       "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", ".NET Framework", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django"],
       "Datos": ["PostgreSQL", "SQL Server", "SQLite", "Sincronización de bases de datos", "Optimización de consultas", "MS Access"],
       "Frontend": ["JavaScript", "HTML y CSS responsivo", "AngularJS"],
-      "DevOps": ["Docker", "GitHub Actions", "Linux"],
+      "DevOps": ["Docker", "GitHub Actions", "Linux", "Git", "Bitbucket", "SVN"],
       "Métodos": ["Modernización de sistemas legados", "Scrum", "Nopcommerce", "ISO 9000", "Auditoría de calidad"]
     },
 
@@ -19,10 +19,13 @@
         title: "Desarrollador senior de software", company: "Farmacias Pigalle",
         icon: "/img/companies/pigalle.png",
         period: "Abr. 2023 – abr. 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
+        context: { maturity: 1, maturityTo: 3, mode: "hybrid", team: 2 },
         highlights: [
           "Reemplacé el mostrador de escritorio en VB6, sin soporte y con librerías obsoletas, por una aplicación web usada en más de 20 sucursales.",
           "Cada sucursal registra entre 300 y 500 transacciones por día. Si se corta la red, la venta sigue en local y se sincroniza con la central al volver la conexión.",
-          "Propuse conservar la lógica de negocio en C# y .NET Framework 4.7.2, por compatibilidad con DLL de terceros, con frontend en Django y terminales Linux."
+          "Propuse conservar la lógica de negocio en C# y .NET Framework 4.7.2, por compatibilidad con DLL de terceros, con frontend en Django y terminales Linux.",
+          "Implementé y probé en mi máquina un asistente con Ollama, Ollama-WebUI-Lite y Llama 3.2 1B, para consultar si un medicamento tenía actualización o si había uno nuevo. No llegó a las sucursales.",
+          "Llevé el código a Git en un servidor de Azure, donde se subían los cambios. Fijé las versiones de las DLL con un catálogo local, dejé plantillas y reglas del editor para un estilo de código común, y pasé los builds y la publicación a contenedores en el servidor de la empresa."
         ],
         caseStudy: {
           kicker: "Modernización del sistema de sucursales",
@@ -63,6 +66,7 @@
             {
               title: "Plataforma y entrega",
               items: [
+                "El repositorio estaba en un servidor de Azure, y ahí se subían los cambios.",
                 "Los servicios corren en contenedores, en el servidor de la empresa. Escribí los manifiestos y me encargué de los builds, la publicación, el monitoreo y los incidentes.",
                 "Construí un tablero de disponibilidad: si la base responde y si los endpoints están visibles."
               ]
@@ -79,6 +83,16 @@
               ]
             },
             {
+              title: "Prueba de un LLM local",
+              paragraphs: [
+                "La idea era un asistente en el sitio de la sucursal: responder si un medicamento tenía una actualización disponible o si había entrado uno nuevo. Lo implementé y lo probé en mi máquina. No llegó a la operación de las sucursales."
+              ],
+              items: [
+                "Ollama corría en un contenedor Docker, sin un servicio externo. La interfaz con la que lo implementé y lo probé fue Ollama-WebUI-Lite.",
+                "El modelo fue Llama 3.2 1B, liviano, acorde al equipo donde corría."
+              ]
+            },
+            {
               title: "Trabajo con el negocio",
               paragraphs: [
                 "Formé parte del equipo de desarrollo. En las revisiones mostraba avances, el enfoque, la estrategia y los bloqueos.",
@@ -92,13 +106,14 @@
               ]
             }
           ],
-          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "SQL Server"]
+          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "SQL Server", "Git", "Servidor Azure", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
         }
       },
       {
         title: "Ingeniero de software", company: "Netviax Solutions",
         icon: "/img/companies/netviax.png",
         period: "Feb. 2022 – feb. 2023", place: "Montevideo", start: 2022, end: 2023, featured: true,
+        context: { maturity: 3, mode: "hybrid", teamMore: 3 },
         clients: [
           { name: "TocToc Viajes", url: "https://toctocviajes.com", icon: "/img/clients/toctoc.png" },
           { name: "Buemes", url: "https://buemes.com.uy", icon: "/img/clients/buemes.png" },
@@ -111,7 +126,7 @@
         highlights: [
           "Mantuve el sistema de reservas de vuelos de estas agencias sobre un mismo frontend, personalizado para cada una.",
           "Resolvía de 3 a 4 defectos por semana e incorporé un módulo de equipaje, adaptando una vista a los tipos de equipaje de la reserva.",
-          "Mejoré el tiempo de respuesta del procedimiento almacenado de vuelos. El frontend en AngularJS corría en un microservicio, con Redis, y el contenedor pasaba a producción después de probarlo en local."
+          "Mejoré el tiempo de respuesta del procedimiento almacenado de vuelos. El frontend en AngularJS corría en un microservicio, con Redis, y el contenedor pasaba a producción después de probarlo en local. El código se versionaba en Bitbucket."
         ],
         caseStudy: {
           kicker: "Reservas de vuelos para agencias",
@@ -156,28 +171,41 @@
               title: "Frontend y publicación",
               items: [
                 "El frontend era AngularJS y corría sobre un microservicio.",
-                "El servicio iba en un contenedor Docker. Se probaba en local y, si cumplía los requisitos, el contenedor pasaba a producción."
+                "El servicio iba en un contenedor Docker. Se probaba en local y, si cumplía los requisitos, el contenedor pasaba a producción.",
+                "El código se versionaba en Git, con los repositorios en Bitbucket."
               ]
             }
           ],
-          stack: ["AngularJS", "JavaScript", "Redis", "Docker", "Microservicio", "Pasarela de pagos"]
+          stack: ["AngularJS", "JavaScript", "Redis", "Docker", "Microservicio", "Pasarela de pagos", "Git", "Bitbucket"]
         }
+      },
+      {
+        gap: true,
+        featured: true,
+        period: "Mar. 2020 – feb. 2022",
+        start: 2020,
+        end: 2022,
+        note: "Entre el Hospital Evangélico y Netviax el regreso al trabajo fue lento: la pandemia fue global. En ese intervalo hice trabajo remoto de forma esporádica."
       },
       {
         title: "Desarrollador", company: "Mutualista Hospital Evangélico",
         icon: "/img/companies/evangelico.png",
         period: "Jun. 2019 – mar. 2020", place: "Montevideo", start: 2019, end: 2020, featured: true,
+        context: { maturity: 2, mode: "onsite", team: 4 },
         highlights: [
+          "El sistema abarcaba todo el hospital. En cada consultorio se consultaba la historia clínica. El procedimiento almacenado leía y modificaba tablas y, al modificarlas, bloqueaba la tabla entera. Con varios consultorios a la vez, el sistema quedaba bloqueado hasta que la tabla se liberaba.",
+          "Pasé el bloqueo de la tabla al registro (bloqueo a nivel de fila). Si un registro estaba en uso, los demás podían leerlo y solo ese registro quedaba bloqueado hasta liberarse. Con eso se resolvió el bloqueo del sistema.",
+          "Desarrollé un script de monitoreo de fallas de servicios web. La caída que quedaba cada día venía de las actualizaciones del sistema operativo. Lo identifiqué con ese monitoreo y lo coordiné con soporte IT: notifican la actualización o dejan el sistema apagado hasta que termina, cuando en todo el hospital hay dos o tres consultas ocasionales.",
           "Resolví problemas de sincronización de base de datos para suministros médicos.",
-          "Identifiqué la causa de fallas de acceso a la red de clientes desactualizados.",
-          "Desarrollé un script de monitoreo de fallas de servicios web."
+          "Identifiqué la causa de fallas de acceso a la red de clientes desactualizados."
         ],
         caseStudy: {
           kicker: "Monitoreo y reproducción de fallas",
           hint: "Capturas en C#, tablero en Zabbix y auditoría en Bash.",
           lead: "Añadí un módulo en C# para reproducir fallas con capturas de pantalla, y monitoreo con Zabbix y Bash sobre caídas, la base de datos y los procesos lentos.",
           metrics: [
-            { value: "C#", label: "módulo de capturas para reproducir fallas" },
+            { value: "Por registro", label: "bloqueo en lugar de la tabla entera" },
+            { value: "Hospital", label: "historia clínica en cada consultorio" },
             { value: "Zabbix", label: "caídas, sobrecarga y cuellos de botella" },
             { value: "Bash", label: "auditoría de memoria, CPU y disco" }
           ],
@@ -191,7 +219,10 @@
             {
               title: "Tablero de monitoreo",
               paragraphs: [
-                "Creé una integración de tablero con Zabbix para monitorear caídas del sistema, sobrecarga de la base de datos y cuellos de botella."
+                "Creé una integración de tablero con Zabbix para monitorear caídas del sistema, sobrecarga de la base de datos y cuellos de botella.",
+                "Al consultar la historia clínica, el procedimiento almacenado leía y modificaba algunas tablas. Al modificarlas bloqueaba la tabla entera. Si varios consultorios accedían a la vez, el sistema quedaba bloqueado hasta liberar la tabla. En un hospital grande, eso se multiplicaba por las consultas de cada consultorio.",
+                "Lo resolví bloqueando el registro y no la tabla. Si se usaba un registro, nadie más podía modificarlo hasta liberarlo, y la lectura de ese registro seguía permitida. Con eso se resolvió el bloqueo del sistema.",
+                "La caída que quedaba cada día venía de las actualizaciones del sistema operativo. Lo identifiqué con el monitoreo y lo coordiné con soporte IT: notifican la actualización o dejan el sistema apagado hasta que termina, cuando en todo el hospital hay dos o tres consultas ocasionales, para no afectar la operativa."
               ]
             },
             {
@@ -208,6 +239,7 @@
         title: "Desarrollador de software", company: "1950Labs",
         icon: "/img/companies/labs.png",
         period: "2018 – 2019", place: "Montevideo", start: 2018, end: 2019, featured: true,
+        context: { maturity: 3, mode: "hybrid", teamMore: 4 },
         clients: [
           { name: "EY", url: "https://www.ey.com/", icon: "/img/clients/ey.png" }
         ],
@@ -274,21 +306,26 @@
         title: "Programador de software", company: "Electrosistemas SA",
         icon: "/img/companies/electrosistemas.png",
         period: "May. 2015 – mar. 2017", place: "Montevideo", start: 2015, end: 2017,
+        context: { maturity: 1, maturityTo: 2, mode: "onsite", team: 2 },
         highlights: [
+          "Electrosistemas tenía un ERP propio, en Visual Basic, conectado a SQL Server.",
+          "Implementé el reporte de carga de combustible por SMS para una flota de 5 camiones de obra y 3 camionetas. Controlaba las cargas en los viajes al interior y mejoró la precisión del gasto estimado de las cuadrillas en las obras de los departamentos del país.",
+          "Optimicé una consulta del ERP que tardaba minutos en reunir y procesar los datos. Pasó a resolverse en pocos segundos.",
           "Introduje el sistema de caja chica, reduciendo a menos de la mitad el tiempo de los cálculos.",
-          "Optimicé el control de combustible de la flota al registrar las recargas en estaciones de servicio."
+          "Puse el código del ERP en SVN, que era la herramienta de versiones de ese momento, y lo documenté. Cada cambio se probaba antes de llegar a producción."
         ]
       },
       {
         title: "Desarrollador Fullstack .NET", company: "Númina S.A.",
         icon: "/img/companies/numina.png",
         period: "Mar. 2013 – abr. 2015", place: "Montevideo", start: 2013, end: 2015, featured: true,
+        context: { maturity: 4, mode: "onsite", team: 2 },
         clients: [
           { name: "JTech", url: "https://jtech.com.uy/", icon: "/img/clients/jtech.png" },
           { name: "Grupo Record", url: "https://gruporecord.com.uy/", icon: "/img/clients/gruporecord.png" }
         ],
         highlights: [
-          "Implementé un sistema de migración universal para la plataforma web Nopcommerce de todos los proyectos ERP.",
+          "Implementé un sistema de migración universal a la plataforma web Nopcommerce para los proyectos ERP. Cuatro clientes quedaron en esa plataforma, cada uno con la interfaz adaptada a lo que quería mostrar.",
           "Capacité a los clientes en la nueva plataforma."
         ],
         caseStudy: {
@@ -299,14 +336,14 @@
             { value: "Clarion", label: "origen de los datos" },
             { value: "SQL Server", label: "tipo y formato de destino" },
             { value: "ASP.NET", label: "Nopcommerce de código abierto" },
-            { value: "Nuevas", label: "funciones fuera del paquete" }
+            { value: "4", label: "clientes, cada uno con su interfaz" }
           ],
           sections: [
             {
               title: "Clientes",
               showClients: true,
               paragraphs: [
-                "JTech y Grupo Record quedaron sobre esa plataforma."
+                "Cuatro clientes quedaron sobre esa plataforma. JTech y Grupo Record son dos de ellos. En cada caso adapté la interfaz, porque cada uno quería mostrar información distinta."
               ]
             },
             {
@@ -335,8 +372,11 @@
         title: "Desarrollador", company: "Assist",
         icon: "/img/companies/assist.png",
         period: "2012 – 2013", place: "Montevideo", start: 2012, end: 2013,
+        context: { maturity: 2, mode: "onsite", team: 2 },
         highlights: [
+          "Trabajé el CMS configurable de Assist, sobre SQL Server: una parte en formularios de escritorio de VB6 y otra en Visual FoxPro. Las consultas a la base devolvían reportes de Crystal Reports, también para los dispositivos Palm de esa época.",
           "Diseñé consultas personalizadas para clientes de la cadena de abastecimiento, eliminando reclamos por falta de datos.",
+          "Corregí fallas de HTML, errores en los procedimientos almacenados y el formato de salida de esos reportes.",
           "Identifiqué el error que causaba lentitud en el acceso a la base de datos."
         ]
       },
@@ -344,27 +384,76 @@
         title: "Desarrollador Sr. .NET", company: "Tata Consultancy Services",
         icon: "/img/companies/tcs.png",
         period: "Mar. 2010 – jul. 2012", place: "Zonamérica, Montevideo", start: 2010, end: 2012,
+        context: { maturity: 5, mode: "onsite", teamMore: 4 },
         parallel: "En paralelo con Estudio Palma en 2010",
-        highlights: ["Localicé el error que generaba inconsistencias de datos y eliminé los reclamos por cálculo de la agenda web de un sistema de terceros."]
+        highlights: [
+          "Depuré HzERM, el sistema en VB6 con el que McKesson gestionaba una red de hospitales en varios estados de Estados Unidos. Corregí errores en las consultas a SQL Server, muchas en procedimientos almacenados, dentro de eventos de la interfaz que tenían cientos de líneas.",
+          "En AOS Hosteling, de PwC, corregí defectos y diseñé los formularios WinForms. El sistema reservaba oficinas corporativas en Nueva York, en un esquema parecido al de un coworking. Tracker, en WPF, gestionaba los impuestos anuales exigidos en Estados Unidos.",
+          "Localicé el error que generaba inconsistencias de datos y eliminé los reclamos por cálculo de la agenda web de un sistema de terceros.",
+          "En Tracker, un defecto de la interfaz había pasado por varios desarrolladores y nadie encontraba la causa. Era un error de sintaxis en el XAML: una coma pasaba mal un parámetro. Al corregirla, la interfaz volvió a funcionar."
+        ]
       },
       {
         title: "Desarrollador", company: "Estudio Palma (estudio contable)",
         period: "Mar. 2007 – nov. 2010", place: "Montevideo", start: 2007, end: 2010,
+        context: { maturity: 1, maturityTo: 2, mode: "onsite", team: 2 },
         parallel: "En paralelo con TCS en 2010",
         highlights: [
-          "Automatización del módulo de recibos y sistema de notificaciones agendadas por correo.",
-          "Mejoras de interfaz, análisis e implementación de cambios, diseño e integración de reportes. Scrum, .NET, Access."
+          "Automaticé el módulo de recibos y las notificaciones agendadas por correo, con interfaz de escritorio en WinForms, en un proceso Scrum.",
+          "Depuré el código en Visual Studio .NET y reorganicé las bases del ERP: actualicé Access con ADO y ODBC e integré reportes en Crystal Reports y Excel. Usé C#, Visual Basic 6.0 y Visual Basic .NET, sobre Windows XP y Windows Server 2008.",
+          "Armé respaldos del código y de las bases del ERP del estudio. El código quedó en SVN y el sistema, documentado."
         ]
       },
       {
         title: "Profesor", company: "Círculo Informático",
         period: "Feb. 2006 – feb. 2008", place: "Minas, Canelones", start: 2006, end: 2008,
-        highlights: ["Carreras de Analista de Sistemas, Programador, Desarrollador Web, y Reparación de PC y Redes."]
+        highlights: ["Dicté las carreras de Analista de Sistemas, Programador y Desarrollador Web, y el curso de Reparación de PC y Redes."],
+        caseStudy: {
+          kicker: "Temas que dicté",
+          hint: "Contenidos de las carreras y del curso de reparación.",
+          lead: "En Círculo Informático dicté esas carreras y el curso de reparación. El programa cubría diseño, desarrollo web y de escritorio, bases de datos y operación de PC.",
+          metrics: [
+            { value: "Analista", label: "de Sistemas" },
+            { value: "Programador", label: "carrera técnica" },
+            { value: "Web", label: "Desarrollador Web" },
+            { value: "PC y redes", label: "curso de reparación" }
+          ],
+          sections: [
+            {
+              title: "Diseño y multimedia",
+              paragraphs: [
+                "Dicté animación 3D multimedia y diseño gráfico, y usé FrontPage y Dreamweaver para armar páginas."
+              ]
+            },
+            {
+              title: "Programación",
+              paragraphs: [
+                "En programación cubrí definición de requisitos, especificaciones técnicas, desarrollo de interfaces gráficas, depuración de código e integración de sistemas. Los entornos eran Visual Studio .NET, Eclipse y NetBeans, con C# y Java."
+              ]
+            },
+            {
+              title: "Desarrollo web",
+              paragraphs: [
+                "En la web dicté HTML, XHTML, CSS, DHTML, JavaScript y jQuery, y también PHP, Drupal y Ruby on Rails."
+              ]
+            },
+            {
+              title: "Sistemas y operación",
+              paragraphs: [
+                "También dicté SQL, Linux, Windows XP, Microsoft Office y operación de PC, junto con la reparación de PC y redes."
+              ]
+            }
+          ]
+        }
       },
       {
         title: "Desarrollador y administrador de bases de datos", company: "Lidertur S.A.",
         period: "Jul. 2003 – ene. 2006", place: "Montevideo", start: 2003, end: 2006,
-        highlights: ["Análisis y refactorización, administración de base de datos, mantenimiento del generador de reportes de recibos y del control de stock."]
+        context: { maturity: 1, maturityTo: 2, mode: "onsite", team: 2 },
+        highlights: [
+          "Análisis y refactorización, administración de base de datos, mantenimiento del generador de reportes de recibos y del control de stock.",
+          "El generador de reportes y el control de stock quedaron documentados, con el código en SVN —la herramienta de versiones de ese momento— y un respaldo del código y de la base de datos."
+        ]
       },
       {
         title: "Profesor", company: "ITM Instituto Técnico del Mercosur",
@@ -457,26 +546,6 @@
         }
       },
       {
-        id: "tesoros",
-        name: "Tesoros de Mi Alma",
-        description: "Libro digital en español, inglés y portugués, con modo oscuro y tamaño de letra.",
-        url: "https://github.com/AlejandroParada/TesorosDeMiAlma",
-        demo: "https://alejandroparada.github.io/TesorosDeMiAlma/",
-        demoLabel: "Ver libro",
-        period: "Sep. 2026",
-        featured: true,
-        detail: {
-          kicker: "Repositorio TesorosDeMiAlma",
-          lead: "Un libro digital para leer en el celular o en el escritorio, sin frameworks.",
-          items: [
-            "El mismo contenido está en español, inglés y portugués.",
-            "Incluye modo oscuro, ajuste del tamaño de letra y navegación por teclado.",
-            "Los capítulos se cargan desde Markdown y el libro se puede leer en el sitio publicado."
-          ],
-          stack: ["HTML", "CSS", "JavaScript", "Markdown"]
-        }
-      },
-      {
         id: "checklist",
         name: "ChecklistEmergencia",
         description: "PWA de preparación para emergencias del Barrio Los Ceibos.",
@@ -501,7 +570,7 @@
       },
       {
         name: "Electrosistemas SSGO", company: "Electrosistemas SA", icon: "/img/companies/electrosistemas.png", period: "Ago. 2015 – mar. 2017",
-        description: "Módulos de caja chica, combustible, agenda logística, legajo, reclamo de cercos (móvil) y costos.", url: "", featured: true
+        description: "Módulos de caja chica, combustible por SMS, agenda logística, legajo, reclamo de cercos (móvil) y costos.", url: "", featured: true
       },
       {
         name: "Numina JTech", company: "Númina S.A.", icon: "/img/companies/numina.png", period: "Dic. 2014 – mar. 2015",
@@ -513,15 +582,15 @@
       },
       {
         name: "McKesson – HzERM", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "Ago. 2010 – ene. 2011",
-        description: "Cliente de Estados Unidos. Sistema legado híbrido. Corregí defectos y optimicé consultas. Zonamérica, Montevideo.", url: "", featured: true
+        description: "Cliente de Estados Unidos. Sistema en VB6 para una red de hospitales en varios estados. Corregí consultas a SQL Server, muchas en procedimientos almacenados, y eventos de la interfaz de cientos de líneas. Zonamérica, Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – AOS Hosteling", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "2010",
-        description: "Cliente de Estados Unidos. Migración de un sistema legado en dBase y WinForms a WPF, hacia un sistema más web y distribuido. Montevideo.", url: "", featured: true
+        description: "Cliente de Estados Unidos. Agenda de PwC para reservar oficinas corporativas en Nueva York, parecida a un coworking. Corregí defectos y diseñé los formularios WinForms. Montevideo.", url: "", featured: true
       },
       {
         name: "PricewaterhouseCoopers – Tracker", company: "Tata Consultancy Services", icon: "/img/companies/tcs.png", period: "2010",
-        description: "Cliente de Estados Unidos. Migración de un sistema legado en dBase y WinForms a WPF, hacia un sistema más web y distribuido. Montevideo.", url: "", featured: true
+        description: "Cliente de Estados Unidos. Herramienta de PwC para gestionar los impuestos anuales exigidos en Estados Unidos. Resolví un error de sintaxis en el XAML de WPF: una coma pasaba mal un parámetro. Montevideo.", url: "", featured: true
       },
       {
         name: "Estudio Palma – IRPF Manager System", company: "Estudio Palma", period: "2007 – 2009",

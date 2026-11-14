@@ -179,9 +179,17 @@
     join(section.paragraphs, (paragraph) => `<p>${esc(paragraph)}</p>`) +
     (section.items && section.items.length ? list(section.items) : "");
 
+  const caseTeamMetric = (job) => {
+    const ctx = job.context || {};
+    const more = Boolean(ctx.teamMore);
+    const count = more ? ctx.teamMore : ctx.team;
+    if (!count) return "";
+    return `<div class="case-metric"><b>${more ? "+" : ""}${count}</b><span>${esc(s.teamCaseLabel)}</span></div>`;
+  };
+
   const caseStudyBody = (job) => {
     const study = job.caseStudy;
-    const metrics = `<div class="case-metrics">${join(study.metrics, (metric) =>
+    const metrics = `<div class="case-metrics">${caseTeamMetric(job)}${join(study.metrics, (metric) =>
       `<div class="case-metric"><b>${esc(metric.value)}</b><span>${esc(metric.label)}</span></div>`
     )}</div>`;
     const sections = join(study.sections, (section) =>
@@ -193,6 +201,76 @@
     return (study.lead ? `<p class="case-lead">${esc(study.lead)}</p>` : "") + metrics + sections + stack;
   };
 
+  const SHIELD = `<svg class="mark-icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.1 13.4 3.1v4.6c0 3.3-2.3 5.6-5.4 6.9-3.1-1.3-5.4-3.6-5.4-6.9V3.1L8 1.1z"/></svg>`;
+  const BUILDING = `<svg class="mode-icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 14V2.5h10V14H3zm1.6-9.2h2.1v2H4.6v-2zm4.7 0h2.1v2H9.3v-2zM4.6 8.2h2.1v2H4.6v-2zm4.7 0h2.1v2H9.3v-2z"/></svg>`;
+  const HOUSE = `<svg class="mode-icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 2.2 1.5 7.2h1.7V14h3.6V9.4h2.4V14h3.6V7.2h1.7L8 2.2z"/></svg>`;
+  const PERSON = `<svg class="team-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="4.6" r="2.25" fill="currentColor"/><path fill="currentColor" d="M3.2 14.1c.4-2.7 2.15-4.15 4.8-4.15s4.4 1.45 4.8 4.15H3.2z"/></svg>`;
+
+  const shields = (level) => {
+    let html = "";
+    for (let i = 0; i < level; i += 1) html += `<span class="shield">${SHIELD}</span>`;
+    return `<span class="shields" aria-hidden="true">${html}</span>`;
+  };
+
+  const modeIcons = (mode) => (mode === "hybrid" ? BUILDING + HOUSE : BUILDING);
+
+  const teamBits = (count, more) =>
+    `<span aria-hidden="true">${more ? "+" : ""}${count}</span>${PERSON}`;
+
+  const teamMark = (count, more) =>
+    `<span class="job-team"><span class="visually-hidden">${esc(s.teamLabel(count, more))}</span>${teamBits(count, more)}</span>`;
+
+  const teamFigure = (count, more) =>
+    `<span class="job-team" aria-hidden="true">${teamBits(count, more)}</span>`;
+
+  const jobTeam = (ctx) => {
+    if (ctx.teamMore) return teamMark(ctx.teamMore, true);
+    if (ctx.team) return teamMark(ctx.team, false);
+    return "";
+  };
+
+  const jobContext = (job, { sheet = false } = {}) => {
+    const ctx = job.context;
+    if (!ctx || !ctx.maturity) return "";
+    const to = ctx.maturityTo > ctx.maturity ? ctx.maturityTo : 0;
+    const rating = to
+      ? `${shields(ctx.maturity)}<span class="context-arrow" aria-hidden="true">→</span>${shields(to)}`
+      : shields(ctx.maturity);
+    const mode = ctx.mode === "hybrid" ? s.modeHybrid : s.modeOnsite;
+    const note = ctx.modeNote ? ` · ${esc(ctx.modeNote)}` : "";
+    const team = jobTeam(ctx);
+    const maturity = `<span class="job-maturity"><span class="visually-hidden">${esc(s.maturityLabel(ctx.maturity, to || null))}</span>${rating}</span>`;
+    const place = ctx.mode
+      ? `<span class="job-mode">${modeIcons(ctx.mode)}<span>${esc(mode)}${note}</span></span>`
+      : "";
+    const bar = `<span class="context-bar" aria-hidden="true">|</span>`;
+    if (sheet) {
+      return `<span class="job-context job-context-sheet">` +
+        [maturity, team, place].filter(Boolean).join(bar) +
+      `</span>`;
+    }
+    return `<span class="job-context">` +
+      maturity +
+      place +
+      team +
+    `</span>`;
+  };
+
+  const jobLegend = () =>
+    `<details class="job-legend">` +
+      `<summary>${esc(s.legendSummary)}</summary>` +
+      `<div class="job-legend-body">` +
+        `<p class="job-legend-lead">${esc(s.processLegend)}</p>` +
+        `<ol>${join(s.processLevels, (label, i) => `<li>${shields(i + 1)}<span>${esc(label)}</span></li>`)}</ol>` +
+        `<p class="job-legend-modes">` +
+          `<span>${BUILDING}<span>${esc(s.modeOnsite)}</span></span>` +
+          `<span>${BUILDING}${HOUSE}<span>${esc(s.modeHybrid)}</span></span>` +
+          `<span>${teamFigure(2, false)}<span>${esc(s.teamLegendExact)}</span></span>` +
+          `<span>${teamFigure(4, true)}<span>${esc(s.teamLegendMore)}</span></span>` +
+        `</p>` +
+      `</div>` +
+    `</details>`;
+
   const caseEntry = (job, id) => job.caseStudy
     ? `<div class="sheet-more">` +
         (job.caseStudy.hint ? `<p class="meta">${esc(job.caseStudy.hint)}</p>` : "") +
@@ -202,15 +280,22 @@
       `</div>`
     : "";
 
-  const jobButton = ({ id, job }) =>
-    `<div class="job-row">` +
+  const jobButton = ({ id, job }) => {
+    if (job.gap) {
+      return `<div class="job-row job-gap"><p class="meta">${esc(job.period)}</p><p>${esc(job.note)}</p></div>`;
+    }
+    return `<div class="job-row">` +
       `<button type="button" class="jb" ${detailAttrs("job", id)}>` +
-        jobIdentity(job) +
-        (job.parallel ? `<span class="parallel">${esc(job.parallel)}</span>` : "") +
+        `<span class="job-main">` +
+          jobIdentity(job) +
+          (job.parallel ? `<span class="parallel">${esc(job.parallel)}</span>` : "") +
+        `</span>` +
+        jobContext(job) +
       `</button>` +
       list(job.highlights, "job-details") +
       (job.caseStudy ? `<div class="case-print">${caseStudyBody(job)}</div>` : "") +
     `</div>`;
+  };
 
   const decade = ({ label, range, entries }, open) =>
     `<details class="dec"${open ? " open" : ""}>` +
@@ -251,6 +336,7 @@
   const jobDetail = (job, id) => sheetLayout({
     titleHtml: jobIdentity(job, { place: true }),
     body:
+      jobContext(job, { sheet: true }) +
       (job.parallel ? `<p class="parallel">${esc(job.parallel)}</p>` : "") +
       caseEntry(job, id) +
       clientLinks(job.clients) +
@@ -291,6 +377,7 @@
     chips, chipGroups, chipGroupsMore, chipGroupsChrono, more, byFeatured, timelineItem, card, decades, jobDetail, certDetail, projectDetail, caseStudy,
     cards: (items) => join(items, card),
     timeline: (items) => join(items, timelineItem),
-    jobList: (entries) => join(entries, jobButton)
+    jobList: (entries) => join(entries, jobButton),
+    jobLegend
   });
 })(window.CV = window.CV || {});

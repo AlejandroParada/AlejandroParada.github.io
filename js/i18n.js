@@ -18,6 +18,26 @@
       skills: "Habilidades",
       certificateAlt: (name) => `Certificado: ${name}`,
       jobCount: (n) => `${n} ${n === 1 ? "puesto" : "puestos"}`,
+      processLegend: "Prácticas de desarrollo presentes en el equipo: cuenta cuántas había, no si se hacían bien o mal. La flecha marca el nivel que dejé.",
+      legendSummary: "Referencia de íconos",
+      processLevels: [
+        "Sin práctica formal",
+        "Práctica básica",
+        "Entornos y entregas ordenadas",
+        "Revisión, integración y pruebas",
+        "Proceso corporativo"
+      ],
+      modeOnsite: "Presencial",
+      modeHybrid: "Híbrido",
+      maturityLabel: (from, to) => to
+        ? `Prácticas presentes: ${from} de 5 al llegar, ${to} de 5 al salir`
+        : `Prácticas presentes: ${from} de 5`,
+      teamLabel: (n, more) => more
+        ? `Equipo de más de ${n} personas`
+        : `Equipo de ${n} ${n === 1 ? "persona" : "personas"}`,
+      teamLegendExact: "personas en el equipo",
+      teamLegendMore: "más de 4 personas",
+      teamCaseLabel: "personas realizaban el desarrollo",
       decade: (year) => `Años ${year}`,
       present: "hoy",
       hours: (n) => `≈ ${n} horas`,
@@ -42,6 +62,26 @@
       skills: "Skills",
       certificateAlt: (name) => `Certificate: ${name}`,
       jobCount: (n) => `${n} ${n === 1 ? "role" : "roles"}`,
+      processLegend: "Development practices present on the team: it counts how many were in place, not how well they were followed. The arrow marks the level I left.",
+      legendSummary: "Icon key",
+      processLevels: [
+        "No formal practice",
+        "Basic practice",
+        "Separate environments and steady releases",
+        "Review, integration and tests",
+        "Corporate process"
+      ],
+      modeOnsite: "On-site",
+      modeHybrid: "Hybrid",
+      maturityLabel: (from, to) => to
+        ? `Practices in place: ${from} of 5 on arrival, ${to} of 5 on leaving`
+        : `Practices in place: ${from} of 5`,
+      teamLabel: (n, more) => more
+        ? `Team of more than ${n} people`
+        : `Team of ${n} ${n === 1 ? "person" : "people"}`,
+      teamLegendExact: "people on the team",
+      teamLegendMore: "more than 4 people",
+      teamCaseLabel: "people carried out the development",
       decade: (year) => `${year}s`,
       present: "present",
       hours: (n) => `≈ ${n} hours`,

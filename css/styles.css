@@ -106,6 +106,18 @@ ul { margin: 0; padding-left: 1.1rem; }
    ========================================================================== */
 .muted { color: var(--mute); }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .meta {
   margin: 0;
   color: var(--mute);
@@ -683,6 +695,122 @@ section {
   font-size: .9rem;
 }
 
+.job-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .28rem .7rem;
+  margin-top: .4rem;
+  color: var(--mute);
+  font-size: .82rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.job-maturity,
+.job-mode,
+.job-team,
+.job-legend li,
+.job-legend-modes > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .28rem;
+}
+
+.shields {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--acc);
+}
+
+.mark-icon,
+.mode-icon {
+  display: block;
+  flex: none;
+}
+
+.mark-icon { width: .78rem; height: .78rem; }
+
+.mode-icon { width: .9rem; height: .9rem; }
+
+.team-icon { width: 1rem; height: 1rem; }
+
+.job-team {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.context-arrow {
+  margin: 0 .12rem;
+  color: var(--ink);
+  font-size: .85rem;
+  line-height: 1;
+}
+
+.context-bar {
+  color: var(--mute);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.job-legend {
+  margin: 0 0 .35rem;
+  border: 0;
+  background: none;
+  color: var(--mute);
+  font-size: .8rem;
+}
+
+.job-legend summary {
+  width: fit-content;
+  color: var(--mute);
+  cursor: pointer;
+  list-style: none;
+}
+
+.job-legend summary::-webkit-details-marker { display: none; }
+
+.job-legend summary::before {
+  content: "";
+  display: inline-block;
+  width: .4rem;
+  height: .4rem;
+  margin-right: .4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg) translateY(-.1rem);
+  vertical-align: middle;
+}
+
+.job-legend[open] summary::before { transform: rotate(45deg) translateY(-.1rem); }
+
+.job-legend-body {
+  margin-top: .45rem;
+  padding: .6rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.job-legend-lead {
+  margin: 0 0 .45rem;
+  color: var(--ink);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.job-legend ol,
+.job-legend-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.job-legend-modes { margin-top: .55rem; }
+
 .parallel {
   display: inline-block;
   margin-top: .35rem;
@@ -864,7 +992,9 @@ section {
 
 /* Botón de puesto */
 .jb {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: .45rem .8rem;
   width: 100%;
   padding: .7rem .9rem;
   border: 0;
@@ -875,6 +1005,37 @@ section {
   font: inherit;
   text-align: left;
   cursor: pointer;
+}
+
+.job-main {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.jb > .job-context {
+  flex: 1 1 50%;
+  max-width: 50%;
+  margin-top: .05rem;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: .32rem;
+}
+
+.jb > .job-context .job-maturity,
+.jb > .job-context .job-mode,
+.jb > .job-context .job-team {
+  justify-content: flex-start;
+}
+
+.job-context-sheet {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: none;
+  margin-top: .15rem;
+  gap: .2rem .45rem;
+  text-align: left;
 }
 
 .job-id {
@@ -903,6 +1064,16 @@ section {
   font-size: .9rem;
   font-weight: 400;
 }
+
+.job-gap {
+  margin: .15rem 0 .55rem;
+  padding: .15rem 0 .45rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.job-gap p { margin: 0; }
+
+.job-gap .meta { margin-bottom: .15rem; }
 
 .sheet-title .job-company,
 .case-head .job-company {
@@ -1346,14 +1517,21 @@ body.is-case-open { overflow: hidden; }
    ========================================================================== */
 @media print {
   :root,
-  :root[data-theme] { color-scheme: light; }
+  :root[data-theme],
+  :root[data-theme="light"],
+  :root[data-theme="dark"] { color-scheme: light !important; }
   body {
     background: #fff;
     color: #000;
     padding-bottom: 0;
   }
-  .wrap { display: block; }
+  .wrap {
+    display: block;
+    padding-block: 0;
+  }
+  section { margin-bottom: 1.4rem; }
   #main > section[hidden] { display: block !important; }
+  .mast,
   .topbar,
   .identity-toggle,
   .order-toggle,
@@ -1365,29 +1543,86 @@ body.is-case-open { overflow: hidden; }
   .map-drawer,
   .map-backdrop,
   .pager,
+  .actions,
   .btn,
   .skip-link,
   .sheet,
   .case-sheet,
   .case-backdrop,
-  .more > summary { display: none; }
+  .case-handle,
+  .more > summary,
+  #main .tag.muted { display: none !important; }
   .case-print {
     display: block;
-    margin: .2rem 0 .9rem;
-    padding-left: 2.2rem;
+    margin: .15rem 0 1rem;
+    padding-left: 0;
   }
   .case-section,
-  .case-metric { break-inside: avoid; }
-  .contact-print { display: block; }
-  html.show-identity .profile { display: block; }
+  .case-metric,
+  .card,
+  .timeline-item { break-inside: avoid; }
+  .case-metric b { white-space: normal; }
+  .contact-print { display: block; color: #000; }
+  .profile,
+  html.show-identity .profile { display: block !important; }
+  aside,
+  .mast { position: static !important; }
   .location-text { display: block; }
   .job-details {
     display: block;
-    margin: .3rem 0 .6rem;
-    padding-left: 2.2rem;
+    margin: .25rem 0 .7rem;
+    padding-left: 0;
   }
-  .jb { cursor: default; }
-  .dec,
-  .card,
-  .timeline-item { break-inside: avoid; }
+  .job-legend summary { display: none; }
+  .job-legend { margin: 0 0 .8rem; color: #000; }
+  .job-legend-body {
+    display: block !important;
+    background: none;
+    border-color: #ccc;
+  }
+  .job-legend li,
+  .job-legend-modes > span { break-inside: avoid; }
+  .jb {
+    display: flex;
+    align-items: flex-start;
+    gap: .4rem 1.2rem;
+    width: 100%;
+    margin: 0;
+    padding: .55rem 0 .1rem;
+    border: 0;
+    background: none;
+    color: #000;
+    cursor: default;
+    break-inside: avoid;
+  }
+  .job-main { flex: 1 1 58%; }
+  .jb > .job-context {
+    flex: 0 1 42%;
+    max-width: 42%;
+    margin: 0;
+    color: #000;
+  }
+  .dec {
+    margin: 0 0 .3rem;
+    border: 0;
+    background: none;
+    break-inside: auto;
+  }
+  .dec summary {
+    padding: .35rem 0 .1rem;
+    cursor: default;
+  }
+  .dec summary::before { display: none; }
+  .dec-body { padding: 0; }
+  .job-gap {
+    color: #000;
+    border-bottom-color: #ccc;
+    break-inside: avoid;
+  }
+  .shields,
+  .mode-icon,
+  .team-icon {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }

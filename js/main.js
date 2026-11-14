@@ -38,7 +38,7 @@
   let jobOrder = "tech";
 
   const renderJobs = () => {
-    renderInto("jobs", JOB_ORDERS[jobOrder]());
+    renderInto("jobs", t.jobLegend() + JOB_ORDERS[jobOrder]());
     const chrono = jobOrder === "chrono";
     $$("[data-action='toggle-job-order']").forEach((button) => button.setAttribute("aria-pressed", String(chrono)));
     $$("[data-decade-actions]").forEach((el) => { el.hidden = chrono; });
@@ -112,7 +112,7 @@
   });
 
   const decadeDetails = () => $$(`${slot("jobs")} details.dec`);
-  const foldDetails = () => $$("details.dec, details.more");
+  const foldDetails = () => $$("details.dec, details.more, details.job-legend");
 
   const setDecadesOpen = (open) => decadeDetails().forEach((d) => { d.open = open; });
 
