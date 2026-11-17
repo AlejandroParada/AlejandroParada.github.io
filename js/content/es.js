@@ -6,11 +6,11 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", ".NET Framework", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django"],
-      "Datos": ["PostgreSQL", "SQL Server", "SQLite", "Sincronización de bases de datos", "Optimización de consultas", "MS Access"],
-      "Frontend": ["JavaScript", "HTML y CSS responsivo", "AngularJS"],
-      "DevOps": ["Docker", "GitHub Actions", "Linux", "Git", "Bitbucket", "SVN"],
-      "Métodos": ["Modernización de sistemas legados", "Scrum", "Nopcommerce", "ISO 9000", "Auditoría de calidad"]
+      "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", "Testcontainers", ".NET Framework", "ASP.NET MVC", "APIs REST", "Servicios web", "Python", "Django", "Nopcommerce"],
+      "Datos": ["PostgreSQL", "SQL Server", "SQLite", "Redis", "Sincronización de bases de datos", "Optimización de consultas", "MS Access"],
+      "Frontend": ["TypeScript", "Tailwind CSS", "PWA", "Service Workers", "JavaScript", "HTML y CSS responsivo", "AngularJS"],
+      "DevOps": ["Docker", "Kubernetes", "GitHub Actions", "Linux", "Bash", "Zabbix", "Git", "Bitbucket", "SVN"],
+      "Métodos": ["Modernización de sistemas legados", "Scrum", "ISO 9001", "Auditoría de calidad"]
     },
 
     /* start/end: años usados para agrupar por década. end: null = actualidad. */
@@ -24,8 +24,11 @@
           "Reemplacé el mostrador de escritorio en VB6, sin soporte y con librerías obsoletas, por una aplicación web usada en más de 20 sucursales.",
           "Cada sucursal registra entre 300 y 500 transacciones por día. Si se corta la red, la venta sigue en local y se sincroniza con la central al volver la conexión.",
           "Propuse conservar la lógica de negocio en C# y .NET Framework 4.7.2, por compatibilidad con DLL de terceros, con frontend en Django y terminales Linux.",
-          "Implementé y probé en mi máquina un asistente con Ollama, Ollama-WebUI-Lite y Llama 3.2 1B, para consultar si un medicamento tenía actualización o si había uno nuevo. No llegó a las sucursales.",
-          "Llevé el código a Git en un servidor de Azure, donde se subían los cambios. Fijé las versiones de las DLL con un catálogo local, dejé plantillas y reglas del editor para un estilo de código común, y pasé los builds y la publicación a contenedores en el servidor de la empresa."
+          "El arranque pasó de 3 minutos a 3 segundos. Dejé de precargar variables globales y reglas de cálculo, y esos cálculos quedaron bajo demanda.",
+          "Reescribí métodos de VB6 que tardaban minutos. Pasaron a fracciones de segundo y cada proceso carga solo lo que necesita.",
+          "En el servidor local usé Kubernetes para probar el backend y el frontend, simulando las sucursales y los momentos pico.",
+          "Definí el estilo de código y el orden del trabajo según la prioridad de arquitectura.",
+          "Capacité a soporte IT para dejar la base configurada en un servidor de prueba."
         ],
         caseStudy: {
           kicker: "Modernización del sistema de sucursales",
@@ -34,7 +37,7 @@
           metrics: [
             { value: "+20", label: "sucursales en operación" },
             { value: "300–500", label: "transacciones diarias por sucursal" },
-            { value: "3–4", label: "personas por turno, en dos turnos" },
+            { value: "3 min → 3 s", label: "arranque del sistema" },
             { value: "Sin red", label: "la venta sigue y luego sincroniza" }
           ],
           sections: [
@@ -60,14 +63,15 @@
               items: [
                 "Si se corta la conexión, la transacción queda en la sucursal y se sincroniza al volver el enlace. De noche ya corría una sincronización de stock con la central.",
                 "Un reporte de incidentes dentro del sistema acortó la detección y la corrección de errores.",
-                "Bajaron los tiempos de carga. La puesta a punto de las sucursales pasó a hacerse en remoto y de forma automatizada."
+                "El arranque cargaba durante 3 minutos variables de entorno, datos de la base y reglas de cálculo que quedaban en memoria todo el turno. Pasó a 3 segundos: solo lo mínimo, y los cálculos se hacen bajo demanda.",
+                "La puesta a punto de las sucursales pasó a hacerse en remoto y de forma automatizada."
               ]
             },
             {
               title: "Plataforma y entrega",
               items: [
                 "El repositorio estaba en un servidor de Azure, y ahí se subían los cambios.",
-                "Los servicios corren en contenedores, en el servidor de la empresa. Escribí los manifiestos y me encargué de los builds, la publicación, el monitoreo y los incidentes.",
+                "Los servicios corren en contenedores, en el servidor de la empresa. Escribí los manifiestos y me encargué de los builds, la publicación, el monitoreo y los incidentes. En el servidor local usé Kubernetes para simular las sucursales y los momentos pico.",
                 "Construí un tablero de disponibilidad: si la base responde y si los endpoints están visibles."
               ]
             },
@@ -77,9 +81,8 @@
                 "Usé la IA en el desarrollo, no como una función del sistema en producción. Con Cursor, sobre todo Claude y otros modelos, comprobaba que el código migrado desde VB6 conservara el funcionamiento."
               ],
               items: [
-                "Reescribí métodos pensados para VB6, bajé la duplicación y dejé el código en condiciones de aceptar tests unitarios.",
-                "Mejoró el tiempo de ejecución.",
-                "Dejé plantillas y reglas del editor para sostener un estilo de código homogéneo."
+                "Reescribí métodos pensados para VB6 y bajé la duplicación. El tiempo pasó de minutos a fracciones de segundo, porque cada proceso carga solo lo que necesita, y el código quedó en condiciones de aceptar tests unitarios.",
+                "Definí el estilo de código con plantillas y reglas del editor, para que el equipo escribiera de la misma forma."
               ]
             },
             {
@@ -96,7 +99,8 @@
               title: "Trabajo con el negocio",
               paragraphs: [
                 "Formé parte del equipo de desarrollo. En las revisiones mostraba avances, el enfoque, la estrategia y los bloqueos.",
-                "Trabajé directo con el negocio y con la operación de farmacia, junto a quien había construido el sistema en VB6 durante unos 15 años y conocía las reglas y la base. Otras áreas que usan el mismo sistema me indicaron ajustes según su trabajo diario."
+                "Trabajé directo con el negocio y con la operación de farmacia, junto a quien había construido el sistema en VB6 durante unos 15 años y conocía las reglas y la base. Otras áreas que usan el mismo sistema me indicaron ajustes según su trabajo diario.",
+                "Definí el orden del trabajo según la prioridad de arquitectura. Capacité a soporte IT para dejar la base configurada en un servidor de prueba."
               ]
             },
             {
@@ -106,7 +110,7 @@
               ]
             }
           ],
-          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "SQL Server", "Git", "Servidor Azure", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
+          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "Kubernetes", "SQL Server", "Git", "Servidor Azure", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
         }
       },
       {
@@ -126,7 +130,8 @@
         highlights: [
           "Mantuve el sistema de reservas de vuelos de estas agencias sobre un mismo frontend, personalizado para cada una.",
           "Resolvía de 3 a 4 defectos por semana e incorporé un módulo de equipaje, adaptando una vista a los tipos de equipaje de la reserva.",
-          "Mejoré el tiempo de respuesta del procedimiento almacenado de vuelos. El frontend en AngularJS corría en un microservicio, con Redis, y el contenedor pasaba a producción después de probarlo en local. El código se versionaba en Bitbucket."
+          "Las consultas con carry-on o equipaje de mano tardaban 5 segundos. Con Redis, un resultado ya usado quedó en menos de 1 segundo.",
+          "El frontend en AngularJS corría en un microservicio. El contenedor se probaba en local y, si cumplía, pasaba a producción. El código se versionaba en Bitbucket."
         ],
         caseStudy: {
           kicker: "Reservas de vuelos para agencias",
@@ -135,7 +140,7 @@
           metrics: [
             { value: "7", label: "agencias sobre el mismo frontend" },
             { value: "3–4", label: "defectos resueltos por semana" },
-            { value: "Equipaje", label: "módulo nuevo en la reserva" },
+            { value: "5 s → <1 s", label: "carry-on con Redis" },
             { value: "Docker", label: "prueba local y luego producción" }
           ],
           sections: [
@@ -163,8 +168,7 @@
             {
               title: "Consultas y caché",
               items: [
-                "Optimicé el procedimiento almacenado de vuelos y mejoró su tiempo de respuesta.",
-                "Redis guardaba en caché las consultas para no repetir el acceso cuando el dato ya estaba disponible."
+                "Optimicé el procedimiento almacenado de vuelos. Las consultas con carry-on tardaban 5 segundos. Redis dejó en menos de 1 segundo un resultado que ya se había usado."
               ]
             },
             {
@@ -197,7 +201,8 @@
           "Pasé el bloqueo de la tabla al registro (bloqueo a nivel de fila). Si un registro estaba en uso, los demás podían leerlo y solo ese registro quedaba bloqueado hasta liberarse. Con eso se resolvió el bloqueo del sistema.",
           "Desarrollé un script de monitoreo de fallas de servicios web. La caída que quedaba cada día venía de las actualizaciones del sistema operativo. Lo identifiqué con ese monitoreo y lo coordiné con soporte IT: notifican la actualización o dejan el sistema apagado hasta que termina, cuando en todo el hospital hay dos o tres consultas ocasionales.",
           "Resolví problemas de sincronización de base de datos para suministros médicos.",
-          "Identifiqué la causa de fallas de acceso a la red de clientes desactualizados."
+          "Identifiqué la causa de fallas de acceso a la red de clientes desactualizados.",
+          "Hacíamos revisión de código para evitar inconsistencias."
         ],
         caseStudy: {
           kicker: "Monitoreo y reproducción de fallas",
@@ -246,8 +251,9 @@
         highlights: [
           "Trabajé en outsourcing en QUANAM, para Banco Itaú. Desarrollé un módulo nuevo para los clientes del banco, en una aplicación de escritorio y móvil hecha en Angular.",
           "Di soporte y desarrollo al sitio de EY. Corregí JavaScript y HTML de módulos propios que usan las páginas regionales.",
-          "Reparé la sección de documentos del CMS que no se renderizaba, un reclamo de varios países.",
-          "Encontré una causa principal de cuellos de botella en el acceso a bases de datos."
+          "Reparé la sección de documentos del CMS que no se renderizaba. El reclamo llegaba de varios estados de Estados Unidos y de Canadá.",
+          "El contenido de la base estaba mal sanitizado y rompía el renderizado. Afiné esa sanitización, después no hubo más reclamos, y QA lo evaluó y lo probó bien.",
+          "El trabajo era Scrum. En varias ocasiones revisé el código de otros desarrolladores."
         ],
         caseStudy: {
           kicker: "Soporte y desarrollo para EY",
@@ -257,7 +263,7 @@
             { value: "EY.com", label: "páginas regionales sobre el mismo sitio" },
             { value: "JS y HTML", label: "correcciones en módulos propios" },
             { value: "CMS", label: "gestión de documentos dentro del sitio" },
-            { value: "Varios países", label: "reclamaban la sección que no se veía" }
+            { value: "EE.UU. y Canadá", label: "el reclamo cesó y QA lo probó bien" }
           ],
           sections: [
             {
@@ -285,19 +291,19 @@
               title: "Documentos que no se renderizaban",
               paragraphs: [
                 "El CMS guarda los documentos del sitio y una sección los muestra en la página, con el visor PDF.",
-                "Esa sección no se dibujaba bien. El reclamo llegaba de varios países. La corrección fue en el HTML y en el JavaScript de ese módulo."
+                "Esa sección no se dibujaba bien. El reclamo llegaba de varios estados de Estados Unidos y de Canadá."
               ]
             },
             {
               title: "Acceso a datos",
               paragraphs: [
-                "Además del front-end, encontré una causa principal de cuellos de botella en el acceso a bases de datos."
+                "El contenido guardado en la base no estaba bien sanitizado y rompía el renderizado. Afiné esa sanitización, después no hubo más reclamos, y QA lo evaluó y lo probó bien."
               ]
             },
             {
               title: "Entrega",
               paragraphs: [
-                "Los defectos de front-end los reportaba el cliente y los verificaba QA."
+                "El trabajo era Scrum. En varias ocasiones revisé el código de otros desarrolladores. Los defectos de front-end los reportaba el cliente y los verificaba QA."
               ]
             }
           ],
@@ -374,7 +380,7 @@
         title: "Consultor independiente de gestión de calidad", company: "Pequeñas empresas",
         period: "Abr. 2012 – dic. 2018", place: "", start: 2012, end: 2018,
         parallel: "En paralelo con empleos de desarrollo",
-        highlights: ["Análisis de procesos y costos, estandarización de métodos, auditorías, informes y documentación (ISO 9000:2008)."]
+        highlights: ["Análisis de procesos y costos, estandarización de métodos, auditorías, informes y documentación (ISO 9001:2008)."]
       },
       {
         title: "Desarrollador", company: "Assist",
@@ -385,7 +391,7 @@
           "Trabajé el CMS configurable de Assist, sobre SQL Server: una parte en formularios de escritorio de VB6 y otra en Visual FoxPro. Las consultas a la base devolvían reportes de Crystal Reports, también para los dispositivos Palm de esa época.",
           "Diseñé consultas personalizadas para clientes de la cadena de abastecimiento, eliminando reclamos por falta de datos.",
           "Corregí fallas de HTML, errores en los procedimientos almacenados y el formato de salida de esos reportes.",
-          "Identifiqué el error que causaba lentitud en el acceso a la base de datos."
+          "Había datos mal guardados en las tablas y eso obligaba a reprocesar. Corregí también una consulta que repetía procesos de más."
         ]
       },
       {
@@ -415,7 +421,10 @@
       {
         title: "Profesor", company: "Círculo Informático",
         period: "Feb. 2006 – feb. 2008", place: "Minas, Canelones", start: 2006, end: 2008,
-        highlights: ["Dicté las carreras de Analista de Sistemas, Programador y Desarrollador Web, y el curso de Reparación de PC y Redes."],
+        highlights: [
+          "Dicté las carreras de Analista de Sistemas, Programador y Desarrollador Web, y el curso de Reparación de PC y Redes.",
+          "Armé una modalidad de presentaciones para las clases y después ayudaba a estudiar para las evaluaciones. Otros docentes la siguieron usando."
+        ],
         caseStudy: {
           kicker: "Temas que dicté",
           hint: "Contenidos de las carreras y del curso de reparación.",
@@ -450,6 +459,12 @@
               paragraphs: [
                 "También dicté SQL, Linux, Windows XP, Microsoft Office y operación de PC, junto con la reparación de PC y redes."
               ]
+            },
+            {
+              title: "Modalidad de clase",
+              paragraphs: [
+                "Armé una modalidad de presentaciones para las clases y después ayudaba a estudiar para las evaluaciones. Otros docentes la siguieron usando."
+              ]
             }
           ]
         }
@@ -480,7 +495,7 @@
       {
         id: "offlinesync-pos",
         name: "OfflineSync POS",
-        description: "API de sincronización offline-first de ventas en .NET 10, con endpoints idempotentes y CI.",
+        description: "Sincronización offline-first de ventas en .NET 10: API idempotente, cliente de sucursal con outbox SQLite y CI.",
         url: "https://github.com/AlejandroParada/offlinesync-pos",
         period: "Nov. 2026",
         featured: true,
@@ -488,7 +503,7 @@
           kicker: "Repositorio offlinesync-pos",
           lead: "Prototipo público de una sucursal que vende sin red y sincroniza con la central sin duplicar la venta.",
           items: [
-            "Cada venta lleva una clave de idempotencia generada en la sucursal y guardada en un outbox SQLite.",
+            "El cliente de sucursal es un worker .NET. Guarda cada venta en un outbox SQLite, con una clave de idempotencia, y la reintenta hasta que la central responde.",
             "La API en ASP.NET Core recibe el lote. Reenviarlo no vuelve a descontar stock.",
             "Si el saldo no alcanza, la venta se acepta y queda registrada una discrepancia de stock negativo.",
             "PostgreSQL con EF Core, tests con xUnit y Testcontainers, y CI en GitHub Actions con imagen Docker."
@@ -673,9 +688,9 @@
         cert("sl-ia-marketing", { name: "Marketing en redes sociales con IA" }),
         cert("sl-ia-escribir", { name: "Escribir con IA" }),
         cert("sl-ia-pruebas-ab", { name: "Pruebas A/B impulsadas por IA" }),
-        cert("sl-ia-prompts", { name: "Ingeniería de prompts", featured: true }),
-        cert("sl-ia-aprendizaje-automatico", { name: "Fundamentos del aprendizaje automático", featured: true }),
-        cert("sl-ia-llms", { name: "Introducción a los LLMs", featured: true }),
+        cert("sl-ia-prompts", { name: "Ingeniería de prompts" }),
+        cert("sl-ia-aprendizaje-automatico", { name: "Fundamentos del aprendizaje automático" }),
+        cert("sl-ia-llms", { name: "Introducción a los LLMs" }),
         cert("sl-ia-etica", { name: "Fundamentos de IA ética" }),
         cert("sl-ia-investigacion", { name: "Investigación con IA" }),
         cert("sl-ia-visualizacion", { name: "Visualiza tus datos" }),
@@ -683,11 +698,10 @@
         cert("sl-ia-analisis-datos", { name: "Análisis de datos con IA" }),
         cert("sl-ia-creatividad", { name: "Piensa creativamente con IA" }),
         cert("sl-ia-lluvia-ideas", { name: "Lluvia de ideas con IA" }),
-        cert("sl-ia-generativa", { name: "IA generativa en la práctica", featured: true })
+        cert("sl-ia-generativa", { name: "IA generativa en la práctica" })
       ],
       "Negocios (HP LIFE, 2026)": [
         cert("hp-tecnologia-negocios", {
-          featured: true,
           name: "Tecnología de la información para el éxito en los negocios",
           summary: "Elegir la mejor tecnología para la empresa e integrar con éxito soluciones tecnológicas al emprendimiento."
         }),
@@ -696,7 +710,6 @@
           summary: "Usar la planificación estratégica para tomar mejores decisiones de negocio en un mundo impulsado por la IA; conocer los componentes clave de un plan estratégico; evaluar marcos de planificación práctica y usar herramientas de IA para el pensamiento estratégico."
         }),
         cert("hp-sitios-web", {
-          featured: true,
           name: "Efectivos sitios web de negocios",
           summary: "Aplicar las mejores técnicas de desarrollo para diseñar un sitio web empresarial, entender el comportamiento de los clientes y usar las métricas del sitio de manera efectiva."
         }),
@@ -749,7 +762,6 @@
           summary: "Definir el producto mínimo viable, diferenciar el desarrollo iterativo del incremental, analizar beneficios y limitaciones de herramientas Agile como Scrum y Kanban y aplicar prácticas ágiles en la gestión de proyectos."
         }),
         cert("hp-ia-negocios", {
-          featured: true,
           name: "IA para profesionales de negocios",
           summary: "La función de la IA en las empresas, la diferencia entre herramientas de IA independientes y funciones integradas, cómo crear instrucciones eficaces, el uso ético de la IA y cómo usarla para el crecimiento profesional."
         }),
@@ -793,7 +805,7 @@
       { title: "Instituto Uruguayo de Normas Técnicas (UNIT)", meta: "Gestión del cambio · 2017" },
       { title: "UNIT-ISO", meta: "ISMS Specialist ISO/IEC 27000, seguridad de la información · 2012" },
       { title: "UNIT-ISO", meta: "QMS Specialist, ISO 9001:2008 · 2012" },
-      { title: "Alianza Uruguay-EEUU", meta: "First Certificate, inglés (curso preparatorio) · 2012" },
+      { title: "Alianza Uruguay-EEUU", meta: "Curso preparatorio de First Certificate, no el certificado · 2012" },
       { title: "Anglo-Uruguay", meta: "Upper Intermediate, inglés · 2011" },
       { title: "Tata Consultancy Services", meta: "Business Intelligence · 2011" },
       { title: "Netgate", meta: "Telework E-business · 2008" },
@@ -806,7 +818,7 @@
 
     languages: [
       "Español: nativo/bilingüe",
-      "Inglés: profesional básico (First Certificate in English, Anglo Uruguay)"
+      "Inglés: B2. Tercer nivel de Pathways, el prerrequisito de inglés para ingresar a BYU–Idaho, donde curso el grado en inglés desde 2026."
     ]
   });
 })(window.CV = window.CV || {});

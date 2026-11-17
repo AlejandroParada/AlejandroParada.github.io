@@ -6,11 +6,11 @@
 
   CV.data = Object.freeze({
     skills: {
-      "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", ".NET Framework", "ASP.NET MVC", "REST APIs", "Web services", "Python", "Django"],
-      "Data": ["PostgreSQL", "SQL Server", "SQLite", "Database synchronization", "Query optimization", "MS Access"],
-      "Frontend": ["JavaScript", "Responsive HTML & CSS", "AngularJS"],
-      "DevOps": ["Docker", "GitHub Actions", "Linux", "Git", "Bitbucket", "SVN"],
-      "Methods": ["Legacy system modernization", "Scrum", "Nopcommerce", "ISO 9000", "Quality auditing"]
+      "Backend": ["C#", ".NET 10", "ASP.NET Core", "EF Core", "xUnit", "Testcontainers", ".NET Framework", "ASP.NET MVC", "REST APIs", "Web services", "Python", "Django", "Nopcommerce"],
+      "Data": ["PostgreSQL", "SQL Server", "SQLite", "Redis", "Database synchronization", "Query optimization", "MS Access"],
+      "Frontend": ["TypeScript", "Tailwind CSS", "PWA", "Service Workers", "JavaScript", "Responsive HTML & CSS", "AngularJS"],
+      "DevOps": ["Docker", "Kubernetes", "GitHub Actions", "Linux", "Bash", "Zabbix", "Git", "Bitbucket", "SVN"],
+      "Methods": ["Legacy system modernization", "Scrum", "ISO 9001", "Quality auditing"]
     },
 
     /* start/end: years used to group by decade. end: null = present. */
@@ -24,8 +24,11 @@
           "Replaced the unsupported VB6 desktop counter and its obsolete libraries with a web application used in more than 20 branches.",
           "Each branch records 300 to 500 transactions a day. If the network drops, the sale continues locally and syncs with headquarters when the connection returns.",
           "I proposed keeping the business logic in C# on .NET Framework 4.7.2 so it stayed compatible with third-party DLLs, with a Django frontend and Linux terminals.",
-          "I implemented and tested, on my machine, an assistant with Ollama, Ollama-WebUI-Lite and Llama 3.2 1B, to check whether a medication had an update or a new one had come in. It did not reach the branches.",
-          "I moved the code to Git on an Azure server, where the changes were pushed. I pinned DLL versions with a local catalog, left editor templates and rules for a shared code style, and moved builds and publishing to containers on the company server."
+          "Startup went from 3 minutes to 3 seconds. I stopped preloading global variables and calculation rules, and those calculations became on demand.",
+          "I rewrote VB6 methods that took minutes. They dropped to fractions of a second, and each process loads only what it needs.",
+          "On the local server I used Kubernetes to test the backend and the frontend, simulating the branches and peak periods.",
+          "I set the code style and the order of the work according to architecture priority.",
+          "I trained IT support to leave the database configured on a test server."
         ],
         caseStudy: {
           kicker: "Branch system modernization",
@@ -34,7 +37,7 @@
           metrics: [
             { value: "+20", label: "branches in operation" },
             { value: "300–500", label: "daily transactions per branch" },
-            { value: "3–4", label: "people per shift, two shifts" },
+            { value: "3 min → 3 s", label: "system startup" },
             { value: "Offline", label: "the sale continues, then syncs" }
           ],
           sections: [
@@ -60,14 +63,15 @@
               items: [
                 "If the connection drops, the transaction stays at the branch and syncs when the link returns. A nightly stock sync with headquarters was already in place.",
                 "An in-system incident report shortened how long it took to detect and fix errors.",
-                "Load times came down. Branch setup moved to a remote, automated process."
+                "Startup spent 3 minutes loading environment variables, database data and calculation rules that stayed in memory for the whole shift. It dropped to 3 seconds: only the minimum, with calculations on demand.",
+                "Branch setup moved to a remote, automated process."
               ]
             },
             {
               title: "Platform and delivery",
               items: [
                 "The repository lived on an Azure server, and the changes were pushed there.",
-                "The services run in containers on the company server. I wrote the manifests and owned the builds, the releases, the monitoring and the incidents.",
+                "The services run in containers on the company server. I wrote the manifests and owned the builds, the releases, the monitoring and the incidents. On the local server I used Kubernetes to simulate the branches and peak periods.",
                 "I built an availability dashboard: whether the database responds and whether the endpoints are reachable."
               ]
             },
@@ -77,9 +81,8 @@
                 "I used AI in development, not as a feature of the production system. With Cursor, mostly Claude and other models, I checked that code migrated from VB6 still behaved the same way."
               ],
               items: [
-                "I rewrote methods shaped for VB6, cut duplication and left the code in a shape that can take unit tests.",
-                "Execution time improved.",
-                "I left editor templates and rules so the coding style stayed consistent."
+                "I rewrote methods shaped for VB6 and cut duplication. Runtime went from minutes to fractions of a second, because each process loads only what it needs, and the code was left able to take unit tests.",
+                "I set the code style with editor templates and rules, so the team wrote the same way."
               ]
             },
             {
@@ -96,7 +99,8 @@
               title: "Working with the business",
               paragraphs: [
                 "I was part of the development team. In reviews I showed progress, the technical approach, the strategy and the blockers.",
-                "I worked directly with the business and with pharmacy operations, alongside the person who had built the VB6 system over about 15 years and knew the rules and the database. Other areas that use the same system pointed me to adjustments based on their daily work."
+                "I worked directly with the business and with pharmacy operations, alongside the person who had built the VB6 system over about 15 years and knew the rules and the database. Other areas that use the same system pointed me to adjustments based on their daily work.",
+                "I set the order of the work according to architecture priority. I trained IT support to leave the database configured on a test server."
               ]
             },
             {
@@ -106,7 +110,7 @@
               ]
             }
           ],
-          stack: ["C#", ".NET Framework 4.7.2", "REST API", "Django", "Python", "Metro UI", "Linux", "Containers", "SQL Server", "Git", "Azure server", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
+          stack: ["C#", ".NET Framework 4.7.2", "REST API", "Django", "Python", "Metro UI", "Linux", "Containers", "Kubernetes", "SQL Server", "Git", "Azure server", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
         }
       },
       {
@@ -126,7 +130,8 @@
         highlights: [
           "Maintained the flight-booking system of these agencies on one frontend, customized for each of them.",
           "Resolved 3 to 4 defects a week and added a baggage module, adapting a view to the baggage types on the booking.",
-          "Improved the response time of the flights stored procedure. The AngularJS frontend ran on a microservice, with Redis, and the container went to production after local testing. The code was versioned on Bitbucket."
+          "Queries that included carry-on baggage took 5 seconds. With Redis, a result already used dropped to under 1 second.",
+          "The AngularJS frontend ran on a microservice. The container was tested locally and, when it met the requirements, went to production. The code was versioned on Bitbucket."
         ],
         caseStudy: {
           kicker: "Flight booking for travel agencies",
@@ -135,7 +140,7 @@
           metrics: [
             { value: "7", label: "agencies on the same frontend" },
             { value: "3–4", label: "defects resolved per week" },
-            { value: "Baggage", label: "new module on the booking" },
+            { value: "5 s → <1 s", label: "carry-on with Redis" },
             { value: "Docker", label: "local test, then production" }
           ],
           sections: [
@@ -163,8 +168,7 @@
             {
               title: "Queries and cache",
               items: [
-                "I optimized the flights stored procedure and its response time improved.",
-                "Redis cached queries so the system did not repeat the lookup when the data was already available."
+                "I optimized the flights stored procedure. Queries with carry-on baggage took 5 seconds. Redis brought a result that had already been used to under 1 second.",
               ]
             },
             {
@@ -197,7 +201,8 @@
           "I moved the lock from the table to the record (row-level locking). If a record was in use, others could still read it, and only that record stayed blocked until it was released. That resolved the system lock.",
           "Developed a monitoring script for web service failures. The outage that remained each day came from operating-system updates. I identified it with that monitoring and coordinated it with IT support: they notify about the update or leave the system off until it finishes, when the whole hospital has two or three occasional queries.",
           "Solved database synchronization issues for medical supplies.",
-          "Identified the cause of network access failures on outdated clients."
+          "Identified the cause of network access failures on outdated clients.",
+          "We reviewed each other's code to avoid inconsistencies."
         ],
         caseStudy: {
           kicker: "Monitoring and bug replay",
@@ -246,8 +251,9 @@
         highlights: [
           "I worked on an outsourcing assignment at QUANAM, for Banco Itaú. I built a new module for the bank's customers, in a desktop and mobile application written in Angular.",
           "Provided support and development for the EY website. I fixed JavaScript and HTML in custom modules shared by the regional pages.",
-          "Repaired the CMS document section that failed to render, a complaint raised by several countries.",
-          "Found a root cause of database access bottlenecks."
+          "Repaired the CMS document section that failed to render. The complaint came from several states in the United States and from Canada.",
+          "Content in the database was poorly sanitized and it broke rendering. I tightened that sanitization, the complaints then stopped, and QA evaluated it and tested it successfully.",
+          "The work was Scrum. On several occasions I reviewed other developers' code."
         ],
         caseStudy: {
           kicker: "Support and development for EY",
@@ -257,7 +263,7 @@
             { value: "EY.com", label: "regional pages on the same site" },
             { value: "JS and HTML", label: "fixes in custom modules" },
             { value: "CMS", label: "document management inside the site" },
-            { value: "Several countries", label: "reported the section that did not render" }
+            { value: "US and Canada", label: "the complaints stopped and QA passed it" },
           ],
           sections: [
             {
@@ -285,19 +291,19 @@
               title: "Documents that failed to render",
               paragraphs: [
                 "The CMS stores the site's documents, and one section displays them on the page with the PDF viewer.",
-                "That section did not render correctly. The complaint came from several countries. The fix was in the HTML and JavaScript of that module."
+                "That section did not render correctly. The complaint came from several states in the United States and from Canada."
               ]
             },
             {
               title: "Data access",
               paragraphs: [
-                "Alongside the front-end work, I found a root cause of database access bottlenecks."
+                "Content stored in the database was not properly sanitized and it broke rendering. I tightened that sanitization, the complaints then stopped, and QA evaluated it and tested it successfully."
               ]
             },
             {
               title: "Delivery",
               paragraphs: [
-                "The client reported the front-end defects and QA verified them."
+                "The work was Scrum. On several occasions I reviewed other developers' code. The client reported the front-end defects and QA verified them."
               ]
             }
           ],
@@ -374,7 +380,7 @@
         title: "Independent Quality Management Consultant", company: "Small businesses",
         period: "Apr 2012 – Dec 2018", place: "", start: 2012, end: 2018,
         parallel: "Concurrent with development roles",
-        highlights: ["Process and cost analysis, method standardization, audits, reports and documentation (ISO 9000:2008)."]
+        highlights: ["Process and cost analysis, method standardization, audits, reports and documentation (ISO 9001:2008)."]
       },
       {
         title: "Developer", company: "Assist",
@@ -385,7 +391,7 @@
           "I worked on Assist's configurable CMS, on SQL Server: part of it was VB6 desktop forms and part was Visual FoxPro. Database queries returned Crystal Reports, including for the Palm devices of that time.",
           "I designed custom queries for supply chain clients, eliminating complaints about missing data.",
           "I fixed HTML issues, stored procedure errors and the output format of those reports.",
-          "I identified the bug that slowed down database access."
+          "Data was stored badly in the tables and that forced reprocessing. I also fixed a query that repeated work it did not need."
         ]
       },
       {
@@ -415,7 +421,10 @@
       {
         title: "Instructor", company: "Círculo Informático",
         period: "Feb 2006 – Feb 2008", place: "Minas, Canelones", start: 2006, end: 2008,
-        highlights: ["I taught the Systems Analyst, Programmer and Web Developer programs, and the PC and Network Repair course."],
+        highlights: [
+          "I taught the Systems Analyst, Programmer and Web Developer programs, and the PC and Network Repair course.",
+          "I set up a presentation format for the classes and then helped students prepare for the exams. Other teachers kept using it."
+        ],
         caseStudy: {
           kicker: "Topics I taught",
           hint: "Subjects in the programs and in the repair course.",
@@ -450,6 +459,12 @@
               paragraphs: [
                 "I also taught SQL, Linux, Windows XP, Microsoft Office and PC operation, together with PC and network repair."
               ]
+            },
+            {
+              title: "Class format",
+              paragraphs: [
+                "I set up a presentation format for the classes and then helped students prepare for the exams. Other teachers kept using it."
+              ]
             }
           ]
         }
@@ -480,7 +495,7 @@
       {
         id: "offlinesync-pos",
         name: "OfflineSync POS",
-        description: "Offline-first sales sync API in .NET 10, with idempotent endpoints and CI.",
+        description: "Offline-first sales sync in .NET 10: idempotent API, branch client with a SQLite outbox, and CI.",
         url: "https://github.com/AlejandroParada/offlinesync-pos",
         period: "Nov 2026",
         featured: true,
@@ -488,7 +503,7 @@
           kicker: "Repository offlinesync-pos",
           lead: "Public prototype of a branch that keeps selling without a network and syncs to head office without duplicating the sale.",
           items: [
-            "Each sale carries an idempotency key created at the branch and stored in a SQLite outbox.",
+            "The branch client is a .NET worker. It stores each sale in a SQLite outbox, with an idempotency key, and retries until headquarters responds.",
             "The ASP.NET Core API accepts the batch. Sending it again does not move stock a second time.",
             "If on-hand stock is not enough, the sale is still accepted and a negative-stock discrepancy is recorded.",
             "PostgreSQL with EF Core, xUnit and Testcontainers tests, and GitHub Actions CI with a Docker image."
@@ -673,9 +688,9 @@
         cert("sl-ia-marketing", { name: "Social Media Marketing with AI" }),
         cert("sl-ia-escribir", { name: "Writing with AI" }),
         cert("sl-ia-pruebas-ab", { name: "AI-Powered A/B Testing" }),
-        cert("sl-ia-prompts", { name: "Prompt Engineering", featured: true }),
-        cert("sl-ia-aprendizaje-automatico", { name: "Machine Learning Fundamentals", featured: true }),
-        cert("sl-ia-llms", { name: "Introduction to LLMs", featured: true }),
+        cert("sl-ia-prompts", { name: "Prompt Engineering" }),
+        cert("sl-ia-aprendizaje-automatico", { name: "Machine Learning Fundamentals" }),
+        cert("sl-ia-llms", { name: "Introduction to LLMs" }),
         cert("sl-ia-etica", { name: "Ethical AI Fundamentals" }),
         cert("sl-ia-investigacion", { name: "Research with AI" }),
         cert("sl-ia-visualizacion", { name: "Visualize Your Data" }),
@@ -683,11 +698,10 @@
         cert("sl-ia-analisis-datos", { name: "Data Analysis with AI" }),
         cert("sl-ia-creatividad", { name: "Think Creatively with AI" }),
         cert("sl-ia-lluvia-ideas", { name: "Brainstorming with AI" }),
-        cert("sl-ia-generativa", { name: "Generative AI in Practice", featured: true })
+        cert("sl-ia-generativa", { name: "Generative AI in Practice" })
       ],
       "Business (HP LIFE, 2026)": [
         cert("hp-tecnologia-negocios", {
-          featured: true,
           name: "IT for Business Success",
           summary: "Choose the best technology for the company and successfully integrate technology solutions into the business."
         }),
@@ -696,7 +710,6 @@
           summary: "Use strategic planning to make better business decisions in an AI-driven world; learn the key components of a strategic plan; evaluate practical planning frameworks and use AI tools for strategic thinking."
         }),
         cert("hp-sitios-web", {
-          featured: true,
           name: "Effective Business Websites",
           summary: "Apply the best development techniques to design a business website, understand customer behavior and use website metrics effectively."
         }),
@@ -749,7 +762,6 @@
           summary: "Define the minimum viable product, distinguish iterative from incremental development, analyze the benefits and limitations of Agile tools such as Scrum and Kanban, and apply agile practices in project management."
         }),
         cert("hp-ia-negocios", {
-          featured: true,
           name: "AI for Business Professionals",
           summary: "The role of AI in business, the difference between standalone AI tools and built-in features, how to write effective prompts, the ethical use of AI and how to use it for career growth."
         }),
@@ -793,7 +805,7 @@
       { title: "Uruguayan Institute of Technical Standards (UNIT)", meta: "Change management · 2017" },
       { title: "UNIT-ISO", meta: "ISMS Specialist ISO/IEC 27000, information security · 2012" },
       { title: "UNIT-ISO", meta: "QMS Specialist, ISO 9001:2008 · 2012" },
-      { title: "Alianza Uruguay-EEUU", meta: "First Certificate, English (preparation course) · 2012" },
+      { title: "Alianza Uruguay-EEUU", meta: "First Certificate preparation course, not the certificate · 2012" },
       { title: "Anglo-Uruguay", meta: "Upper Intermediate, English · 2011" },
       { title: "Tata Consultancy Services", meta: "Business Intelligence · 2011" },
       { title: "Netgate", meta: "Telework E-business · 2008" },
@@ -806,7 +818,7 @@
 
     languages: [
       "Spanish: native/bilingual",
-      "English: limited working proficiency (First Certificate in English, Anglo Uruguay)"
+      "English: B2. Pathways level 3, the English prerequisite to enter BYU–Idaho, where I have been taking the degree in English since 2026."
     ]
   });
 })(window.CV = window.CV || {});
