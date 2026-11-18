@@ -528,12 +528,15 @@ section {
 }
 
 /* La ubicación y los iconos de contacto solo cambian de medida en la vista angosta.
-   En desktop .contact-row se disuelve y WhatsApp queda fuera, así los botones no se mueven. */
+   En desktop .contact-row se disuelve. WhatsApp ocupa su propia fila para no apretar LinkedIn y GitHub. */
 .location { display: none; }
 
 .contact-row { display: contents; }
 
-[data-contact="whatsapp"] { display: none; }
+[data-contact="whatsapp"] {
+  display: inline-flex;
+  flex: 1 0 100%;
+}
 
 .contact-icon {
   display: none;
