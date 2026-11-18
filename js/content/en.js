@@ -701,6 +701,10 @@
         cert("sl-ia-generativa", { name: "Generative AI in Practice" })
       ],
       "Business (HP LIFE, 2026)": [
+        cert("hp-emprendimiento-social", {
+          name: "Social Entrepreneurship",
+          summary: "Evaluate whether a social enterprise idea is sustainable, use stakeholder analysis to assess the business need and measure the business impact."
+        }),
         cert("hp-tecnologia-negocios", {
           name: "IT for Business Success",
           summary: "Choose the best technology for the company and successfully integrate technology solutions into the business."

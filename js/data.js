@@ -73,6 +73,7 @@
     "ibm-agile-scrum": coursera({ code: "98T810E2D9OU", hours: 12, issued: "2026-08-29" }),
     "ibm-devops": coursera({ code: "50GMK2PVHXH1", share: "6b14f6a8f619d1c7e5eb218ad3e0378a", hours: 9, issued: "2026-07-28" }),
 
+    "hp-emprendimiento-social": hpLife({ serial: "68484bbe-f0f4-4623-96aa-9d45a8b8d4bb", issued: "2026-11-17" }),
     "hp-tecnologia-negocios": hpLife({ serial: "52d36a3d-8551-45a2-9617-ffffb8b30de9", issued: "2026-10-27" }),
     "hp-planificacion-ia": hpLife({ serial: "e879386e-866b-4d5f-90da-0d3ef7ea7ef1", issued: "2026-10-01" }),
     "hp-sitios-web": hpLife({ serial: "e6ccc693-ca7b-403e-9bb4-099081b14e3a", issued: "2026-09-23" }),

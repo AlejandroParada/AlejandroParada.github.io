@@ -701,6 +701,10 @@
         cert("sl-ia-generativa", { name: "IA generativa en la práctica" })
       ],
       "Negocios (HP LIFE, 2026)": [
+        cert("hp-emprendimiento-social", {
+          name: "Emprendimiento Social",
+          summary: "Evaluar si una idea de empresa social es sostenible, usar el análisis de las partes interesadas para evaluar la necesidad del negocio y medir el impacto del negocio."
+        }),
         cert("hp-tecnologia-negocios", {
           name: "Tecnología de la información para el éxito en los negocios",
           summary: "Elegir la mejor tecnología para la empresa e integrar con éxito soluciones tecnológicas al emprendimiento."
