@@ -10,7 +10,8 @@
       "Data": ["PostgreSQL", "SQL Server", "SQLite", "Redis", "Database synchronization", "Query optimization", "MS Access"],
       "Frontend": ["TypeScript", "Tailwind CSS", "PWA", "Service Workers", "JavaScript", "Responsive HTML & CSS", "AngularJS"],
       "DevOps": ["Docker", "Kubernetes", "GitHub Actions", "Linux", "Bash", "Zabbix", "Git", "Bitbucket", "SVN"],
-      "Methods": ["Legacy system modernization", "Scrum", "ISO 9001", "Quality auditing"]
+      "AI in development": ["Cursor", "Claude", "Reusable rules and prompts", "LLM workflows", "Ollama", "Prompt engineering"],
+      "Methods": ["Multi-branch and multi-client products", "Internal developer tools", "Legacy system modernization", "Documentation and handoffs", "Scrum", "ISO 9001", "Quality auditing"]
     },
 
     /* start/end: years used to group by decade. end: null = present. */
@@ -21,19 +22,19 @@
         period: "Apr 2023 – Apr 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
         context: { maturity: 1, maturityTo: 3, mode: "hybrid", team: 2 },
         highlights: [
-          "Replaced the unsupported VB6 desktop counter and its obsolete libraries with a web application used in more than 20 branches.",
+          "I modernized and operated the multi-branch counter product: from unsupported VB6 to a web application in more than 20 branches.",
           "Each branch records 300 to 500 transactions a day. If the network drops, the sale continues locally and syncs with headquarters when the connection returns.",
           "I proposed keeping the business logic in C# on .NET Framework 4.7.2 so it stayed compatible with third-party DLLs, with a Django frontend and Linux terminals.",
           "Startup went from 3 minutes to 3 seconds. I stopped preloading global variables and calculation rules, and those calculations became on demand.",
-          "I rewrote VB6 methods that took minutes. They dropped to fractions of a second, and each process loads only what it needs.",
+          "With Cursor and Claude I checked VB6 → C# equivalence, cut duplication, and left reusable editor rules and templates so the team wrote the same way.",
+          "I built internal tooling: a local DLL catalog in the style of a package manager, and an availability dashboard for the database and endpoints.",
           "On the local server I used Kubernetes to test the backend and the frontend, simulating the branches and peak periods.",
-          "I set the code style and the order of the work according to architecture priority.",
-          "I trained IT support to leave the database configured on a test server."
+          "I documented handoffs and trained IT support to leave the database configured on a test server."
         ],
         caseStudy: {
           kicker: "Branch system modernization",
-          hint: "Architecture, branch operations and continuity.",
-          lead: "I moved the VB6 counter to a web application that keeps the business logic and the way pharmacy staff already work.",
+          hint: "Multi-branch product, internal tooling and AI in the migration.",
+          lead: "I moved the VB6 counter to a multi-branch web product that keeps the business logic and the way pharmacy staff already work.",
           metrics: [
             { value: "+20", label: "branches in operation" },
             { value: "300–500", label: "daily transactions per branch" },
@@ -68,21 +69,21 @@
               ]
             },
             {
-              title: "Platform and delivery",
+              title: "Platform, internal tooling and delivery",
               items: [
                 "The repository lived on an Azure server, and the changes were pushed there.",
                 "The services run in containers on the company server. I wrote the manifests and owned the builds, the releases, the monitoring and the incidents. On the local server I used Kubernetes to simulate the branches and peak periods.",
-                "I built an availability dashboard: whether the database responds and whether the endpoints are reachable."
+                "I built an availability dashboard: whether the database responds and whether the endpoints are reachable. The local DLL catalog stayed as internal tooling to pin legacy versions."
               ]
             },
             {
-              title: "AI in the migration",
+              title: "AI and reusable workflows in the migration",
               paragraphs: [
                 "I used AI in development, not as a feature of the production system. With Cursor, mostly Claude and other models, I checked that code migrated from VB6 still behaved the same way."
               ],
               items: [
                 "I rewrote methods shaped for VB6 and cut duplication. Runtime went from minutes to fractions of a second, because each process loads only what it needs, and the code was left able to take unit tests.",
-                "I set the code style with editor templates and rules, so the team wrote the same way."
+                "I designed reusable editor templates, rules and prompts to standardize migration, refactoring and style, so the team wrote the same way."
               ]
             },
             {
@@ -100,7 +101,7 @@
               paragraphs: [
                 "I was part of the development team. In reviews I showed progress, the technical approach, the strategy and the blockers.",
                 "I worked directly with the business and with pharmacy operations, alongside the person who had built the VB6 system over about 15 years and knew the rules and the database. Other areas that use the same system pointed me to adjustments based on their daily work.",
-                "I set the order of the work according to architecture priority. I trained IT support to leave the database configured on a test server."
+                "I set the order of the work according to architecture priority. I documented handoffs and trained IT support to leave the database configured on a test server."
               ]
             },
             {
@@ -110,7 +111,7 @@
               ]
             }
           ],
-          stack: ["C#", ".NET Framework 4.7.2", "REST API", "Django", "Python", "Metro UI", "Linux", "Containers", "Kubernetes", "SQL Server", "Git", "Azure server", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
+          stack: ["C#", ".NET Framework 4.7.2", "REST API", "Django", "Python", "Metro UI", "Linux", "Containers", "Kubernetes", "SQL Server", "Git", "Azure server", "Cursor", "Claude", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
         }
       },
       {
@@ -128,15 +129,15 @@
           { name: "Metraje OCA", url: "https://viajes.metraje.oca.com.uy/paquetes", icon: "/img/clients/metraje.png" }
         ],
         highlights: [
-          "Maintained the flight-booking system of these agencies on one frontend, customized for each of them.",
+          "I maintained a booking product shared by seven agencies: one core and frontend, with branding per client.",
           "Resolved 3 to 4 defects a week and added a baggage module, adapting a view to the baggage types on the booking.",
           "Queries that included carry-on baggage took 5 seconds. With Redis, a result already used dropped to under 1 second.",
           "The AngularJS frontend ran on a microservice. The container was tested locally and, when it met the requirements, went to production. The code was versioned on Bitbucket."
         ],
         caseStudy: {
-          kicker: "Flight booking for travel agencies",
-          hint: "Seven agencies, a payment gateway and Docker delivery.",
-          lead: "I worked on the flight-booking system shared by seven agencies, each with its own brand on the same frontend.",
+          kicker: "Multi-agency booking product",
+          hint: "Seven clients on the same core, a payment gateway and Docker delivery.",
+          lead: "I worked on a B2B flight-booking product shared by seven agencies: same core and frontend, own brand per client.",
           metrics: [
             { value: "7", label: "agencies on the same frontend" },
             { value: "3–4", label: "defects resolved per week" },
@@ -153,9 +154,9 @@
               ]
             },
             {
-              title: "What the system did",
+              title: "What the product did",
               paragraphs: [
-                "It was a flight-booking system, with a payment gateway integrated. Development was on that shared product, not on a separate system per agency."
+                "It was a multi-client flight-booking product, with a payment gateway integrated. Development was on that shared core, not on a separate system per agency."
               ]
             },
             {
@@ -495,13 +496,13 @@
       {
         id: "offlinesync-pos",
         name: "OfflineSync POS",
-        description: "Offline-first sales sync in .NET 10: idempotent API, branch client with a SQLite outbox, and CI.",
+        description: "Multi-branch product pattern in .NET 10: offline-first sync, idempotent API, SQLite outbox, and CI.",
         url: "https://github.com/AlejandroParada/offlinesync-pos",
         period: "Nov 2026",
         featured: true,
         detail: {
           kicker: "Repository offlinesync-pos",
-          lead: "Public prototype of a branch that keeps selling without a network and syncs to head office without duplicating the sale.",
+          lead: "Public prototype of a multi-branch product pattern: the branch keeps selling without a network and syncs to head office without duplicating the sale.",
           items: [
             "The branch client is a .NET worker. It stores each sale in a SQLite outbox, with an idempotency key, and retries until headquarters responds.",
             "The ASP.NET Core API accepts the batch. Sending it again does not move stock a second time.",

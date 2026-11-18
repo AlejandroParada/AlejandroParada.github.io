@@ -10,7 +10,8 @@
       "Datos": ["PostgreSQL", "SQL Server", "SQLite", "Redis", "Sincronización de bases de datos", "Optimización de consultas", "MS Access"],
       "Frontend": ["TypeScript", "Tailwind CSS", "PWA", "Service Workers", "JavaScript", "HTML y CSS responsivo", "AngularJS"],
       "DevOps": ["Docker", "Kubernetes", "GitHub Actions", "Linux", "Bash", "Zabbix", "Git", "Bitbucket", "SVN"],
-      "Métodos": ["Modernización de sistemas legados", "Scrum", "ISO 9001", "Auditoría de calidad"]
+      "IA en el desarrollo": ["Cursor", "Claude", "Reglas y prompts reutilizables", "Flujos de trabajo con LLM", "Ollama", "Ingeniería de prompts"],
+      "Métodos": ["Productos multi-sede y multi-cliente", "Herramientas internas de desarrollo", "Modernización de sistemas legados", "Documentación y handoffs", "Scrum", "ISO 9001", "Auditoría de calidad"]
     },
 
     /* start/end: años usados para agrupar por década. end: null = actualidad. */
@@ -21,19 +22,19 @@
         period: "Abr. 2023 – abr. 2026", place: "Montevideo", start: 2023, end: 2026, featured: true,
         context: { maturity: 1, maturityTo: 3, mode: "hybrid", team: 2 },
         highlights: [
-          "Reemplacé el mostrador de escritorio en VB6, sin soporte y con librerías obsoletas, por una aplicación web usada en más de 20 sucursales.",
+          "Modernicé y operé el producto de mostrador multi-sede: de VB6 sin soporte a una aplicación web en más de 20 sucursales.",
           "Cada sucursal registra entre 300 y 500 transacciones por día. Si se corta la red, la venta sigue en local y se sincroniza con la central al volver la conexión.",
           "Propuse conservar la lógica de negocio en C# y .NET Framework 4.7.2, por compatibilidad con DLL de terceros, con frontend en Django y terminales Linux.",
           "El arranque pasó de 3 minutos a 3 segundos. Dejé de precargar variables globales y reglas de cálculo, y esos cálculos quedaron bajo demanda.",
-          "Reescribí métodos de VB6 que tardaban minutos. Pasaron a fracciones de segundo y cada proceso carga solo lo que necesita.",
+          "Con Cursor y Claude verifiqué la equivalencia VB6 → C#, bajé duplicación y dejé reglas y plantillas reutilizables para homogenizar el desarrollo del equipo.",
+          "Armé tooling interno: un catálogo local de DLL al estilo de gestor de paquetes y un tablero de disponibilidad de base y endpoints.",
           "En el servidor local usé Kubernetes para probar el backend y el frontend, simulando las sucursales y los momentos pico.",
-          "Definí el estilo de código y el orden del trabajo según la prioridad de arquitectura.",
-          "Capacité a soporte IT para dejar la base configurada en un servidor de prueba."
+          "Documenté handoffs y capacité a soporte IT para dejar la base configurada en un servidor de prueba."
         ],
         caseStudy: {
           kicker: "Modernización del sistema de sucursales",
-          hint: "Arquitectura, operación en sucursal y continuidad.",
-          lead: "Pasé el mostrador de VB6 a una aplicación web que conserva la lógica de negocio y la forma de trabajar del personal de farmacia.",
+          hint: "Producto multi-sede, tooling interno e IA en la migración.",
+          lead: "Pasé el mostrador de VB6 a un producto web multi-sede que conserva la lógica de negocio y la forma de trabajar del personal de farmacia.",
           metrics: [
             { value: "+20", label: "sucursales en operación" },
             { value: "300–500", label: "transacciones diarias por sucursal" },
@@ -68,21 +69,21 @@
               ]
             },
             {
-              title: "Plataforma y entrega",
+              title: "Plataforma, tooling interno y entrega",
               items: [
                 "El repositorio estaba en un servidor de Azure, y ahí se subían los cambios.",
                 "Los servicios corren en contenedores, en el servidor de la empresa. Escribí los manifiestos y me encargué de los builds, la publicación, el monitoreo y los incidentes. En el servidor local usé Kubernetes para simular las sucursales y los momentos pico.",
-                "Construí un tablero de disponibilidad: si la base responde y si los endpoints están visibles."
+                "Construí un tablero de disponibilidad: si la base responde y si los endpoints están visibles. El catálogo local de DLL quedó como tooling interno para fijar versiones del legado."
               ]
             },
             {
-              title: "IA en la migración",
+              title: "IA y flujos reutilizables en la migración",
               paragraphs: [
                 "Usé la IA en el desarrollo, no como una función del sistema en producción. Con Cursor, sobre todo Claude y otros modelos, comprobaba que el código migrado desde VB6 conservara el funcionamiento."
               ],
               items: [
                 "Reescribí métodos pensados para VB6 y bajé la duplicación. El tiempo pasó de minutos a fracciones de segundo, porque cada proceso carga solo lo que necesita, y el código quedó en condiciones de aceptar tests unitarios.",
-                "Definí el estilo de código con plantillas y reglas del editor, para que el equipo escribiera de la misma forma."
+                "Diseñé plantillas, reglas del editor y prompts reutilizables para estandarizar migración, refactor y estilo, de modo que el equipo escribiera de la misma forma."
               ]
             },
             {
@@ -100,7 +101,7 @@
               paragraphs: [
                 "Formé parte del equipo de desarrollo. En las revisiones mostraba avances, el enfoque, la estrategia y los bloqueos.",
                 "Trabajé directo con el negocio y con la operación de farmacia, junto a quien había construido el sistema en VB6 durante unos 15 años y conocía las reglas y la base. Otras áreas que usan el mismo sistema me indicaron ajustes según su trabajo diario.",
-                "Definí el orden del trabajo según la prioridad de arquitectura. Capacité a soporte IT para dejar la base configurada en un servidor de prueba."
+                "Definí el orden del trabajo según la prioridad de arquitectura. Documenté handoffs y capacité a soporte IT para dejar la base configurada en un servidor de prueba."
               ]
             },
             {
@@ -110,7 +111,7 @@
               ]
             }
           ],
-          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "Kubernetes", "SQL Server", "Git", "Servidor Azure", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
+          stack: ["C#", ".NET Framework 4.7.2", "API REST", "Django", "Python", "Metro UI", "Linux", "Contenedores", "Kubernetes", "SQL Server", "Git", "Servidor Azure", "Cursor", "Claude", "Ollama", "Ollama-WebUI-Lite", "Llama 3.2 1B"]
         }
       },
       {
@@ -128,15 +129,15 @@
           { name: "Metraje OCA", url: "https://viajes.metraje.oca.com.uy/paquetes", icon: "/img/clients/metraje.png" }
         ],
         highlights: [
-          "Mantuve el sistema de reservas de vuelos de estas agencias sobre un mismo frontend, personalizado para cada una.",
+          "Mantuve un producto de reservas compartido por siete agencias: un mismo core y frontend, con branding por cliente.",
           "Resolvía de 3 a 4 defectos por semana e incorporé un módulo de equipaje, adaptando una vista a los tipos de equipaje de la reserva.",
           "Las consultas con carry-on o equipaje de mano tardaban 5 segundos. Con Redis, un resultado ya usado quedó en menos de 1 segundo.",
           "El frontend en AngularJS corría en un microservicio. El contenedor se probaba en local y, si cumplía, pasaba a producción. El código se versionaba en Bitbucket."
         ],
         caseStudy: {
-          kicker: "Reservas de vuelos para agencias",
-          hint: "Siete agencias, pasarela de pagos y entrega en Docker.",
-          lead: "Trabajé el sistema de reservas de vuelos que compartían siete agencias, cada una con su marca sobre el mismo frontend.",
+          kicker: "Producto de reservas multi-agencia",
+          hint: "Siete clientes sobre el mismo core, pasarela de pagos y entrega en Docker.",
+          lead: "Trabajé un producto B2B de reservas de vuelos compartido por siete agencias: mismo core y frontend, marca propia por cliente.",
           metrics: [
             { value: "7", label: "agencias sobre el mismo frontend" },
             { value: "3–4", label: "defectos resueltos por semana" },
@@ -153,9 +154,9 @@
               ]
             },
             {
-              title: "Qué resolvía el sistema",
+              title: "Qué resolvía el producto",
               paragraphs: [
-                "Era un sistema de reservas de vuelos, con integración de una pasarela de pagos. El desarrollo era sobre ese producto compartido, no sobre un sistema distinto por agencia."
+                "Era un producto de reservas de vuelos multi-cliente, con integración de una pasarela de pagos. El desarrollo era sobre ese core compartido, no sobre un sistema distinto por agencia."
               ]
             },
             {
@@ -495,13 +496,13 @@
       {
         id: "offlinesync-pos",
         name: "OfflineSync POS",
-        description: "Sincronización offline-first de ventas en .NET 10: API idempotente, cliente de sucursal con outbox SQLite y CI.",
+        description: "Patrón de producto multi-sede en .NET 10: sync offline-first, API idempotente, outbox SQLite y CI.",
         url: "https://github.com/AlejandroParada/offlinesync-pos",
         period: "Nov. 2026",
         featured: true,
         detail: {
           kicker: "Repositorio offlinesync-pos",
-          lead: "Prototipo público de una sucursal que vende sin red y sincroniza con la central sin duplicar la venta.",
+          lead: "Prototipo público del patrón de un producto multi-sede: la sucursal vende sin red y sincroniza con la central sin duplicar la venta.",
           items: [
             "El cliente de sucursal es un worker .NET. Guarda cada venta en un outbox SQLite, con una clave de idempotencia, y la reintenta hasta que la central responde.",
             "La API en ASP.NET Core recibe el lote. Reenviarlo no vuelve a descontar stock.",
