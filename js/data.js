@@ -68,11 +68,21 @@
     return sololearnCert({ ...cert, url: src, image: src, practical: true });
   };
 
+  /* Cursos nuevos: página e imagen por código de credencial; acreditan comprensión teórica y práctica. */
+  const sololearnPage = (cert) => sololearnCert({
+    ...cert,
+    url: `https://www.sololearn.com/certificates/${cert.credentialId}`,
+    image: `https://api2.sololearn.com/v2/certificates/${cert.credentialId}/image/jpg`,
+    practical: true
+  });
+
   const RECORDS = Object.freeze({
     "ibm-contenedores": coursera({ code: "4BIJIFCSFQMI", share: "f54e09b909e9a5ec5b0b18ce54ac30d4", hours: 17, issued: "2026-10-23" }),
     "ibm-agile-scrum": coursera({ code: "98T810E2D9OU", hours: 12, issued: "2026-08-29" }),
     "ibm-devops": coursera({ code: "50GMK2PVHXH1", share: "6b14f6a8f619d1c7e5eb218ad3e0378a", hours: 9, issued: "2026-07-28" }),
 
+    "hp-impresion-3d": hpLife({ serial: "243da934-0b9e-4bf3-85b0-907aa2ad52ac", issued: "2026-11-25" }),
+    "hp-pensamiento-diseno": hpLife({ serial: "7e9c3f83-f34d-4777-9687-358765d1ec8f", issued: "2026-11-24" }),
     "hp-emprendimiento-social": hpLife({ serial: "68484bbe-f0f4-4623-96aa-9d45a8b8d4bb", issued: "2026-11-17" }),
     "hp-tecnologia-negocios": hpLife({ serial: "52d36a3d-8551-45a2-9617-ffffb8b30de9", issued: "2026-10-27" }),
     "hp-planificacion-ia": hpLife({ serial: "e879386e-866b-4d5f-90da-0d3ef7ea7ef1", issued: "2026-10-01" }),
@@ -93,6 +103,8 @@
     "hp-redes-profesionales": hpLife({ serial: "6ba14fde-457c-417e-b905-eabfedb2e79b", issued: "2026-06-12" }),
     "hp-pensamiento-critico": hpLife({ serial: "b1119a3b-e42a-4612-8025-feeb8b383b46", issued: "2026-06-10" }),
 
+    "sl-meet-claude": sololearnPage({ credentialId: "CC-4TYPG0TK", issued: "2026-11-25" }),
+    "sl-tech-everyone": sololearnPage({ credentialId: "CC-O0HO8UUR", issued: "2026-11-25" }),
     "sl-ia-pensamiento-critico": sololearnBlob({ blob: "0e019e8f-15ef-4550-b8b6-0336ffb569db", credentialId: "CC-XRXKO4ZE", issued: "2026-05-29" }),
     "sl-ia-mentalidad": sololearnBlob({ blob: "4e90631c-c9bd-4bda-a7c6-ebc57c66fb50", credentialId: "CC-DWXTLBZP", issued: "2026-05-29" }),
     "sl-ia-producto-ux": sololearnBlob({ blob: "553194fe-0d0e-4ed5-84c5-932d5971de13", credentialId: "CC-O7HPNXO8", issued: "2026-05-29" }),

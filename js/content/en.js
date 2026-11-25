@@ -678,7 +678,9 @@
           ]
         })
       ],
-      "Applied AI (Sololearn, 2026)": [
+      "AI and technology (Sololearn, 2026)": [
+        cert("sl-meet-claude", { name: "Meet Claude" }),
+        cert("sl-tech-everyone", { name: "Tech for Everyone" }),
         cert("sl-ia-pensamiento-critico", { name: "Critical Thinking in the Age of AI" }),
         cert("sl-ia-mentalidad", { name: "Growth Mindset in the Age of AI" }),
         cert("sl-ia-producto-ux", { name: "AI-Powered Product & UX" }),
@@ -702,6 +704,14 @@
         cert("sl-ia-generativa", { name: "Generative AI in Practice" })
       ],
       "Business (HP LIFE, 2026)": [
+        cert("hp-impresion-3d", {
+          name: "3D Printing",
+          summary: "How to print in 3D, the skills required and the resources available."
+        }),
+        cert("hp-pensamiento-diseno", {
+          name: "Design Thinking",
+          summary: "Use the design thinking process effectively, define a problem and write a problem statement, and use customer feedback to create solutions that solve it."
+        }),
         cert("hp-emprendimiento-social", {
           name: "Social Entrepreneurship",
           summary: "Evaluate whether a social enterprise idea is sustainable, use stakeholder analysis to assess the business need and measure the business impact."
